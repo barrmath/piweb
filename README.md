@@ -1,2 +1,2 @@
 # piweb
-petit site internet sur rasberry pi
+Petit site internet sur Raspberry Pi
