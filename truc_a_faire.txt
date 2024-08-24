@@ -1,0 +1,11 @@
+Alors une page auto hebergement avec :
+    _ installation raspberry pi dans le reseaux local
+    _ image pi et SSH
+    _ monitoring grafana prometheus
+    _ routage de port
+    _ IP fullstack
+    _ nom de domaine
+    _ Docker podman
+    _ Serveur web nginx WSGI gunicorn kesako?
+    _ certificat SSL
+

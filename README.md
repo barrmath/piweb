@@ -6,12 +6,12 @@ Prérequis : Podman<br>
 Construction du container :
 
 ```bash
-podman build .
+podman build -f Dockerfile.gunicorn -t web_app 
 ```
 
 <br>
 chargement du container :<br>
 
 ```bash
-podman run -p 5000:5000 web_app:latest -d   
+podman run -d -p 5000:5000 web_app:latest    
 ```
