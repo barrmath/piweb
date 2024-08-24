@@ -1,0 +1,14 @@
+version: "3"
+services:
+  flask-app:
+    build:
+      dockerfile: Dockerfile.gunicorn
+      context: .
+    ports:
+      - 5000:5000
+  flask-nginx:
+    build:
+      dockerfile: Dockerfile.nginx
+      context: .
+    ports:
+      - 8080:80
