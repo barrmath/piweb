@@ -24,4 +24,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # on lance le serveur flask
 EXPOSE 5000
-CMD gunicorn --workers=2 -b 0.0.0.0:5000  "run:create_app()"
+CMD gunicorn -c gunicorn.conf.py  "run:create_app()"
