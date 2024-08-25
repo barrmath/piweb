@@ -1,10 +1,10 @@
 # piweb
 Petit site internet sur Raspberry Pi<br>
 <br>
-Prérequis : Podman<br>
+Prérequis : <a href="https://podman.io/">Podman</a><br>
 <br>
 Construction et deploiement des containers :
 
 ```bash
- podman-compose up --build -d 
+podman kube play gunicorn.yml
  ```
