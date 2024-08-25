@@ -24,9 +24,9 @@ def web():
 def data():
     return render_template("base_data.html")
 
-@app.route("/contact/", methods=["GET", "POST"])
-def contact():
-    return render_template("contact.html")
+#@app.route("/contact/", methods=["GET", "POST"])
+#def contact():
+#    return render_template("contact.html")
 
 @app.route("/about/", methods=["GET", "POST"])
 def about():
