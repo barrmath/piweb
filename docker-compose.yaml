@@ -6,9 +6,9 @@ services:
       context: .
     ports:
       - 5000:5000
-  flask-nginx:
-    build:
-      dockerfile: Dockerfile.nginx
-      context: .
-    ports:
-      - 8080:80
+#  flask-nginx:
+#    build:
+#      dockerfile: Dockerfile.nginx
+#      context: .
+#    ports:
+#      - 80:80
