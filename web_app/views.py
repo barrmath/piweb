@@ -22,7 +22,7 @@ def web():
 
 @app.route("/data/", methods=["GET", "POST"])
 def data():
-    return render_template("base_data.html")
+    return render_template("data_intro.html")
 
 @app.route("/about/", methods=["GET", "POST"])
 def about():

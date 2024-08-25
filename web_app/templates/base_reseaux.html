@@ -2,6 +2,13 @@
 
 {%block content %}
 
-<h1>Hello World Pi reseaux</h1>
+<h1>Réseaux et administration</h1>
+<div class="topnav">
+    <a class='active' href={{ url_for('reseaux') }} method="post">Réseaux</a>
+
+    <a href={{ url_for('web') }}>Web</a>
+    <a href={{ url_for('data') }}>Data</a>
+    <a href={{ url_for('about') }}>About</a>
+  </div>
 
 {% endblock %}
