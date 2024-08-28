@@ -29,7 +29,7 @@
 /* The sidebar menu */
 .sidenav {
   height: 100%;  /* Full-hight: remove this if you want "auto" height */
-  width: 250px; /* Set the width of the sidebar */
+  width: 200px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   /*top: 0; /* Stay at the top */
@@ -58,18 +58,12 @@
   color: white;
 }
 
-/* Style page content */
-.main {
-  margin-left: 250px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
-}
-
 .content{
-  margin-left: 255px;
+  margin-left: 225px;
 }
 
 footer{
-  margin-left: 255px
+  margin-left: 225px
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */

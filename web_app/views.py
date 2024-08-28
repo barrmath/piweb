@@ -6,7 +6,7 @@ app = current_app
 liste_categorie = ['Accueil','Réseaux','Web','Data','About']
 liste_cotes_reseaux =['Autohébergement','Monitoring','Kube','Proxy','Certificat']
 liste_cotes_web =['HTML','CSS','Flask','Jinja','Gunicorn','Podman']
-liste_cotes_data =[]
+liste_cotes_data =['SQL','Python','Pandas','Graphique']
 
 
 @app.route("/robots.txt")
@@ -138,6 +138,38 @@ def Data():
                             ,categorie=liste_categorie[3]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_data)
+
+@app.route("/data/SQL", methods=["GET", "POST"])
+def SQL():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[3]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_data
+                            ,categorie_cotes=liste_cotes_data[0])
+
+@app.route("/data/python", methods=["GET", "POST"])
+def Python():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[3]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_data
+                            ,categorie_cotes=liste_cotes_data[1])
+
+@app.route("/data/pandas", methods=["GET", "POST"])
+def Pandas():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[3]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_data
+                            ,categorie_cotes=liste_cotes_data[2])
+
+@app.route("/data/graphique", methods=["GET", "POST"])
+def Graphique():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[3]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_data
+                            ,categorie_cotes=liste_cotes_data[3])
 
 ####################################################### Partie ABOUT  ################################################################
 
