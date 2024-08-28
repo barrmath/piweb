@@ -7,10 +7,9 @@
   <body>
 	<link href="{{ url_for('static', filename='style_base.css') }}" rel="stylesheet">
   <div class="topnav">
-    <a class="{{ 'active' if request.path == url_for('reseaux') }}" href={{ url_for('reseaux') }} method="post">Réseaux</a>
-    <a class="{{ 'active' if request.path == url_for('web') }}" href={{ url_for('web') }}>Web</a>
-    <a class="{{ 'active' if request.path == url_for('data') }}" href={{ url_for('data') }}>Data</a>
-    <a class="{{ 'active' if request.path == url_for('about') }}"  href={{ url_for('about') }}>About</a>
+    {% for cat in liste_categorie %}
+    <a class="{{ 'active' if  categorie  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
+    {% endfor %}
   </div> 
 
     {% block content %}{% endblock %}
