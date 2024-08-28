@@ -5,7 +5,7 @@ app = current_app
 
 liste_categorie = ['Accueil','Réseaux','Web','Data','About']
 liste_cotes_reseaux =['Autohébergement','Monitoring','Kube','Proxy','Certificat']
-liste_cotes_web =[]
+liste_cotes_web =['HTML','CSS','Flask','Jinja','Gunicorn','Podman']
 liste_cotes_data =[]
 
 
@@ -77,9 +77,58 @@ def Web():
     return render_template("web_intro.html"
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
-                            ,liste_cotes_categorie=liste_cotes_web)
+                            ,liste_cotes_categorie=liste_cotes_web
+                            )
 
 
+@app.route("/web/HTML", methods=["GET", "POST"])
+def HTML():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[2]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_web
+                            ,categorie_cotes=liste_cotes_web[0])
+
+
+@app.route("/web/CSS", methods=["GET", "POST"])
+def CSS():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[2]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_web
+                            ,categorie_cotes=liste_cotes_web[1])
+
+@app.route("/web/flask", methods=["GET", "POST"])
+def Flask():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[2]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_web
+                            ,categorie_cotes=liste_cotes_web[2])
+
+@app.route("/web/jinja", methods=["GET", "POST"])
+def Jinja():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[2]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_web
+                            ,categorie_cotes=liste_cotes_web[3])
+
+@app.route("/web/gunicorn", methods=["GET", "POST"])
+def Gunicorn():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[2]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_web
+                            ,categorie_cotes=liste_cotes_web[4])
+
+@app.route("/web/podman", methods=["GET", "POST"])
+def Podman():
+    return render_template("encours.html"
+                            ,categorie=liste_categorie[2]
+                            ,liste_categorie=liste_categorie
+                            ,liste_cotes_categorie=liste_cotes_web
+                            ,categorie_cotes=liste_cotes_web[5])
 
 ####################################################### Partie DATA  ##################################################################
 
