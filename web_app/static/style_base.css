@@ -2,6 +2,9 @@
 .topnav {
     background-color: #333;
     overflow: hidden;
+    position:fixed;
+    width: 100%;
+    top:0;
   }
   
   /* Style the links inside the navigation bar */
@@ -31,12 +34,10 @@
   height: 100%;  /* Full-hight: remove this if you want "auto" height */
   width: 200px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  /*top: 0; /* Stay at the top */
-  /*left: 0;*/
   background-color: #333; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+  top:62px;
 }
 
 /* The navigation menu links */
@@ -60,11 +61,6 @@
 
 .content{
   margin-left: 225px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  margin-top:62px;
 }
 

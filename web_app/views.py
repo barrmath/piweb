@@ -30,7 +30,7 @@ def Réseaux():
 
 @app.route("/reseaux/Auto-hebergement/", methods=["GET", "POST"])
 def Autohébergement():
-    return render_template("encours.html"
+    return render_template("reseaux/autohebergement.html"
                             ,categorie=liste_categorie[1]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_reseaux

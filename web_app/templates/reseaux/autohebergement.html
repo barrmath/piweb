@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{%block content %}
+
+<h1>Auto-Hébergement</h1>
+<p>
+    Le but de cette page est de vous décrire comment héberger votre petit site web chez vous.<br>
+    <br>
+    Matériel :<ul>
+        <li>routeur (ou machin box).</li>
+        <li>Une adresse IP statique avec les ports 80 et 443 disponible.</li>
+        <li>Un ordinateur pouvant servir de serveur.</li>
+        <li>Du temps.</li>
+    </ul>
+    Pour le serveur, j'ai utilisé un Raspberry pi 5 avec Rasbian.<br>
+    <img src={{ url_for('static', filename='img/autohebergement/23551-Raspberry-Pi-5-8G.jpg') }} alt="Rasberry pi 5"></img>
+    <br>
+    Pour la box une freebox pop.<br> 
+    <img src={{ url_for('static', filename='img/autohebergement/Freebox_Pop_Server_V8.jpg') }} alt="Freebox V8"></img>
+    <br>
+    Alors pour commencer, il faut comprendre comment on obtient une page internet à partir d'une adresse internet. Je vous ai préparé le schéma suivant :<br>
+    <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet"></img>
+</p>
+
+{% endblock %}
