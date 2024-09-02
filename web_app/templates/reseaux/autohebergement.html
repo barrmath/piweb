@@ -12,14 +12,54 @@
         <li>Un ordinateur pouvant servir de serveur.</li>
         <li>Du temps.</li>
     </ul>
-    Pour le serveur, j'ai utilisé un Raspberry pi 5 avec Rasbian.<br>
-    <img src={{ url_for('static', filename='img/autohebergement/23551-Raspberry-Pi-5-8G.jpg') }} alt="Rasberry pi 5"></img>
+    Pour le serveur, j'ai utilisé un Raspberry pi 5 avec Rasbian. Ma machin-box est une freebox Pop.<br>
+    <img src={{ url_for('static', filename='img/autohebergement/23551-Raspberry-Pi-5-8G.jpg') }} alt="Rasberry pi 5" width="200"></img>
+    <img src={{ url_for('static', filename='img/autohebergement/Freebox_Pop_Server_V8.jpg') }} alt="Freebox V8" width="200"></img>
     <br>
-    Pour la box une freebox pop.<br> 
-    <img src={{ url_for('static', filename='img/autohebergement/Freebox_Pop_Server_V8.jpg') }} alt="Freebox V8"></img>
     <br>
     Alors pour commencer, il faut comprendre comment on obtient une page internet à partir d'une adresse internet. Je vous ai préparé le schéma suivant :<br>
-    <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet"></img>
+    <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+    Je considère que vous avez déjà un site internet, sinon vous pouvez utiliser ce site ou un hello world.<br>
+    Vous pouvez trouver le code de ce site <a href="https://github.com/barrmath/piweb">ici.</a><br>
+    Vous pouvez trouver un hello world pour un site html <a href="https://www.educative.io/answers/how-to-write-hello-world-in-html">ici.</a><br>
+    <br>
+    Pour effectuer cet auto-hébergement, on va y aller par étape :<ol>
+            <li>Mettre le site sur le réseau local.</li>
+            <li>Mettre le site sur Internet en passant par l'adresse IP.</li>
+            <li>Configurer un nom de domaine pour associer adresse IP et nom de domaine.</li>
+        </ol>
+    <h1>Mettre le site sur le réseau local.</h1>
+    J'utilise <a href="https://nginx.org/en/">Nginx</a> pour mettre en place mon site.<br>
+    En cas de soucis,vous pouvez trouver un tuto <a href="http://nginx.org/en/docs/beginners_guide.html">ici.</a><br>
+    <br>
+    La commande est pour l installer est simple :<br>
+    <div class="code">apt-get install nginx</div><br>
+    modifier le fichier etc/nginx/nginc.conf pour qu'il envoie votre site.
+    <pre class="code">
+    http {
+    # plein d'option par defaut<          
+        server {
+            <dd>server_name  votre_nom_de_domaine.truc;
+            location / {
+                proxy_pass acces_de_votre_site_en_local;
+            }
+    
+            #error_page  404              /404.html;
+            listen 80; #port d'ecoute de nginx
+    </pre>
+    Maintenant, il faut démarrer Nginx et le mettre en enable sur systemd.<br>
+    <div class="code">
+        systemcl enable nginx<br>
+        systemctl start nginx<br>
+        systemctl status nginx<br>
+    </div>
+    Le status devrait indiquer ceci :<br>
+    <pre class="code">
+        ● nginx.service - A high performance web server and a reverse proxy server
+        Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
+        Active: active (running) since Sun 2024-08-25 21:46:39 BST; 1 week 0 days ago
+    </pre>
+    Maintenant que le site est en local avec nginx il suffit de trouver l'adresse IP de votre Serveur.<br>
+    
 </p>
-
 {% endblock %}
