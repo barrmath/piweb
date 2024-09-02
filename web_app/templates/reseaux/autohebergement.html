@@ -59,7 +59,53 @@
         Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
         Active: active (running) since Sun 2024-08-25 21:46:39 BST; 1 week 0 days ago
     </pre>
-    Maintenant que le site est en local avec nginx il suffit de trouver l'adresse IP de votre Serveur.<br>
-    
+    Maintenant que le site est en local avec Nginx il suffit de trouver l'adresse IP de votre Serveur.<br>
+    Plusieurs options s'offrent à vous :
+    <ul>
+    <li> Une commande depuis un terminal du serveur:
+    <pre class="code">foo@bar: ifconfig
+        eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet xxx.xxx.xxx.xxx  netmask xxx.xxx.xxx.xxx  broadcast xxx.xxx.xxx.xxx
+        inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xx  scopeid xxxxxx<global>
+        inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xxxx  scopeid xxxxx<link>
+    </pre></li>
+    <li>dans le routeur :<br>
+        <img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></img></li>
+    </ul>
+    Pour tester votre site en local taper l'adresse IP et le port dans un navigateur si vous utiliser pas le port 80.<br>
+    <img src="{{ url_for('static', filename='img/autohebergement/hello_local.png') }}" alt="hello local serveur"></img>
+    <br>
+    Félicitation pour cette première étape.<br>
+    <h1>2 Mettre le site sur Internet en passant par l'adresse IP.</h1>
+    Je considère que vous avez une adresse IP fullstack. Changer le port d'entrée si votre fournisseur vous interdit le port 80. 
+    <br>    
+    Pour faire cela 2 solutions :
+    Le <a href="https://www.fortinet.com/fr/resources/cyberglossary/what-is-dmz#:~:text=Une%20DMZ%20ou%20zone%20d%C3%A9militaris%C3%A9e,contre%20le%20trafic%20non%20fiable.">DMZ</a>
+    Ou le routage de ports
+    Je vais pratiquer le plus simple, le routage de port(la DMZ n'étant pas possible avec toutes les box).<br>
+    Depuis l'interface Freebox, aller dans paramètres de la Freebox puis cliquez sur Mode avancé.<br>
+    Cliquez sur Gestion des ports.<br><br>
+    <img src="{{ url_for('static', filename='img/autohebergement/menu_routage.png') }}" alt="hello local serveur"></img><br>
+    <img src="{{ url_for('static', filename='img/autohebergement/Gestion_ports.png') }}" alt="gestion port"></img><br>
+    Cliquez sur ajouter une redirection : <br>
+    <img src="{{ url_for('static', filename='img/autohebergement/Redirection_port.png') }}" alt="redirection port"></img><br>
+    <b>IP destination :</b> mettre l'adresse du server (ou son nom)<br>
+    cocher la redirection active <br>
+    <b>IP source :</b> mettez toutes<br>
+    <b>Protocole :</b> TCP<br>
+    <b>Port de début/fin :</b> 80<br>
+    <b>Port de destination :</b> mettre votre port pour votre site(dans listen nginx)<br>
+    <b>commentaire :</b>Port d'entrée serveur nginx site perso<br>
+    Puis cliquez sur sauvegarder.<br>
+    Trouver votre adresse IP soit en regardant le routeur, soit en allant sur ce site :<a href="https://whatismyipaddress.com/fr/mon-ip">https://whatismyipaddress.com/fr/mon-ip</a><br>
+    Ouvrez un navigateur pour tester avec l'adresse Ip indiquée puis le numero de port. adresse_IP:Numero_port <br>
+    Votre site devrait s'afficher.<br>
+    <h1>3 Configurer un nom de domaine pour associer adresse IP et nom de domaine.</h1>
+    Pour les noms de domaine freebox gratuit avec un abonnement : cliquez sur nom de domaine -> ajouter un nom de domaine Freebox.<br>
+    Entrez le nom de domaine souhaité puis validez. Au bout de quelques minutes, votre nom de domaine devrait être actif. (et Free configure les DNS)<br>
+    Pour un vrai nom de domaine : contacter un fournisseur par exemple <a href="https://www.ovhcloud.com/fr/domains/">OVH</a>.<br>
+    Il faudra passer par leurs DNS management pour faire pointer votre nom de domaine vers votre adresse IP.<br>
+    <br>
+    Si tout se passe bien, vous avez votre site en ligne.<br>
 </p>
 {% endblock %}
