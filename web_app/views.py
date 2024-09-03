@@ -39,7 +39,7 @@ def Autohébergement():
 
 @app.route("/reseaux/Monitoring/", methods=["GET", "POST"])
 def Monitoring():
-    return render_template("encours.html"
+    return render_template("reseaux/monitoring.html"
                             ,categorie=liste_categorie[1]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_reseaux
