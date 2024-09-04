@@ -8,7 +8,7 @@
     <br>
     Matériel :<ul>
         <li>routeur (ou machin box).</li>
-        <li>Une adresse IP statique avec les ports 80 et 443 disponible.</li>
+        <li>Une adresse IP statique avec les ports 80 et 443 disponibles.</li>
         <li>Un ordinateur pouvant servir de serveur.</li>
         <li>Du temps.</li>
     </ul>
@@ -32,7 +32,7 @@
     J'utilise <a href="https://nginx.org/en/">Nginx</a> pour mettre en place mon site.<br>
     En cas de soucis,vous pouvez trouver un tuto <a href="http://nginx.org/en/docs/beginners_guide.html">ici.</a><br>
     <br>
-    La commande est pour l installer est simple :<br>
+    La commande pour l'installer est simple :<br>
     <div class="code">apt-get install nginx</div><br>
     modifier le fichier etc/nginx/nginc.conf pour qu'il envoie votre site.
     <pre class="code">
@@ -72,7 +72,7 @@
     <li>dans le routeur :<br>
         <img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></img></li>
     </ul>
-    Pour tester votre site en local taper l'adresse IP et le port dans un navigateur si vous utiliser pas le port 80.<br>
+    Pour tester votre site en local, taper l'adresse IP et le port dans un navigateur si vous n'utilisez pas le port 80.<br>
     <img src="{{ url_for('static', filename='img/autohebergement/hello_local.png') }}" alt="hello local serveur"></img>
     <br>
     Félicitation pour cette première étape.<br>
@@ -83,26 +83,26 @@
     Le <a href="https://www.fortinet.com/fr/resources/cyberglossary/what-is-dmz#:~:text=Une%20DMZ%20ou%20zone%20d%C3%A9militaris%C3%A9e,contre%20le%20trafic%20non%20fiable.">DMZ</a>
     Ou le routage de ports
     Je vais pratiquer le plus simple, le routage de port(la DMZ n'étant pas possible avec toutes les box).<br>
-    Depuis l'interface Freebox, aller dans paramètres de la Freebox puis cliquez sur Mode avancé.<br>
-    Cliquez sur Gestion des ports.<br><br>
+    Depuis l'interface Freebox, aller dans paramètres de la Freebox puis cliquer sur Mode avancé.<br>
+    Cliquer sur Gestion des ports.<br><br>
     <img src="{{ url_for('static', filename='img/autohebergement/menu_routage.png') }}" alt="hello local serveur"></img><br>
     <img src="{{ url_for('static', filename='img/autohebergement/Gestion_ports.png') }}" alt="gestion port"></img><br>
-    Cliquez sur ajouter une redirection : <br>
+    Cliquer sur ajouter une redirection : <br>
     <img src="{{ url_for('static', filename='img/autohebergement/Redirection_port.png') }}" alt="redirection port"></img><br>
     <b>IP destination :</b> mettre l'adresse du server (ou son nom)<br>
     cocher la redirection active <br>
-    <b>IP source :</b> mettez toutes<br>
+    <b>IP source :</b> mettre "toutes"<br>
     <b>Protocole :</b> TCP<br>
     <b>Port de début/fin :</b> 80<br>
     <b>Port de destination :</b> mettre votre port pour votre site(dans listen nginx)<br>
     <b>commentaire :</b>Port d'entrée serveur nginx site perso<br>
-    Puis cliquez sur sauvegarder.<br>
+    Puis cliquer sur sauvegarder.<br>
     Trouver votre adresse IP soit en regardant le routeur, soit en allant sur ce site :<a href="https://whatismyipaddress.com/fr/mon-ip">https://whatismyipaddress.com/fr/mon-ip</a><br>
-    Ouvrez un navigateur pour tester avec l'adresse Ip indiquée puis le numero de port. adresse_IP:Numero_port <br>
+    Ouvrir un navigateur pour tester avec l'adresse Ip indiquée puis le numero de port. adresse_IP:Numero_port <br>
     Votre site devrait s'afficher.<br>
     <h2>3) Configurer un nom de domaine pour associer adresse IP et nom de domaine.</h2>
-    Pour les noms de domaine freebox gratuit avec un abonnement : cliquez sur nom de domaine -> ajouter un nom de domaine Freebox.<br>
-    Entrez le nom de domaine souhaité puis validez. Au bout de quelques minutes, votre nom de domaine devrait être actif. (et Free configure les DNS)<br>
+    Pour les noms de domaine freebox gratuit avec un abonnement : cliquer sur nom de domaine -> ajouter un nom de domaine Freebox.<br>
+    Entrer le nom de domaine souhaité puis valider. Au bout de quelques minutes, votre nom de domaine devrait être actif. (et Free configure les DNS)<br>
     Pour un vrai nom de domaine : contacter un fournisseur par exemple <a href="https://www.ovhcloud.com/fr/domains/">OVH</a>.<br>
     Il faudra passer par leurs DNS management pour faire pointer votre nom de domaine vers votre adresse IP.<br>
     <br>
