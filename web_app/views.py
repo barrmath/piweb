@@ -90,21 +90,13 @@ def HTML():
                             ,categorie_cotes=liste_cotes_web[0])
 
 
-@app.route("/web/CSS", methods=["GET", "POST"])
-def CSS():
-    return render_template("encours.html"
-                            ,categorie=liste_categorie[2]
-                            ,liste_categorie=liste_categorie
-                            ,liste_cotes_categorie=liste_cotes_web
-                            ,categorie_cotes=liste_cotes_web[1])
-
 @app.route("/web/flask", methods=["GET", "POST"])
 def Flask():
     return render_template("encours.html"
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_web
-                            ,categorie_cotes=liste_cotes_web[2])
+                            ,categorie_cotes=liste_cotes_web[1])
 
 @app.route("/web/jinja", methods=["GET", "POST"])
 def Jinja():
@@ -112,7 +104,7 @@ def Jinja():
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_web
-                            ,categorie_cotes=liste_cotes_web[3])
+                            ,categorie_cotes=liste_cotes_web[2])
 
 @app.route("/web/gunicorn", methods=["GET", "POST"])
 def Gunicorn():
@@ -120,7 +112,7 @@ def Gunicorn():
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_web
-                            ,categorie_cotes=liste_cotes_web[4])
+                            ,categorie_cotes=liste_cotes_web[3])
 
 @app.route("/web/podman", methods=["GET", "POST"])
 def Podman():
@@ -128,7 +120,7 @@ def Podman():
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_web
-                            ,categorie_cotes=liste_cotes_web[5])
+                            ,categorie_cotes=liste_cotes_web[4])
 
 ####################################################### Partie DATA  ##################################################################
 
