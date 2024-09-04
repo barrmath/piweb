@@ -5,7 +5,7 @@ app = current_app
 
 liste_categorie = ['Accueil','Réseaux','Web','Data','About']
 liste_cotes_reseaux =['Autohébergement','Monitoring','Kube','Proxy','Certificat']
-liste_cotes_web =['HTML','CSS','Flask','Jinja','Gunicorn','Podman']
+liste_cotes_web =['HTML','Flask','Jinja','Gunicorn','Podman']
 liste_cotes_data =['SQL','Python','Pandas','Graphique']
 
 
@@ -81,9 +81,9 @@ def Web():
                             )
 
 
-@app.route("/web/HTML", methods=["GET", "POST"])
+@app.route("/web/HTMLCSS", methods=["GET", "POST"])
 def HTML():
-    return render_template("encours.html"
+    return render_template("web/htmlcss.html"
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_web
