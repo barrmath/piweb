@@ -6,7 +6,7 @@
     width: 100%;
     top:0;
     left:0px;
-    border-bottom-right-radius: 20%;
+    border-bottom: solid #71fac8;
   }
   
   /* Style the links inside the navigation bar */
@@ -41,7 +41,6 @@
   padding-top: 20px;
   top:55px;
   left:0px;
-  border-top-right-radius: 1%;
 }
 
 /* The navigation menu links */
@@ -80,10 +79,10 @@
 footer{
   background-color: #333;
   padding-bottom: 100%;
+  border-top:solid #8fd9fc;
 }
 
 .pied_de_page{
   margin-left: 225px;
-  margin-top:150px;
   color: #ffffff;
 }
