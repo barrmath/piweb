@@ -20,6 +20,66 @@
     <li>Éditeur simple : <a href="https://notepad-plus-plus.org/downloads/">notepad++</a></li>
     <li>Éditeur pour developpeur : <a href="https://vscodium.com/">vscodium</a></li>
   </ul>
+  <br>
+  Ouvrez un éditeur de code, copier/coller le code en dessous et sauvegarder avec une extension .html.<br>
+  <xmp class="code">
+  <!DOCTYPE html>
+  <html lang="">
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+    </head>
+    <body>
+      <header></header>
+      <main>Hello World</main>
+      <footer></footer>
+    </body>
+  </html>
+  </xmp>
+  Ensuite ouvrez le fichier avec votre navigateur.<br>
+  <img src="{{ url_for('static', filename='img/web/hello_html.png')}}" alt="Hello World"></img><br>
+  Félicitation vous voilà développeur.<br>
+  Analysons un peu le code. On vois des balises ouvrantes < mot > et fermante < /mot >.<br>
+  La premiere balise <xmp><!DOCTYPE html></xmp> indique simplement qu'il s'agit d une page HTML.<br>
+  La deuxieme balise ouvre le code et vous pouvez indiquer une langue.<br> 
+  Ensuite la balise head permet d'afficher des choses en dehors la page comme le titre en haut. et vous pouvez mettre des metadonnée grâce à la balise meta<br>
+  charset="utf-8" permets de specifier le jeu de caractere utiliser. (a ne pas confondre avec la police)<br>
+  <br>
+  On arrive sur la balise body qui indique que vous travailler sur le corps de la page html.<ul>
+    <li>head pour le haut de la page</li>
+    <li>main pour le principal article</li>
+    <li>footer pour le bas de page</li>
+  </ul>
+  En fonction de ce que vous voulez faire, il y a plein de balise en html. Je vous laisse les découvrir <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element">ici</a>
+  Malgrès les balises HTML, vous trouver que votre page manque de couleur, vous voudrez avec plus de choix en placement. Le CSS est fait pour ça.<br>
+  <h2>Le CSS</h2>
+  Il faut lier le fichier CSS dans la page internet.
+  <xmp><link href="style_base.css" rel="stylesheet"></xmp>
+  Maintenant regardons ce que fait ce fichier,<br>
+  Prenons par exemple la partie footer du css de ce site (qui auras peut être changer entre 2):
+  <xmp class="code">
+footer{
+  background-color: #333;
+  padding-bottom: 100%;
+  border-top:solid #8fd9fc;
+}</xmp>
+  Vous avez donc le nom de la balise à modifier des accolades puis des attributs (oubliez pas le ";" à la fin).<br>
+  Ici le fond est noir, on prends toute la place en bas (bottom) et on crée une ligne "solid" avec son code couleur.<br>
+  Si vous avez plusieurs balises amis que vous en voulez pas avoir le meme comportement pas de soucis.
+  Ajouter class="nom" (si vous avez plusieurs balises à modifier) ou id="nom"(pour une seule balise)<br>
+  Par exemple <xmp><pre class="Code">blablabla</pre></xmp>
+  La partie CSS suivante :<br>
+  <xmp>
+.code{
+  background-color: #000;
+  color: rgb(75, 255, 120);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+  </xmp>
+  La différence : le point . avant le nom indique une classe ou une id.<br>
+  Vous voilà dévelepoppeur front end. (enfin presque).<br>
+  Plus de fonctionnallité de CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">ici.</a>
 </p>
 
 {% endblock %}
