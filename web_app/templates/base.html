@@ -5,27 +5,29 @@
     <title>MatBarr : piweb</title>
   </head>
   <body>
-	<link href="{{ url_for('static', filename='style_base.css') }}" rel="stylesheet">
-  <div class="topnav">
-    {% for cat in liste_categorie %}
-    <a class="{{ 'active' if  categorie  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
-    {% endfor %}
-  </div> 
-  <div class="sidenav">
-    {% for cat in liste_cotes_categorie %}
-    <a class="{{ 'active' if  categorie_cotes  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
-    {% endfor %}
-  </div>
-  <div class="content">
-    {% block content %}{% endblock %}
-  </div>
+    <main>
+      <link href="{{ url_for('static', filename='style_base.css') }}" rel="stylesheet">
+      <div class="topnav">
+        {% for cat in liste_categorie %}
+        <a class="{{ 'active' if  categorie  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
+        {% endfor %}
+      </div> 
+      <div class="sidenav">
+        {% for cat in liste_cotes_categorie %}
+        <a class="{{ 'active' if  categorie_cotes  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
+        {% endfor %}
+      </div>
+      <div class="content">
+        {% block content %}{% endblock %}
+      </div>
+    </main>  
+    <footer>
+      <div class="pied_de_page">
+        Autohébergé sur un Raspberry Pi.<br>
+        Site fait par MatBarr.<br>
+        Les images sont tirées soit de Wikipedia, soit crées par moi-même.<br>
+        Licence Creative Common.<br>
+      <div> 
+    </footer>
   </body>
-  <footer>
-    <div class="pied_de_page">
-      Autohébergé sur un Raspberry Pi.<br>
-      Site fait par MatBarr.<br>
-      Les images sont tirées soit de Wikipedia, soit crées par moi-même.<br>
-      Licence Creative Common.<br>
-    <div> 
-  </footer>
 </html>

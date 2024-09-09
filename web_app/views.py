@@ -133,7 +133,7 @@ def Data():
 
 @app.route("/data/SQL", methods=["GET", "POST"])
 def SQL():
-    return render_template("encours.html"
+    return render_template("data/sql.html"
                             ,categorie=liste_categorie[3]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_data
