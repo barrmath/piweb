@@ -2,12 +2,68 @@
 
 {%block content %}
 <p>
-    <h1>SQL</h1>
+    <h1>SQL Work In Progress</h1>
+    Ce langage permet de faire des demandes à une base de données relationnelle.<br>
+    Pour vulgariser, je vais faire un parallèle avec un tableur connu Excel.<br>
+
+    Les bases de données sont constituer des élements suivants :<br>
     <ul>
-        <ol>gestionnaire de base de donnée</ol>
-        <ol>Base de donnée</ol>
-        <ol>Table</ol>
-        <ol>Colonne</ol>
+        <ol>Le Gestionnaire de Base de Données (GBDD)</ol>
+        <ol>La Base De Données (BDD)</ol>
+        <ol>Les Tables</ol>
+        <ol>Les Colonnes</ol>
     </ul>
+    Pour faire le parallèle : le gestionnaire est le programme excel, la base de données est un fichier excel, les tables des feuille de calcul et les colonnes, les colonnes.<br>
+    Avant de faire du SQL, il faut donc au minimun installée un Gestionnaire de base de données. On peut installer ceux-ci en local, par conteneur ou en louer sur le cloud.<br>
+    <h2>Le gestionnaire de Base de données</h2>
+    Il existe 2 type de gestionnaire de base de données, les SQL et les autres.<br>
+    On peut citer par exemple <a href="https://www.mongodb.com/fr-fr">MongoDB</a>, <a href="https://hbase.apache.org/">Apache Hbase</a> en temps que base de donnée noSQL.<br>
+    Les gestionnaires de bases de données SQL les plus couramment utilisés sont :
+    <ul>
+        <li><a href="https://www.sqlite.org/">SQL lite</a> : pour des petits projets ou le developpement</li>
+        <li><a href="https://www.mysql.com/fr/">mySQL</a> : Une des plus connu</li>
+        <li><a href="https://mariadb.org/">mariaDB</a> : une BDD open source basé sur mySQL</li>
+        <li><a href="https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads">Microsoft SQL server</a> : Une base de donnée de microsoft</li>
+        <li><a href="https://www.postgresql.org/">PostgreSQL</a> : Une autre base de donnée opensource très performante</li>
+    </ul>
+    Toutes ces gestionnaire de bases de données existent souvent en version cloud. Les fournisseurs cloud peuvent vous fournir leurs propres gestionnaire de base de données.<br>
+    Par exemple : <a href="https://aws.amazon.com/fr/rds/aurora/?nc2=h_ql_prod_db_aa">Aurora</a> chez aws, <a href="https://cloud.google.com/sql/">cloud SQL</a> pour gcp, ...<br>
+    Pour la suite, je prends exemple sur mariaDB.<br>
+    <h3>installation</h3>
+    Pour les debian et autre linux on peut passer par apt : apt-get install mariadb-serveur<br>
+    On peux aussi passer par docker/podman compose avec par exemple ce fichier docker-compose.yml (à ne pas utiliser en production merci) :
+    <xmp class="code">
+version: "3.9"
+volumes:
+  data:
+services:
+  db:
+    image: docker.io/mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    </xmp>
+    Et on lance avec la commande <div class="code">podman-compose up -d</div>
+    La commande <div class="code">podman-compose down</div> pour fermer MariaDb.<br>
+    J'utilise <a href="https://dbeaver.io/">Dbeaver</a> pour communiquer facilement avec des bases de données. La version community suffit pour MariaDB.<br>
+    Il faudrat certainment installler un connecteur (ici jdbc). Configurons maintenant la connection à votre base de données locale :<br>
+    cliquer sur base de donnée puis sur nouvelle connection<br>
+    <img src="{{ url_for('static', filename='img/SQL/dbeaver_menu.png')}}" alt="gmenu Dbeaver"></img><br>
+    Selectionner MariaDB<br>
+    <img src="{{ url_for('static', filename='img/SQL/dbeaver_selection.png')}}" alt="selection DBeaver"></img><br>
+    Puis mettre tout les resnseignements pour ce connecter (user, password, cle ssh, port adresse de la BDD, ... )
+    <img src="{{ url_for('static', filename='img/SQL/dbeaver_config.png')}}" alt="config DBeaver"></img><br>
+    On va pouvoir créer/ modofier et faire quelque requete SQL grâce à ce logiciel.<br>
+    <h2>Création d'une base de donnée</h2>
+    WIP
+
+
 </p>
+
 {% endblock %}

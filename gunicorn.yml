@@ -12,7 +12,7 @@ metadata:
     io.podman.annotations.privileged/busymccarthy: "FALSE"
     io.podman.annotations.publish-all/busymccarthy: "FALSE"
     org.opencontainers.image.base.digest/busymccarthy: sha256:1310b65d525e6854ddc2a7efaf790b4db9347a6f6eab738145bc8bfb
-    org.opencontainers.image.base.name/busymccarthy: docker.io/library/debian:latest
+    org.opencontainers.image.base.name/busymccarthy: python:latest
   creationTimestamp: "2024-08-25T08:14:59Z"
   labels:
     app: busymccarthy-pod
