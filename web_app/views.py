@@ -141,7 +141,7 @@ def SQL():
 
 @app.route("/data/python", methods=["GET", "POST"])
 def Python():
-    return render_template("encours.html"
+    return render_template("data/python.html"
                             ,categorie=liste_categorie[3]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_data
