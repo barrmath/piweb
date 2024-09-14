@@ -8,16 +8,82 @@
   Il peut servir pour faire de la data science, du web, des scripts pour les administrateurs, ... Bref, il est assez polyvalent.
   En tant que langage interprété, (et non compilé), il a des performances en retrait par rapport a du C par exemple.<br>
   Il a comme avantage d'être simple, et relativement intuitif.<br>
+  Pour faire un script python, crée un fichier texte avec votre éditeur favori (extension .pi en général). Pour lancer le script :<div class="code">python nom_du_script.pi</div>
   On va voir les objets de base de python, les fonctions simples de python, puis la gestion des bibliothèques et des environnements python.<br> 
 
   <h2>Objets de base</h2>
   <h3>Les Variables</h3>
-  <h3>Les Listes</h3>
-  <h3>Les dictionnaires</h3>
+  Les variables servent à stocker des valeurs dans la mémoire vive. On les déclare simplement avec un nom de variable, un signe égal, puis la valeur. Exemple :
+  <xmp class="code">
+phrase = "Hello world python"
+version = 3
+print(phrase,version)
+print("Le type de phrase est" ,type(phrase))
+print ("le type de version est" ,type(version))
+version = float(version)
+print("le nouveau type de version est ", type(version))
+  </xmp>
+  En testant ce script vous pouvez observer que vous pouvez changer de type de variable en cours de programme.<br>
+  Les différents type en python sont :<ul>
+    <li>Bool : un 0 ou 1, vrais faux</li>
+    <li>int : nombre entier</li>
+    <li>float : nombre flottant à virgule</li>
+    <li>str : string ou chaine de caractère</li>
+  </ul>
+  <h3>Les Listes, les tuples</h3>
+  <h4>Les Listes</h4>
+  Une liste est une liste de variables ou d'autres objets.
+  On la déclare entre [].
+  On peut y placer des nombres, des chaînes de caracteres , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contienent ... <br>
+  Je préfère la pratique donc script d'exemple :
+  <xmp class="code">
+# Creation de la liste
+ma_liste = [1,2,3,4,"Leeloo",6]
+print("la liste complete : ",ma_liste)
+print("le premier element est  ", ma_liste[0])
+print("Le cinquième élément est ",ma_liste[4])
+print("la liste contient", len(ma_liste), "éléments")
 
+#ajout suppression
+ma_liste.append(7)
+print("la liste complete : ",ma_liste)
+print("la liste contient maintenant", len(ma_liste),"éléments")
+ma_liste.remove(7)
+print("la liste contient maintenant", len(ma_liste),"éléments")
+print("la liste complete : ",ma_liste)
+ma_liste.pop(4)
+print("la liste complete : ",ma_liste)    
+  </xmp>
+  Les listes contiennent des méthodes pour rajouter des éléments, ou en enlever.
+  Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html">doc</a>.<br>
+
+  Pour information : les chaînes de caractères sont une liste un peu spéciale.
+  <h4>Les Tuples</h4>
+  Les tuples se comportent comme des listes. Sauf que l'on ne peut pas les modifier. Elles sont dites immuables<br>
+  Par contre elles sont plus légéres en memoire, et plus rapides. À vous de choisir entre la vitesse et l'adaptabilité.<br>
+  
+  <h3>Les dictionnaires</h3>
+  Les dictionnaire se déclare entre {}.
+  Il faut les voir commeun annuaire ou un index selon moi. Ce n'est pas moi qui ai nommé cet objet dictionnaires.
+  exemple :
+  <xmp class="code">
+# Creation du dico
+mes_choix = {"tux":"un manchot","d":"la reponse d","le sens de la vie":42,"sarah connor":"oui c'est moi"}
+print (mes_choix)
+print(mes_choix["tux"])    
+  </xmp>
+  Vous pouvez essayer avec d'autres clés.("tux" est une clé ici comme "d" ou "sarah connor"). <br>
+  Vous avez une clé, en entrant la clé le dictionnaire vous donne une valeur.<br>
+  Vous trouverez les dictionnaires pour faires des conditions multiples (le switch étant arrivé avec python 3.10). Mais il peux être utile pour par exemple traduire des couleurs. exemple :
+  <div class="code">couleurs={'blue':#0000FF,"red":#FF0000,"green":#0000FF,"taupe":"it an animal not a fucking color"}</div>
+  La doc des dicos est <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">ici.</a>
   <h2>Conditions, Boucles, Fonctions</h2>
   <h3>Conditions</h3>
+  <h4>if elif else</h4>
+  <h4>switch case</h4>
   <h3>Boucles</h3>
+  <h4>for</h4>
+  <h4>while</h4>
   <h3>Fonctions</h3>
   <h4>Recursivité</h4>
 
