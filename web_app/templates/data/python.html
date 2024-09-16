@@ -199,12 +199,73 @@ Quelquefois c'est plus intuitif comme methode que des boucles.<br>
 Par contre les defauts : consommation memoire en hausse et python limite le nombre de récursivité possible, pour éviter les récursivités infinies<br>
 Plus d'information <a href="https://rollbar.com/blog/python-recursionerror/#">ici.</a> 
 
-<h2>Environnmement, Pip et bibliothèques/modules</h2>
-<h3>Pip</h3>
+<h2>Environnement, Pip et bibliothèques/modules</h2>
+Python existe depuis quelques années. Des millions voir des milliards de lignes de codes ont été écrites pour diverses raisons. Il y a de fortes chances pour que la fonction que vous voulez existe déjà quelque part.<br>
+Heuresement il existe un site qui permets de chercher des paquets python : <a href="https://pypi.org/">pypi.org</a>. Dites le à un enfants de 5 à 10 ans, ç va lui faire sa journée.<br>
+Python va tourner dans un environnement où il auras des paquets installer ou non. Il faut faire la différence entre l'environnement local et les environnements virtuels.<br>
 <h3>Environnemnt local</h3>
+Divers programme utilise python, y compris des programmes importants sous Linux. Certaines distribution utilises le gestionnaire par default pip mais de plus en plus de distribution utilise leurs porpre gestionnaire de paquets pour plus de stabilité.<br>
+essayer d installer un module avec pip :
+<xmp class="code">
+pip install yolo                                                                           ✔ 
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try 'pacman -S
+  python-xyz', where xyz is the package you are trying to
+  install.
+  
+  If you wish to install a non-Arch-packaged Python package,
+  create a virtual environment using 'python -m venv path/to/venv'.
+  Then use path/to/venv/bin/python and path/to/venv/bin/pip.
+  
+  If you wish to install a non-Arch packaged Python application,
+  it may be easiest to use 'pipx install xyz', which will manage a
+  virtual environment for you. Make sure you have python-pipx
+  installed via pacman.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.  
+</xmp>
+Voici le message d'erreur lorsque vous essayer d'installer un paquets sur l'environnement local. Il vous demande sois de passer par le gestionnaire de paquets (pacman apt dnf) ou de créer un environnement virtuel.<br>
+Vous pouvez  installer les bibliothèques/modules que vous utilisez souvent en local. Par exemple installer django si vous etes developpeur web.
+Mais il est plus que conseillé d'utiliser plutot les environnemnts virtuel pour eviter des conflits avec les programmmes systemes.
 <h3>Environnement virtuel</h3>
-<h3>gestion des paquets et requirements.txt</h3>
-
-  <h2>Conclusion</h2>
-
+Pour créer un environnement virtuel c'est relativement facile. Aller dans un dossier ou vous debuter un nouveau projet python et taper : <div class="code">python -m venv venv</div>
+Pour activer l'environnement virtuel taper : <div class="code">source venv/bin/activate</div>
+Maintenant vous pouvez utiliser pip pour installer vos modules. <br>
+<h3>Pip</h3>
+Les commande de principale de pip:
+<ul>
+  <li>pip install Nom_du_paquet : installe le paquet</li>
+  <li>pip uninstal Nom_du_paquet : desinstalle le paquet</li>
+  <li>pip freeze : liste les paquets installés</li>
+  <li>pip freeze > requirements.txt : crée un fichier requirements.txt avec la liste de tous les paquets installés</li>
+  <li>pip install -r requirements.txt  : installe les paquets listé dans requirements.txt</li>
+</ul>
+Donc avec ces simples commandes, vous pouvez débuter un projet, mettre le fichier requirements.txt dans un repo git. Un utilisateur pourras installer et tester votre programme grâce à la création d'environnement viruels et à pip.<br>
+<br>
+<h3>Mise à jour pip</h3>
+Pour mettre à jour pip,il suffit de taper<div class="code">pip install pip --upgrade pip </div>
+Pour mettre à jour tout les paquets de pip :<div class="code">pip freeze --local | awk -F "=" '{print "pip install -U "$1}' | sh</div>
+Tester votre projet et mettez à jours requirements.txt<div class="code">pip freeze > requirements.txt</div>
+<h3>Utiliser les modules</h3>(
+Vous avez installer plein de modules, comment on les importes? Tout simplement avec la commande imports. par exemple :<div class="code">import pandas</div><br>
+Ensuite vous pouvez utilser la bibliotheque pandas dans votre code (si vous l avez installer avec pip avant bien entendu).<br>
+Par exemple pour créer un dataframe <div class="code">dataframe = pandas.DataFrame()</div>
+Ecrire pandas est trop long ? importer la bibliotheque comme ça :<div class=¨code">import pandas as pd</div>
+Maintenant vous pouvez ecrire :<div class="code">pd.DataFrame()</div>
+Vous n'avez besoin que de la fonction DataFrame ? Pas de soucis ecrivez ceci : <div class="code">from pandas import DataFrame</div>
+Création du Dataframe : <div class="code">dataframe = DataFrame()</div>
+<br>
+<h3>Une fausse bonne idée : from pandas import *</h3>
+Vous importez tout pandas sans le namespace. Du coup plus besoin de taper pandas.fonction ou pd.fonction.<br>
+MAIS imaginer que vous importer une autre bibliotheque et que cette bibliotheque a un nom de fonction identique à celle de pandas.<br>
+Pour en avoir fait l'experience bon courage pour tout debugguer.<br>
+<h3>modules perso</h3>
+Créer un dossier, créer dans celui ci un fichier __init__.py et un fichier mesfonctions.py
+Et importer le avec import mesfonctions.py comme un modules. 
+<h2>Conclusion</h2>
+Avec ceci, vous avex juste les bases de python. de quoi vous débrouiller.<br>
+Allez voir les bibliothèques et regarder la doc. Tester les différentes fonctions. Bref éclatez-vous.
 {% endblock %}
