@@ -3,109 +3,107 @@
 {%block content %}
 
 <h1>Auto-Hébergement</h1>
-<p>
-    Le but de cette page est de vous décrire comment héberger votre petit site web chez vous.<br>
-    <br>
-    Matériel :<ul>
-        <li>routeur (ou machin box).</li>
-        <li>Une adresse IP statique avec les ports 80 et 443 disponibles.</li>
-        <li>Un ordinateur pouvant servir de serveur.</li>
-        <li>Du temps.</li>
-    </ul>
-    Pour le serveur, j'ai utilisé un Raspberry pi 5 avec Rasbian. Ma machin-box est une freebox Pop.<br>
-    <img src={{ url_for('static', filename='img/autohebergement/23551-Raspberry-Pi-5-8G.jpg') }} alt="Rasberry pi 5" width="200"></img>
-    <img src={{ url_for('static', filename='img/autohebergement/Freebox_Pop_Server_V8.jpg') }} alt="Freebox V8" width="200"></img>
-    <br>
-    <br>
-    Alors pour commencer, il faut comprendre comment on obtient une page internet à partir d'une adresse internet. Je vous ai préparé le schéma suivant :<br>
-    <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
-    Je considère que vous avez déjà un site internet, sinon vous pouvez utiliser ce site ou un hello world.<br>
-    Vous pouvez trouver le code de ce site <a href="https://github.com/barrmath/piweb">ici.</a><br>
-    Vous pouvez trouver un hello world pour un site html <a href="https://www.educative.io/answers/how-to-write-hello-world-in-html">ici.</a><br>
-    <br>
-    Pour effectuer cet auto-hébergement, on va y aller par étape :<ol>
-            <li>Mettre le site sur le réseau local.</li>
-            <li>Mettre le site sur Internet en passant par l'adresse IP.</li>
-            <li>Configurer un nom de domaine pour associer adresse IP et nom de domaine.</li>
-        </ol>
-    <h2>1)Mettre le site sur le réseau local.</h2>
-    J'utilise <a href="https://nginx.org/en/">Nginx</a> pour mettre en place mon site.<br>
-    En cas de soucis,vous pouvez trouver un tuto <a href="http://nginx.org/en/docs/beginners_guide.html">ici.</a><br>
-    <br>
-    La commande pour l'installer est simple :<br>
-    <div class="code">apt-get install nginx</div><br>
-    modifier le fichier etc/nginx/nginc.conf pour qu'il envoie votre site.
-    <pre class="code">
-    http {
-    # plein d'option par defaut<          
-        server {
-            <dd>server_name  votre_nom_de_domaine.truc;
-            location / {
-                proxy_pass acces_de_votre_site_en_local;
-            }
-    
-            #error_page  404              /404.html;
-            listen 80; #port d'ecoute de nginx
-    </pre>
-    Maintenant, il faut démarrer Nginx et le mettre en enable sur systemd.<br>
-    <div class="code">
-        systemcl enable nginx<br>
-        systemctl start nginx<br>
-        systemctl status nginx<br>
-    </div>
-    Le status devrait indiquer ceci :<br>
-    <pre class="code">
-        ● nginx.service - A high performance web server and a reverse proxy server
-        Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
-        Active: active (running) since Sun 2024-08-25 21:46:39 BST; 1 week 0 days ago
-    </pre>
-    Maintenant que le site est en local avec Nginx il suffit de trouver l'adresse IP de votre Serveur.<br>
-    Plusieurs options s'offrent à vous :
-    <ul>
-    <li> Une commande depuis un terminal du serveur:
-    <pre class="code">foo@bar: ifconfig
-        eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet xxx.xxx.xxx.xxx  netmask xxx.xxx.xxx.xxx  broadcast xxx.xxx.xxx.xxx
-        inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xx  scopeid xxxxxx<global>
-        inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xxxx  scopeid xxxxx<link>
-    </pre></li>
-    <li>dans le routeur :<br>
-        <img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></img></li>
-    </ul>
-    Pour tester votre site en local, taper l'adresse IP et le port dans un navigateur si vous n'utilisez pas le port 80.<br>
-    <img src="{{ url_for('static', filename='img/autohebergement/hello_local.png') }}" alt="hello local serveur"></img>
-    <br>
-    Félicitation pour cette première étape.<br>
-    <h2>2) Mettre le site sur Internet en passant par l'adresse IP.</h2>
-    Je considère que vous avez une adresse IP fullstack. Changer le port d'entrée si votre fournisseur vous interdit le port 80. 
-    <br>    
-    Pour faire cela 2 solutions :
-    Le <a href="https://www.fortinet.com/fr/resources/cyberglossary/what-is-dmz#:~:text=Une%20DMZ%20ou%20zone%20d%C3%A9militaris%C3%A9e,contre%20le%20trafic%20non%20fiable.">DMZ</a>
-    Ou le routage de ports
-    Je vais pratiquer le plus simple, le routage de port(la DMZ n'étant pas possible avec toutes les box).<br>
-    Depuis l'interface Freebox, aller dans paramètres de la Freebox puis cliquer sur Mode avancé.<br>
-    Cliquer sur Gestion des ports.<br><br>
-    <img src="{{ url_for('static', filename='img/autohebergement/menu_routage.png') }}" alt="hello local serveur"></img><br>
-    <img src="{{ url_for('static', filename='img/autohebergement/Gestion_ports.png') }}" alt="gestion port"></img><br>
-    Cliquer sur ajouter une redirection : <br>
-    <img src="{{ url_for('static', filename='img/autohebergement/Redirection_port.png') }}" alt="redirection port"></img><br>
-    <b>IP destination :</b> mettre l'adresse du server (ou son nom)<br>
-    cocher la redirection active <br>
-    <b>IP source :</b> mettre "toutes"<br>
-    <b>Protocole :</b> TCP<br>
-    <b>Port de début/fin :</b> 80<br>
-    <b>Port de destination :</b> mettre votre port pour votre site(dans listen nginx)<br>
-    <b>commentaire :</b>Port d'entrée serveur nginx site perso<br>
-    Puis cliquer sur sauvegarder.<br>
-    Trouver votre adresse IP soit en regardant le routeur, soit en allant sur ce site :<a href="https://whatismyipaddress.com/fr/mon-ip">https://whatismyipaddress.com/fr/mon-ip</a><br>
-    Ouvrir un navigateur pour tester avec l'adresse Ip indiquée puis le numero de port. adresse_IP:Numero_port <br>
-    Votre site devrait s'afficher.<br>
-    <h2>3) Configurer un nom de domaine pour associer adresse IP et nom de domaine.</h2>
-    Pour les noms de domaine freebox gratuit avec un abonnement : cliquer sur nom de domaine -> ajouter un nom de domaine Freebox.<br>
-    Entrer le nom de domaine souhaité puis valider. Au bout de quelques minutes, votre nom de domaine devrait être actif. (et Free configure les DNS)<br>
-    Pour un vrai nom de domaine : contacter un fournisseur par exemple <a href="https://www.ovhcloud.com/fr/domains/">OVH</a>.<br>
-    Il faudra passer par leurs DNS management pour faire pointer votre nom de domaine vers votre adresse IP.<br>
-    <br>
-    Si tout se passe bien, vous avez votre site en ligne.<br>
-</p>
+Le but de cette page est de vous décrire comment héberger votre petit site web chez vous.<br>
+<br>
+Matériel :<ul>
+    <li>routeur (ou machin box).</li>
+    <li>Une adresse IP statique avec les ports 80 et 443 disponibles.</li>
+    <li>Un ordinateur pouvant servir de serveur.</li>
+    <li>Du temps.</li>
+</ul>
+Pour le serveur, j'ai utilisé un Raspberry pi 5 avec Rasbian. Ma machin-box est une freebox Pop.<br>
+<img src={{ url_for('static', filename='img/autohebergement/23551-Raspberry-Pi-5-8G.jpg') }} alt="Rasberry pi 5" width="200"></img>
+<img src={{ url_for('static', filename='img/autohebergement/Freebox_Pop_Server_V8.jpg') }} alt="Freebox V8" width="200"></img>
+<br>
+<br>
+Alors pour commencer, il faut comprendre comment on obtient une page internet à partir d'une adresse internet. Je vous ai préparé le schéma suivant :<br>
+<img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+Je considère que vous avez déjà un site internet, sinon vous pouvez utiliser ce site ou un hello world.<br>
+Vous pouvez trouver le code de ce site <a href="https://github.com/barrmath/piweb">ici.</a><br>
+Vous pouvez trouver un hello world pour un site html <a href="https://www.educative.io/answers/how-to-write-hello-world-in-html">ici.</a><br>
+<br>
+Pour effectuer cet auto-hébergement, on va y aller par étape :<ol>
+        <li>Mettre le site sur le réseau local.</li>
+        <li>Mettre le site sur Internet en passant par l'adresse IP.</li>
+        <li>Configurer un nom de domaine pour associer adresse IP et nom de domaine.</li>
+    </ol>
+<h2>1)Mettre le site sur le réseau local.</h2>
+J'utilise <a href="https://nginx.org/en/">Nginx</a> pour mettre en place mon site.<br>
+En cas de soucis,vous pouvez trouver un tuto <a href="http://nginx.org/en/docs/beginners_guide.html">ici.</a><br>
+<br>
+La commande pour l'installer est simple :<br>
+<div class="code">apt-get install nginx</div><br>
+modifier le fichier etc/nginx/nginc.conf pour qu'il envoie votre site.
+<pre class="code">
+http {
+# plein d'option par defaut<          
+    server {
+        <dd>server_name  votre_nom_de_domaine.truc;
+        location / {
+            proxy_pass acces_de_votre_site_en_local;
+        }
+
+        #error_page  404              /404.html;
+        listen 80; #port d'ecoute de nginx
+</pre>
+Maintenant, il faut démarrer Nginx et le mettre en enable sur systemd.<br>
+<div class="code">
+    systemcl enable nginx<br>
+    systemctl start nginx<br>
+    systemctl status nginx<br>
+</div>
+Le status devrait indiquer ceci :<br>
+<pre class="code">
+    ● nginx.service - A high performance web server and a reverse proxy server
+    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
+    Active: active (running) since Sun 2024-08-25 21:46:39 BST; 1 week 0 days ago
+</pre>
+Maintenant que le site est en local avec Nginx il suffit de trouver l'adresse IP de votre Serveur.<br>
+Plusieurs options s'offrent à vous :
+<ul>
+<li> Une commande depuis un terminal du serveur:
+<pre class="code">foo@bar: ifconfig
+    eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+    inet xxx.xxx.xxx.xxx  netmask xxx.xxx.xxx.xxx  broadcast xxx.xxx.xxx.xxx
+    inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xx  scopeid xxxxxx<global>
+    inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xxxx  scopeid xxxxx<link>
+</pre></li>
+<li>dans le routeur :<br>
+    <img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></img></li>
+</ul>
+Pour tester votre site en local, taper l'adresse IP et le port dans un navigateur si vous n'utilisez pas le port 80.<br>
+<img src="{{ url_for('static', filename='img/autohebergement/hello_local.png') }}" alt="hello local serveur"></img>
+<br>
+Félicitation pour cette première étape.<br>
+<h2>2) Mettre le site sur Internet en passant par l'adresse IP.</h2>
+Je considère que vous avez une adresse IP fullstack. Changer le port d'entrée si votre fournisseur vous interdit le port 80. 
+<br>    
+Pour faire cela 2 solutions :
+Le <a href="https://www.fortinet.com/fr/resources/cyberglossary/what-is-dmz#:~:text=Une%20DMZ%20ou%20zone%20d%C3%A9militaris%C3%A9e,contre%20le%20trafic%20non%20fiable.">DMZ</a>
+Ou le routage de ports
+Je vais pratiquer le plus simple, le routage de port(la DMZ n'étant pas possible avec toutes les box).<br>
+Depuis l'interface Freebox, aller dans paramètres de la Freebox puis cliquer sur Mode avancé.<br>
+Cliquer sur Gestion des ports.<br><br>
+<img src="{{ url_for('static', filename='img/autohebergement/menu_routage.png') }}" alt="hello local serveur"></img><br>
+<img src="{{ url_for('static', filename='img/autohebergement/Gestion_ports.png') }}" alt="gestion port"></img><br>
+Cliquer sur ajouter une redirection : <br>
+<img src="{{ url_for('static', filename='img/autohebergement/Redirection_port.png') }}" alt="redirection port"></img><br>
+<b>IP destination :</b> mettre l'adresse du server (ou son nom)<br>
+cocher la redirection active <br>
+<b>IP source :</b> mettre "toutes"<br>
+<b>Protocole :</b> TCP<br>
+<b>Port de début/fin :</b> 80<br>
+<b>Port de destination :</b> mettre votre port pour votre site(dans listen nginx)<br>
+<b>commentaire :</b>Port d'entrée serveur nginx site perso<br>
+Puis cliquer sur sauvegarder.<br>
+Trouver votre adresse IP soit en regardant le routeur, soit en allant sur ce site :<a href="https://whatismyipaddress.com/fr/mon-ip">https://whatismyipaddress.com/fr/mon-ip</a><br>
+Ouvrir un navigateur pour tester avec l'adresse Ip indiquée puis le numero de port. adresse_IP:Numero_port <br>
+Votre site devrait s'afficher.<br>
+<h2>3) Configurer un nom de domaine pour associer adresse IP et nom de domaine.</h2>
+Pour les noms de domaine freebox gratuit avec un abonnement : cliquer sur nom de domaine -> ajouter un nom de domaine Freebox.<br>
+Entrer le nom de domaine souhaité puis valider. Au bout de quelques minutes, votre nom de domaine devrait être actif. (et Free configure les DNS)<br>
+Pour un vrai nom de domaine : contacter un fournisseur par exemple <a href="https://www.ovhcloud.com/fr/domains/">OVH</a>.<br>
+Il faudra passer par leurs DNS management pour faire pointer votre nom de domaine vers votre adresse IP.<br>
+<br>
+Si tout se passe bien, vous avez votre site en ligne.<br>
 {% endblock %}

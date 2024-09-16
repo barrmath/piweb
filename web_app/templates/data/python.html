@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
 
 {%block content %}
-<p>
-  <h1>Python Work In Progress</h1>
-  <h2>Introduction</h2>
-  <a href="https://www.python.org/"></a>Python est un langage de programmation interprété. Ainsi, il est indépendant de la machine tant que vous pouvez installer python sur celle-ci. Par contre, vous devez installer python.
-  Il peut servir pour faire de la data science, du web, des scripts pour les administrateurs, ... Bref, il est assez polyvalent.
-  En tant que langage interprété, (et non compilé), il a des performances en retrait par rapport a du C par exemple.<br>
-  Il a comme avantage d'être simple, et relativement intuitif.<br>
-  Pour faire un script python, crée un fichier texte avec votre éditeur favori (extension .pi en général). Pour lancer le script :<div class="code">python nom_du_script.pi</div>
-  On va voir les objets de base de python, les fonctions simples de python, puis la gestion des bibliothèques et des environnements python.<br> 
+<h1>Python Work In Progress</h1>
+<h2>Introduction</h2>
+<a href="https://www.python.org/"></a>Python est un langage de programmation interprété. Ainsi, il est indépendant de la machine tant que vous pouvez installer python sur celle-ci. Par contre, vous devez installer python.
+Il peut servir pour faire de la data science, du web, des scripts pour les administrateurs, ... Bref, il est assez polyvalent.
+En tant que langage interprété, (et non compilé), il a des performances en retrait par rapport a du C par exemple.<br>
+Il a comme avantage d'être simple, et relativement intuitif.<br>
+Pour faire un script python, crée un fichier texte avec votre éditeur favori (extension .pi en général). Pour lancer le script :<div class="code">python nom_du_script.pi</div>
+On va voir les objets de base de python, les fonctions simples de python, puis la gestion des bibliothèques et des environnements python.<br> 
 
-  <h2>Objets de base</h2>
-  <h3>Les Variables</h3>
-  Les variables servent à stocker des valeurs dans la mémoire vive. On les déclare simplement avec un nom de variable, un signe égal, puis la valeur. Exemple :
-  <xmp class="code">
+<h2>Objets de base</h2>
+<h3>Les Variables</h3>
+Les variables servent à stocker des valeurs dans la mémoire vive. On les déclare simplement avec un nom de variable, un signe égal, puis la valeur. Exemple :
+<xmp class="code">
 phrase = "Hello world python"
 version = 3
 print(phrase,version)
@@ -22,21 +21,21 @@ print("Le type de phrase est" ,type(phrase))
 print ("le type de version est" ,type(version))
 version = float(version)
 print("le nouveau type de version est ", type(version))
-  </xmp>
-  En testant ce script vous pouvez observer que vous pouvez changer de type de variable en cours de programme.<br>
-  Les différents type en python sont :<ul>
-    <li>Bool : un 0 ou 1, vrais faux</li>
-    <li>int : nombre entier</li>
-    <li>float : nombre flottant à virgule</li>
-    <li>str : string ou chaine de caractère</li>
-  </ul>
-  <h3>Les Listes, les tuples</h3>
-  <h4>Les Listes</h4>
-  Une liste est une liste de variables ou d'autres objets.
-  On la déclare entre [].
-  On peut y placer des nombres, des chaînes de caracteres , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contienent ... <br>
-  Je préfère la pratique donc script d'exemple :
-  <xmp class="code">
+</xmp>
+En testant ce script vous pouvez observer que vous pouvez changer de type de variable en cours de programme.<br>
+Les différents type en python sont :<ul>
+  <li>Bool : un 0 ou 1, vrais faux</li>
+  <li>int : nombre entier</li>
+  <li>float : nombre flottant à virgule</li>
+  <li>str : string ou chaine de caractère</li>
+</ul>
+<h3>Les Listes, les tuples</h3>
+<h4>Les Listes</h4>
+Une liste est une liste de variables ou d'autres objets.
+On la déclare entre [].
+On peut y placer des nombres, des chaînes de caracteres , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contienent ... <br>
+Je préfère la pratique donc script d'exemple :
+<xmp class="code">
 # Creation de la liste
 ma_liste = [1,2,3,4,"Leeloo",6]
 print("la liste complete : ",ma_liste)
@@ -53,115 +52,117 @@ print("la liste contient maintenant", len(ma_liste),"éléments")
 print("la liste complete : ",ma_liste)
 ma_liste.pop(4)
 print("la liste complete : ",ma_liste)    
-  </xmp>
-  Les listes contiennent des méthodes pour rajouter des éléments, ou en enlever.
-  Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html">doc</a>.<br>
+</xmp>
+Les listes contiennent des méthodes pour rajouter des éléments, ou en enlever.
+Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html">doc</a>.<br>
 
-  Pour information : les chaînes de caractères sont une liste un peu spéciale.
-  <h4>Les Tuples</h4>
-  Les tuples se comportent comme des listes. Sauf que l'on ne peut pas les modifier. Elles sont dites immuables<br>
-  Par contre elles sont plus légéres en memoire, et plus rapides. À vous de choisir entre la vitesse et l'adaptabilité.<br>
-  
-  <h3>Les dictionnaires</h3>
-  Les dictionnaire se déclare entre {}.
-  Il faut les voir commeun annuaire ou un index selon moi. Ce n'est pas moi qui ai nommé cet objet dictionnaires.
-  exemple :
-  <xmp class="code">
+Pour information : les chaînes de caractères sont une liste un peu spéciale.
+<h4>Les Tuples</h4>
+Les tuples se comportent comme des listes. Sauf que l'on ne peut pas les modifier. Elles sont dites immuables<br>
+Par contre elles sont plus légéres en memoire, et plus rapides. À vous de choisir entre la vitesse et l'adaptabilité.<br>
+
+<h3>Les dictionnaires</h3>
+Les dictionnaire se déclare entre {}.
+Il faut les voir commeun annuaire ou un index selon moi. Ce n'est pas moi qui ai nommé cet objet dictionnaires.
+exemple :
+<xmp class="code">
 # Creation du dico
 mes_choix = {"tux":"un manchot","d":"la reponse d","le sens de la vie":42,"sarah connor":"oui c'est moi"}
 print (mes_choix)
 print(mes_choix["tux"])    
-  </xmp>
-  Vous pouvez essayer avec d'autres clés.("tux" est une clé ici comme "d" ou "sarah connor"). <br>
-  Vous avez une clé, en entrant la clé le dictionnaire vous donne une valeur.<br>
-  Vous trouverez les dictionnaires pour faires des conditions multiples (le switch étant arrivé avec python 3.10). Mais il peux être utile pour par exemple traduire des couleurs. exemple :
-  <div class="code">couleurs={'blue':#0000FF,"red":#FF0000,"green":#0000FF,"taupe":"it an animal not a fucking color"}</div>
-  La doc des dicos est <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">ici.</a>
-  <h2>Conditions, Boucles, Fonctions</h2>
-  Le scripts va de bas en haut mais quelquefois il est intéssant de changer les intructions ou de les répeter. On utilise pour cela les conditions les boucles et les fonctions.<br>
-  Il faut bien comprendre que python fonctionne grâce à l'indexation du code.<br>
-  <h3>Conditions</h3>
-  <h4>if elif else</h4>
-  Let's script :
-  <xmp class="code">
+</xmp>
+Vous pouvez essayer avec d'autres clés.("tux" est une clé ici comme "d" ou "sarah connor"). <br>
+Vous avez une clé, en entrant la clé le dictionnaire vous donne une valeur.<br>
+Vous trouverez les dictionnaires pour faires des conditions multiples (le switch étant arrivé avec python 3.10). Mais il peux être utile pour par exemple traduire des couleurs. exemple :
+<div class="code">couleurs={'blue':#0000FF,"red":#FF0000,"green":#0000FF,"taupe":"it an animal not a fucking color"}</div>
+La doc des dicos est <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">ici.</a>
+<h2>Conditions, Boucles, Fonctions</h2>
+Le scripts va de bas en haut mais quelquefois il est intéssant de changer les intructions ou de les répeter. On utilise pour cela les conditions les boucles et les fonctions.<br>
+Il faut bien comprendre que python fonctionne grâce à l'indexation du code.<br>
+<h3>Conditions</h3>
+<h4>if elif else</h4>
+Let's script :
+<xmp class="code">
 # Creation du choix
 ailes=True
 miaou=False
 if ailes:
-        print("c'est un pingouin ou un oiseau")
+      print("c'est un pingouin ou un oiseau")
 elif miaou:
-        print("c'est un chat")
+      print("c'est un chat")
 else:
-        print("c'est un chien")
-  </xmp>
-  On peux changer l'etat des ailes du miaou. En fonction on va selectionner la commande que l'on veux.<br>
-  On peux aussi mettre plusieur elif en cas de besoin.<br>
-  Remarquer que le code est indexé, les espaces avant les prints permettent à python de savoir que la commande est dans le if.<br>
-  <h4>switch case</h4>
-  Une autre façon de faire des choix, le match ou switch case.<br>
-  <xmp class="code">
+      print("c'est un chien")
+</xmp>
+On peux changer l'etat des ailes du miaou. En fonction on va selectionner la commande que l'on veux.<br>
+On peux aussi mettre plusieur elif en cas de besoin.<br>
+Remarquer que le code est indexé, les espaces avant les prints permettent à python de savoir que la commande est dans le if.<br>
+<h4>switch case</h4>
+Une autre façon de faire des choix, le match ou switch case.<br>
+<xmp class="code">
 # Creation du choix
 bruit="gnouf"
 match bruit:
-    case "ouaf":
-          print("c'est un chien")
-    case "miaou":
-          print("c'est un chat")
-    case "cuicui":
-          print("c'est un oiseau")
-    case _:
-        print("c'est un pingouin")    
-  </xmp>
-  En fonction de la valeur de bruit, on va repondre ce qu'il y a dans les cases. Si aucune case ne correspond, on utilise la case _<br>
-  <h3>Boucles</h3>
-  On doit repeter plusieurs choses Les boucles sont là. 
-  <h4>for</h4>
-  C'est la boucle d'itération, par exemple sur une liste :
-  <xmp class="code">
+  case "ouaf":
+        print("c'est un chien")
+  case "miaou":
+        print("c'est un chat")
+  case "cuicui":
+        print("c'est un oiseau")
+  case _:
+      print("c'est un pingouin")    
+</xmp>
+En fonction de la valeur de bruit, on va repondre ce qu'il y a dans les cases. Si aucune case ne correspond, on utilise la case _<br>
+<h3>Boucles</h3>
+On doit repeter plusieurs choses Les boucles sont là. 
+<h4>for</h4>
+C'est la boucle d'itération, par exemple sur une liste :
+<xmp class="code">
 # Creation de la boucle avec liste
 liste_ami = ["Pierre","Fatima","Ling","Ahmed","San","Julie"]
 for ami in liste_ami:
-        print("J'invite mon ami",ami,"à mon anniversaire")
-  </xmp>
+      print("J'invite mon ami",ami,"à mon anniversaire")
+</xmp>
 On mets le premier élément de la liste dans ami, on fait les actions, puis le deuxième ... <br>
-  <h4>while</h4>
-  Souvent traduit par les professeur par "tant que".<br>
-  Boucle de ma mère:<br>
-  Tant que t'as pas fini tes devoirs, tu allumes pas la console.<br>
-  bref lets script:<br>
-  <xmp class="code">
+<h4>while</h4>
+Souvent traduit par les professeur par "tant que".<br>
+Boucle de ma mère:<br>
+Tant que t'as pas fini tes devoirs, tu allumes pas la console.<br>
+bref lets script:<br>
+<xmp class="code">
 # Creation de la boucle
 nb_boucle = 0
 animal ="skbdkgbdk" # j'aurait pus mettre un caratere vide mais pas envie
 while animal !="manchot":
-        nb_boucle += 1 #on incremente le nombre de boucle
-        print("boucle numero :",nb_boucle)
-        animal = input("Quel est la race de Tux? :") On pose la question
-        if nb_boucle > 10: # si on depasse
-                print("revise Linux")
-                break #on casse la boucle
-        if animal=="pingouin": # si c'est pingouin
-                print("Bon presque mais tu as droit à un malus")
-                nb_boucle +=1
-                continue # on redemarre la boucle
-        print("pas de malus")
+      nb_boucle += 1 #on incremente le nombre de boucle
+      print("boucle numero :",nb_boucle)
+      animal = input("Quel est la race de Tux? :") On pose la question
+      if nb_boucle > 10: # si on depasse
+              print("revise Linux")
+              break #on casse la boucle
+      if animal=="pingouin": # si c'est pingouin
+              print("Bon presque mais tu as droit à un malus")
+              nb_boucle +=1
+              continue # on redemarre la boucle
+      print("pas de malus")
 print("nombre de reponse donnée :",nb_boucle)
-  </xmp>
-  Félicitation vous avez fait votre premier jeu video textuel. Vous pouvez être fier.<br>
-  Alors le jeu fonctionne ainsi, vous avez 10 essais, il y a une reponse malus.<br>
-  Le mot break vous fait sortir de la boucle.<br>
-  Le mot continue vous fait recommecner la boucle au début.<br> 
-  <h3>Fonctions</h3>
+</xmp>
+Félicitation vous avez fait votre premier jeu video textuel. Vous pouvez être fier.<br>
+Alors le jeu fonctionne ainsi, vous avez 10 essais, il y a une reponse malus.<br>
+Le mot break vous fait sortir de la boucle.<br>
+Le mot continue vous fait recommecner la boucle au début.<br> 
+<h3>Fonctions</h3>
+Vous etes en train de coder, et vous remarquez que vous ecriver la meme chose dans le code.<br>
+par exemple : Vous faite le meme calcul plusieurs fois.
 
-  <h4>Recursivité</h4>
 
-  <h2>Environnmement, Pip et bibliothèques/modules</h2>
-  <h3>Pip</h3>
-  <h3>Environnemnt local</h3>
-  <h3>Environnement virtuel</h3>
-  <h3>gestion des paquets et requirements.txt</h3>
+<h4>Recursivité</h4>
+
+<h2>Environnmement, Pip et bibliothèques/modules</h2>
+<h3>Pip</h3>
+<h3>Environnemnt local</h3>
+<h3>Environnement virtuel</h3>
+<h3>gestion des paquets et requirements.txt</h3>
 
   <h2>Conclusion</h2>
-</p>
 
 {% endblock %}

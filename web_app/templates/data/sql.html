@@ -1,39 +1,38 @@
 {% extends 'base.html' %}
 
 {%block content %}
-<p>
-  <h1>SQL</h1>
-  Ce langage permet de faire des demandes à une base de données relationnelles.<br>
-  Pour vulgariser, je vais faire un parallèle avec un tableur connu Excel.<br>
-  Je reviendrai en conclusion sur les différences (assez importantes) entre une base de données et un simple fichier Excel.<br>
+<h1>SQL</h1>
+Ce langage permet de faire des demandes à une base de données relationnelles.<br>
+Pour vulgariser, je vais faire un parallèle avec un tableur connu Excel.<br>
+Je reviendrai en conclusion sur les différences (assez importantes) entre une base de données et un simple fichier Excel.<br>
 
-  Les bases de données sont constituées des éléments suivants :<br>
-  <ul>
-      <ol>Le Gestionnaire de Bases de Données (GBDD)</ol>
-      <ol>La Base De Données (BDD)</ol>
-      <ol>Les Tables</ol>
-      <ol>Les Colonnes</ol>
-  </ul>
-  Pour faire le parallèle : le gestionnaire est le programme Excel, la base de données est un fichier Excel, les tables des feuilles de calcul et les colonnes, les colonnes.<br>
-  Avant de faire du SQL, il faut donc au minimum installée un Gestionnaire de base de données. On peut installer ceux-ci en local, par conteneur ou en louer sur le cloud.<br>
-  <h2>Le gestionnaire de Base de données</h2>
-  Il existe 2 types de gestionnaire de bases de données, les SQL et les autres.<br>
-  On peut citer par exemple <a href="https://www.mongodb.com/fr-fr">MongoDB</a>, <a href="https://hbase.apache.org/">Apache Hbase</a> en tant que base de données noSQL.<br>
-  Les gestionnaires de bases de données SQL les plus couramment utilisés sont :
-  <ul>
-      <li><a href="https://www.sqlite.org/">SQL lite</a> : pour des petits projets ou le développement</li>
-      <li><a href="https://www.mysql.com/fr/">mySQL</a> : une des plus connues</li>
-      <li><a href="https://mariadb.org/">mariaDB</a> : une BDD open source basée sur mySQL</li>
-      <li><a href="https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads">Microsoft SQL server</a> : Une base de données de Microsoft</li>
-      <li><a href="https://www.postgresql.org/">PostgreSQL</a> : une autre base de données open source très performante</li>
-  </ul>
-  Toutes ces gestionnaires de bases de données existent souvent en version cloud. Les fournisseurs cloud peuvent vous fournir leurs propres gestionnaires de bases de données.<br>
-  Par exemple : <a href="https://aws.amazon.com/fr/rds/aurora/?nc2=h_ql_prod_db_aa">Aurora</a> chez aws, <a href="https://cloud.google.com/sql/">cloud SQL</a> pour gcp, ...<br>
-  Pour la suite, je prends exemple sur mariaDB.<br>
-  <h3>Installation</h3>
-  Pour les Debian et autre Linux on peut passer par apt : apt-get install mariadb-serveur<br>
-  On peut aussi passer par docker/podman compose avec par exemple ce fichier docker-compose.yml (à ne pas utiliser en production merci) :
-  <xmp class="code">
+Les bases de données sont constituées des éléments suivants :<br>
+<ul>
+    <ol>Le Gestionnaire de Bases de Données (GBDD)</ol>
+    <ol>La Base De Données (BDD)</ol>
+    <ol>Les Tables</ol>
+    <ol>Les Colonnes</ol>
+</ul>
+Pour faire le parallèle : le gestionnaire est le programme Excel, la base de données est un fichier Excel, les tables des feuilles de calcul et les colonnes, les colonnes.<br>
+Avant de faire du SQL, il faut donc au minimum installée un Gestionnaire de base de données. On peut installer ceux-ci en local, par conteneur ou en louer sur le cloud.<br>
+<h2>Le gestionnaire de Base de données</h2>
+Il existe 2 types de gestionnaire de bases de données, les SQL et les autres.<br>
+On peut citer par exemple <a href="https://www.mongodb.com/fr-fr">MongoDB</a>, <a href="https://hbase.apache.org/">Apache Hbase</a> en tant que base de données noSQL.<br>
+Les gestionnaires de bases de données SQL les plus couramment utilisés sont :
+<ul>
+    <li><a href="https://www.sqlite.org/">SQL lite</a> : pour des petits projets ou le développement</li>
+    <li><a href="https://www.mysql.com/fr/">mySQL</a> : une des plus connues</li>
+    <li><a href="https://mariadb.org/">mariaDB</a> : une BDD open source basée sur mySQL</li>
+    <li><a href="https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads">Microsoft SQL server</a> : Une base de données de Microsoft</li>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a> : une autre base de données open source très performante</li>
+</ul>
+Toutes ces gestionnaires de bases de données existent souvent en version cloud. Les fournisseurs cloud peuvent vous fournir leurs propres gestionnaires de bases de données.<br>
+Par exemple : <a href="https://aws.amazon.com/fr/rds/aurora/?nc2=h_ql_prod_db_aa">Aurora</a> chez aws, <a href="https://cloud.google.com/sql/">cloud SQL</a> pour gcp, ...<br>
+Pour la suite, je prends exemple sur mariaDB.<br>
+<h3>Installation</h3>
+Pour les Debian et autre Linux on peut passer par apt : apt-get install mariadb-serveur<br>
+On peut aussi passer par docker/podman compose avec par exemple ce fichier docker-compose.yml (à ne pas utiliser en production merci) :
+<xmp class="code">
 version: "3.9"
 volumes:
   data:
@@ -49,87 +48,86 @@ services:
       - data:/var/lib/mysql
     ports:
       - "3306:3306"
-  </xmp>
-  Et on lance avec la commande : <div class="code">podman-compose up -d</div>
-  La commande : <div class="code">podman-compose down</div> pour fermer MariaDb.<br>
-  J'utilise <a href="https://dbeaver.io/">Dbeaver</a> pour communiquer facilement avec des bases de données. La version community suffit pour MariaDB.<br>
-  Il faudra certainement installer un connecteur (ici jdbc). Configurons maintenant la connexion à votre base de données locale :<br>
-  Cliquer sur base de données puis sur nouvelle connexion<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_menu.png')}}" alt="gmenu Dbeaver"></img><br>
-  Selectionner MariaDB<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_selection.png')}}" alt="selection DBeaver"></img><br>
-  Puis mettre tous les resnseignements pour se connecter (user, password, cle ssh, port adresse de la BDD, ... )
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_config.png')}}" alt="config DBeaver"></img><br>
-  On va pouvoir créer/modifier et faire quelque requête SQL grâce à ce logiciel.<br>
-  <h2>Création d'une base de données</h2>
-  Avec DBeaver 2 méthodes pour créer des bases de données, le script SQL ou les fonctions faciles de DBeaver.<br>
-  Méthode facile : dérouler votre connecteur puis clic droit sur Database ou base de données puis créer base de données<br>
-  Ensuite donner lui un nom configurer les caractères (UTF 8 16 32 ACII ...). Plus d'info <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">ici</a>.<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_creation_base.png')}}" alt="creation base DBeaver"></img><br>
-  Vous pouvez aussi créer un script SQl menu Editeur SQL -> Nouveau script.<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_create_database_script.png')}}" alt="creation base DBeaver"></img><br>
-  Les deux méthodes marchent. Les scripts peuvent être utiles si vous avez besoin de répéter plusieurs fois la même opération.<br>
-  Félicitation, vous venez de créer votre première base de données. (votre premier fichier Excel)
-  <h2>Les tables</h2>
-  À titre de comparaison, vous avez maintenant une base de données vides, on va la remplir avec des tables.<br>
-  Sous Excel vous créer des feuilles de calcul pour les remplir avec vos données dans votre ficher.<br>
-  Commençons par notre première table Client.<br>
-  Vous pouvez sois utiliser les fonctions de Dbeaver sois taper du script.<br>
-  Clic droit sur tables, créer une nouvelle table puis remplisser les informations.<br>
-  Clic droit dans la fenêtre à droite pour créer des colonnes (une colonne ID en clé primaire unsigned int et 2 autres en varchar pour nom et prenom)
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_create_table.png')}}" alt="creation table DBeaver"></img><br>
-  Alors la "magie de DBeaver" cliquer sur sauvegarder et appliquer en bas à droite et il vous donne le script à appliquer.<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_script_auto.png')}}" alt="script auto DBeaver"></img><br>
-  Sauvegarder le script pour une utilisation répétitive le modifier ou juste l'appliquer.<br>
-  Mettre des lignes en éditant les données. Onglet données clic droit dans la première colonne avec les numéros editer-> ajouter une ligne.<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_ajout_ligne.png')}}" alt="ajout ligne DBeaver"></img><br>
-  On peut créer une table achat pour savoir ce qu'on acheter les clients.<br>
-  <img src="{{ url_for('static', filename='img/SQL/dbeaver_achat.png')}}" alt="creation achatDBeaver"></img><br>
-  On crée une clé primaire pour retrouver les achats et une clé étrangère pour lier la table client et achats<br>
-  <img src="{{ url_for('static', filename='img/SQL/cle_etrangere.png')}}" alt="cle etrangere"></img><br>
-  Vous pouvez importer les données à la main, ou importer les données avec des fichiers csv, avec DBeaver.<br>
-  Par exemple clic droit sur la table importer ou exporter les données.<br>
-  Félicitation, vous avez créé vos premières tables.<br>
-  <h2>Les requêtes SQL</h2>
-  Les requêtes servent à calculer,chercher, ajouter, ...<br>
-  C'est comme les formules sur Excel.<br>
-  Personnellement, je les utilise sois pour faire du dévelopement (site web, script automatique), sois pour faire un tableau du bord (grafana, powerBI, ...).<br>
-  Commençons par une première requête pour voir.<br>
-  Cliquer sur la base de données puis selectionner nouveau script. (ça permet de selectionner la base de données, sinon utilise USE DATABASE dans le script).
-  <div class="code">SELECT prenom FROM Clients;</div>
-  Cliquer sur les fléches pour exécuter la requête une sortie devrait apparaître en bas.<br>
-  <img src="{{ url_for('static', filename='img/SQL/requete1.png')}}" alt="requete1"></img><br>
-  Analysons la requête :<ul>
-    <li>SELECT colonne : sélectionne la colonne ou les colonnes séparées par une virgule, * si vous voulez toutes les colonnes</li>
-    <li>FROM table : sélectionne dans quelle table vous voulez faire la requête</li>
-    <li>; : indique la fin de la requête.</li>
-    </ul>
-  Alors comment faire pour extraire le nom du client avec les produits achetés ?<br>
-  Il faut faire une <a href="https://sql.sh/cours/jointures">jointure</a> (les fameuses clés servent à ça).<br>
-  Si les clés fonctionnent, DBeaver vous donne un aperçu dans le diagramme ER:<br>
-  <img src="{{ url_for('static', filename='img/SQL/diagramme.png')}}" alt="diagramme ER"></img><br>
-  Donc taper dans le script et exécuter:
-  <pre class="code">
+</xmp>
+Et on lance avec la commande : <div class="code">podman-compose up -d</div>
+La commande : <div class="code">podman-compose down</div> pour fermer MariaDb.<br>
+J'utilise <a href="https://dbeaver.io/">Dbeaver</a> pour communiquer facilement avec des bases de données. La version community suffit pour MariaDB.<br>
+Il faudra certainement installer un connecteur (ici jdbc). Configurons maintenant la connexion à votre base de données locale :<br>
+Cliquer sur base de données puis sur nouvelle connexion<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_menu.png')}}" alt="gmenu Dbeaver"></img><br>
+Selectionner MariaDB<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_selection.png')}}" alt="selection DBeaver"></img><br>
+Puis mettre tous les resnseignements pour se connecter (user, password, cle ssh, port adresse de la BDD, ... )
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_config.png')}}" alt="config DBeaver"></img><br>
+On va pouvoir créer/modifier et faire quelque requête SQL grâce à ce logiciel.<br>
+<h2>Création d'une base de données</h2>
+Avec DBeaver 2 méthodes pour créer des bases de données, le script SQL ou les fonctions faciles de DBeaver.<br>
+Méthode facile : dérouler votre connecteur puis clic droit sur Database ou base de données puis créer base de données<br>
+Ensuite donner lui un nom configurer les caractères (UTF 8 16 32 ACII ...). Plus d'info <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">ici</a>.<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_creation_base.png')}}" alt="creation base DBeaver"></img><br>
+Vous pouvez aussi créer un script SQl menu Editeur SQL -> Nouveau script.<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_create_database_script.png')}}" alt="creation base DBeaver"></img><br>
+Les deux méthodes marchent. Les scripts peuvent être utiles si vous avez besoin de répéter plusieurs fois la même opération.<br>
+Félicitation, vous venez de créer votre première base de données. (votre premier fichier Excel)
+<h2>Les tables</h2>
+À titre de comparaison, vous avez maintenant une base de données vides, on va la remplir avec des tables.<br>
+Sous Excel vous créer des feuilles de calcul pour les remplir avec vos données dans votre ficher.<br>
+Commençons par notre première table Client.<br>
+Vous pouvez sois utiliser les fonctions de Dbeaver sois taper du script.<br>
+Clic droit sur tables, créer une nouvelle table puis remplisser les informations.<br>
+Clic droit dans la fenêtre à droite pour créer des colonnes (une colonne ID en clé primaire unsigned int et 2 autres en varchar pour nom et prenom)
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_create_table.png')}}" alt="creation table DBeaver"></img><br>
+Alors la "magie de DBeaver" cliquer sur sauvegarder et appliquer en bas à droite et il vous donne le script à appliquer.<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_script_auto.png')}}" alt="script auto DBeaver"></img><br>
+Sauvegarder le script pour une utilisation répétitive le modifier ou juste l'appliquer.<br>
+Mettre des lignes en éditant les données. Onglet données clic droit dans la première colonne avec les numéros editer-> ajouter une ligne.<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_ajout_ligne.png')}}" alt="ajout ligne DBeaver"></img><br>
+On peut créer une table achat pour savoir ce qu'on acheter les clients.<br>
+<img src="{{ url_for('static', filename='img/SQL/dbeaver_achat.png')}}" alt="creation achatDBeaver"></img><br>
+On crée une clé primaire pour retrouver les achats et une clé étrangère pour lier la table client et achats<br>
+<img src="{{ url_for('static', filename='img/SQL/cle_etrangere.png')}}" alt="cle etrangere"></img><br>
+Vous pouvez importer les données à la main, ou importer les données avec des fichiers csv, avec DBeaver.<br>
+Par exemple clic droit sur la table importer ou exporter les données.<br>
+Félicitation, vous avez créé vos premières tables.<br>
+<h2>Les requêtes SQL</h2>
+Les requêtes servent à calculer,chercher, ajouter, ...<br>
+C'est comme les formules sur Excel.<br>
+Personnellement, je les utilise sois pour faire du dévelopement (site web, script automatique), sois pour faire un tableau du bord (grafana, powerBI, ...).<br>
+Commençons par une première requête pour voir.<br>
+Cliquer sur la base de données puis selectionner nouveau script. (ça permet de selectionner la base de données, sinon utilise USE DATABASE dans le script).
+<div class="code">SELECT prenom FROM Clients;</div>
+Cliquer sur les fléches pour exécuter la requête une sortie devrait apparaître en bas.<br>
+<img src="{{ url_for('static', filename='img/SQL/requete1.png')}}" alt="requete1"></img><br>
+Analysons la requête :<ul>
+  <li>SELECT colonne : sélectionne la colonne ou les colonnes séparées par une virgule, * si vous voulez toutes les colonnes</li>
+  <li>FROM table : sélectionne dans quelle table vous voulez faire la requête</li>
+  <li>; : indique la fin de la requête.</li>
+  </ul>
+Alors comment faire pour extraire le nom du client avec les produits achetés ?<br>
+Il faut faire une <a href="https://sql.sh/cours/jointures">jointure</a> (les fameuses clés servent à ça).<br>
+Si les clés fonctionnent, DBeaver vous donne un aperçu dans le diagramme ER:<br>
+<img src="{{ url_for('static', filename='img/SQL/diagramme.png')}}" alt="diagramme ER"></img><br>
+Donc taper dans le script et exécuter:
+<pre class="code">
 SELECT * FROM achat 
 JOIN Clients ON BDD_a_moi.Clients.IdClient = BDD_a_moi.achat.idClient;
-  </pre>
-  <img src="{{ url_for('static', filename='img/SQL/requete2.png')}}" alt="requete2"></img><br>
-  Vous ne voulez que les achats de poissons ?<br>
-  Rajouter <div class="code">WHERE produit = "poisson"</div>
-  <img src="{{ url_for('static', filename='img/SQL/requete3.png')}}" alt="requete3"></img><br>
-  Il existe d'autres fonctions en SQL pour aller plus loin, je vous conseille le site <a href="https://sql.sh/">https://sql.sh/</a>
-  <h2>Conclusion</h2>
-  Alors j'ai déjà entendu : <br>
-  C'est bien beau, mais je sais tout faire sur Excel, pourquoi utiliser une BDD?<br>
-  Un fichier Excel va être bloqué à chaque écriture/lecture. Donc il est accessible à une personne à la fois. (ça change avec le cloud)<br>
-  On peut, avec les BDD, les dupliquer, faire des redondances pour avoir une BDD disponible à 100 % .<br>
-  Mais s'il faut retenir une chose : <b>les BDD sont fiables.</b>
-  Pour rappel, les données d'un fichiers Excel ne peuvent pas dépasser <a href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"> certaines limites.</a>
-  Donc j'espère par exemple que vous dépasserez le million de vente. Mais éviter de les enregistrer avec Excel vous risquer de tout perdre.<br>
-  Comme les Anglais avec leurs tests covid : <a href="https://www.theguardian.com/politics/2020/oct/05/how-excel-may-have-caused-loss-of-16000-covid-tests-in-england">www.theguardian.com/</a>
-  <br>
-  Donc pour conclure : un fichier Excel c'est pour un projet de très faible envergure.<br>
-  Sinon il faut passer aux bases de données.<br>
-</p>
+</pre>
+<img src="{{ url_for('static', filename='img/SQL/requete2.png')}}" alt="requete2"></img><br>
+Vous ne voulez que les achats de poissons ?<br>
+Rajouter <div class="code">WHERE produit = "poisson"</div>
+<img src="{{ url_for('static', filename='img/SQL/requete3.png')}}" alt="requete3"></img><br>
+Il existe d'autres fonctions en SQL pour aller plus loin, je vous conseille le site <a href="https://sql.sh/">https://sql.sh/</a>
+<h2>Conclusion</h2>
+Alors j'ai déjà entendu : <br>
+C'est bien beau, mais je sais tout faire sur Excel, pourquoi utiliser une BDD?<br>
+Un fichier Excel va être bloqué à chaque écriture/lecture. Donc il est accessible à une personne à la fois. (ça change avec le cloud)<br>
+On peut, avec les BDD, les dupliquer, faire des redondances pour avoir une BDD disponible à 100 % .<br>
+Mais s'il faut retenir une chose : <b>les BDD sont fiables.</b>
+Pour rappel, les données d'un fichiers Excel ne peuvent pas dépasser <a href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"> certaines limites.</a>
+Donc j'espère par exemple que vous dépasserez le million de vente. Mais éviter de les enregistrer avec Excel vous risquer de tout perdre.<br>
+Comme les Anglais avec leurs tests covid : <a href="https://www.theguardian.com/politics/2020/oct/05/how-excel-may-have-caused-loss-of-16000-covid-tests-in-england">www.theguardian.com/</a>
+<br>
+Donc pour conclure : un fichier Excel c'est pour un projet de très faible envergure.<br>
+Sinon il faut passer aux bases de données.<br>
 
 {% endblock %}

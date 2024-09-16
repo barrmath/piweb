@@ -3,54 +3,53 @@
 {%block content %}
 
 <h1>Monitoring</h1>
-<p>
-    Pour surveiller le raspberry pi je vais utiliser le combo <a href="https://prometheus.io/">prometheus</a> + <a href="https://grafana.com/">grafana.</a> <br>
-    <h2>1) Prometheus : installation et configuration.</h2>
-    Prometheus est présent dans les dépôts de rasbian, du coup : <pre class="code">apt-get install prometheus</pre>
-    Il faut bien penser à demarrer le service : <pre class="code">systemctl enable prometheus</pre>
-    et vérifier son status <pre class="code">systemcl status prometheus</pre>
-    La sortie devrait ressembler à ça :<br>
-    <pre class="code"> systemctl status prometheus
-        ● prometheus.service - Monitoring system and time series database
-             Loaded: loaded (/lib/systemd/system/prometheus.service; enabled; preset: enabled)
-             Active: active (running) since Sun 2024-08-25 19:28:48 BST; 1 week 1 day ago
-               Docs: https://prometheus.io/docs/introduction/overview/
-                     man:prometheus(1)
-    </pre>
-    Pour vérifier le fonctionnement de prometheus vous pouvez regarder avec un navigateur internet : adresse du serveur:9090/<br><br>
-    <img src="{{ url_for('static', filename='img/monitoring/prometheus.png')}}" alt="prometheus webpage"></img><br>
-    Amusez-vous avec, faites des graphes, des alarmes en fonction de ce que vous voulez surveiller.<br>    
-    <h2>2) Grafana : installation et configuration.</h2>
-    Pourquoi utiliser grafana, prometheus fait déjà des graphes ?<br>
-    Imaginer que vous devez surveiller plusieurs serveurs, l'un sur aws, l'autre sur gpc, un avec prometheus, un autre sur zabbix. (franchement pourquoi faire simple quand on peut faire compliqué?).<br>
-    Chacun a son petit utilitaire de monitoring, mais vous voulez tous les surveiller sur un seul tableau de bord.<br>
-    Installation sur le PI:<br>
-    Pas de dépôt rasbian, il faut en rajouter un.<br>
-    Il y a un tuto en anglais <a href="https://grafana.com/tutorials/install-grafana-on-raspberry-pi/">ici.</a><br>
-    
-    Pour les autres, grafana est dispo dans les dépôts de Debian, Fedora et Manjaro (votre distribution doit certainement l'avoir.)<br>
-    Pour les non-anglophones voilà la procèdure:<br>
-    <ul>
-        <li>Ajouter une clé de dépôt:<div class="code">sudo mkdir -p /etc/apt/keyrings/<br>
-        wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null</div></li>
-        <li>Ajouter le dépôt de grafana <div class="code">echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list</div></li>
-        <li>Installer grafana à partir du dépôt : <div class="code">sudo apt-get update<br>sudo apt-get install -y grafana</div></li>
-        <li>Activer le service<div class="code">sudo systemctl enable grafana-server</div></li>
-        <li>Démarrer le service<div class="code">sudo systemctl start grafana-server</div></li>
-    </ul>
-    Vous n'avez plus qu'à taper l'adresse de votre serveur et ajouter le port 3000.<br>
-    Alors l´identifiant par défaut sont admin mot de passe admin. (Je vous conseille de changer.)<br><br>
-    <img src="{{ url_for('static', filename='img/monitoring/grafanalogin.png')}}" alt="grafana login"></img><br><br>
-    Une fois connecté, cliquez sur connection-> add a new connection puis cherchez prometheus.<br><br>
-    <img src="{{ url_for('static', filename='img/monitoring/grafana_add_new_connection.png')}}" alt="grafana connection"></img><br><br>
-    Configurez la connection de prometheus avec vos paramètres (j'ai caché l'adresse IP de mon serveur):<br><br>
-    <img src="{{ url_for('static', filename='img/monitoring/grafana_prometheus.png')}}" alt="grafana prometheus config"></img><br><br>
-    Maintenant vous pouvez créer un dashboard et sélectionnez/configurez les graphiques.<br><br>
-    <img src="{{ url_for('static', filename='img/monitoring/grafana_temperature.png')}}" alt="grafana temperature" width="1000px"></img><br><br>
-    En fonction de vos besoins, vous pouvez créer plus ou moins de graphiques.<br>
-    Par exemple : le trafic réseaux, la ram, les températures CPU et autres, la place restante sur le disque dur :
-    <img src="{{ url_for('static', filename='img/monitoring/grafana_dashboard.png')}}" alt="grafana temperature"></img><br>
-    Si vous avez des ordinateurs sous windows, vous pouvez utiliser cet agent : <a href="https://github.com/nickbabcock/OhmGraphite">OhmGraphite</a>
-    Vous pouvez aussi connecter des fichiers csv, excel pour faire un peu de data. <br>
-</p>
+Pour surveiller le raspberry pi je vais utiliser le combo <a href="https://prometheus.io/">prometheus</a> + <a href="https://grafana.com/">grafana.</a> <br>
+<h2>1) Prometheus : installation et configuration.</h2>
+Prometheus est présent dans les dépôts de rasbian, du coup : <pre class="code">apt-get install prometheus</pre>
+Il faut bien penser à demarrer le service : <pre class="code">systemctl enable prometheus</pre>
+et vérifier son status <pre class="code">systemcl status prometheus</pre>
+La sortie devrait ressembler à ça :<br>
+<pre class="code"> systemctl status prometheus
+    ● prometheus.service - Monitoring system and time series database
+            Loaded: loaded (/lib/systemd/system/prometheus.service; enabled; preset: enabled)
+            Active: active (running) since Sun 2024-08-25 19:28:48 BST; 1 week 1 day ago
+            Docs: https://prometheus.io/docs/introduction/overview/
+                    man:prometheus(1)
+</pre>
+Pour vérifier le fonctionnement de prometheus vous pouvez regarder avec un navigateur internet : adresse du serveur:9090/<br><br>
+<img src="{{ url_for('static', filename='img/monitoring/prometheus.png')}}" alt="prometheus webpage"></img><br>
+Amusez-vous avec, faites des graphes, des alarmes en fonction de ce que vous voulez surveiller.<br>    
+<h2>2) Grafana : installation et configuration.</h2>
+Pourquoi utiliser grafana, prometheus fait déjà des graphes ?<br>
+Imaginer que vous devez surveiller plusieurs serveurs, l'un sur aws, l'autre sur gpc, un avec prometheus, un autre sur zabbix. (franchement pourquoi faire simple quand on peut faire compliqué?).<br>
+Chacun a son petit utilitaire de monitoring, mais vous voulez tous les surveiller sur un seul tableau de bord.<br>
+Installation sur le PI:<br>
+Pas de dépôt rasbian, il faut en rajouter un.<br>
+Il y a un tuto en anglais <a href="https://grafana.com/tutorials/install-grafana-on-raspberry-pi/">ici.</a><br>
+
+Pour les autres, grafana est dispo dans les dépôts de Debian, Fedora et Manjaro (votre distribution doit certainement l'avoir.)<br>
+Pour les non-anglophones voilà la procèdure:<br>
+<ul>
+    <li>Ajouter une clé de dépôt:<div class="code">sudo mkdir -p /etc/apt/keyrings/<br>
+    wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null</div></li>
+    <li>Ajouter le dépôt de grafana <div class="code">echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list</div></li>
+    <li>Installer grafana à partir du dépôt : <div class="code">sudo apt-get update<br>sudo apt-get install -y grafana</div></li>
+    <li>Activer le service<div class="code">sudo systemctl enable grafana-server</div></li>
+    <li>Démarrer le service<div class="code">sudo systemctl start grafana-server</div></li>
+</ul>
+Vous n'avez plus qu'à taper l'adresse de votre serveur et ajouter le port 3000.<br>
+Alors l´identifiant par défaut sont admin mot de passe admin. (Je vous conseille de changer.)<br><br>
+<img src="{{ url_for('static', filename='img/monitoring/grafanalogin.png')}}" alt="grafana login"></img><br><br>
+Une fois connecté, cliquez sur connection-> add a new connection puis cherchez prometheus.<br><br>
+<img src="{{ url_for('static', filename='img/monitoring/grafana_add_new_connection.png')}}" alt="grafana connection"></img><br><br>
+Configurez la connection de prometheus avec vos paramètres (j'ai caché l'adresse IP de mon serveur):<br><br>
+<img src="{{ url_for('static', filename='img/monitoring/grafana_prometheus.png')}}" alt="grafana prometheus config"></img><br><br>
+Maintenant vous pouvez créer un dashboard et sélectionnez/configurez les graphiques.<br><br>
+<img src="{{ url_for('static', filename='img/monitoring/grafana_temperature.png')}}" alt="grafana temperature" width="1000px"></img><br><br>
+En fonction de vos besoins, vous pouvez créer plus ou moins de graphiques.<br>
+Par exemple : le trafic réseaux, la ram, les températures CPU et autres, la place restante sur le disque dur :
+<img src="{{ url_for('static', filename='img/monitoring/grafana_dashboard.png')}}" alt="grafana temperature"></img><br>
+Si vous avez des ordinateurs sous windows, vous pouvez utiliser cet agent : <a href="https://github.com/nickbabcock/OhmGraphite">OhmGraphite</a>
+Vous pouvez aussi connecter des fichiers csv, excel pour faire un peu de data. <br>
+
 {% endblock %}
