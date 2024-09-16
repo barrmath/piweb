@@ -153,9 +153,51 @@ Le mot continue vous fait recommecner la boucle au début.<br>
 <h3>Fonctions</h3>
 Vous etes en train de coder, et vous remarquez que vous ecriver la meme chose dans le code.<br>
 par exemple : Vous faite le meme calcul plusieurs fois.
+<xmp class="code">
+# Creation de la fonction
+def calcul(a,b,c) :
+        i=(a+b)*c
+        print ("Le resultat est :",i)
+        return i
 
+
+e=5
+d=6
+f=7
+calcul(e,d,f)
+e=1
+d=1
+f=1
+i=calcul(e,d,f)
+print("la variable i est :",i)
+</xmp>
+Le mot def permet de definir une fonction (calcul) avec des arguments(e,d,f). Il est preferable de mettre une <a href="https://pandas.pydata.org/docs/development/contributing_docstring.html">docstring</a><br>.
+Le commande return permets de retourner une valeur dans le programme.<br>
+Le scripts éxécute la fonction lors de l'appel.
+Une fonction peut ne pas avoir d'arguments, ni de valeurs à retourner.
+<br>
+Pour information, les objets complexes comme les listes,les dataframes vont etre modifier par la fonctions, alors que les variables simples comme un nombre ne le seront pas.<br>
+Python étant programmé en C, il envoie une copie pour les object simples, mais il envoie un pointeur avec des object complexes.<br>
 
 <h4>Recursivité</h4>
+Bon, la fonction puisance existe déjà mais on va la recréer avec ce qu'on appelle la récursivité. Lets script:
+<xmp class="code">
+# Creation de la fonction puissance
+def calcul_puissance(chiffre,puissance) :
+  # calcul une puissance en mode recursif (que les puissance entiere positive)
+  if puissance == 1:
+    return chiffre #si puissance =0 on quitte la fonction en retournant le resultat
+  else:
+    return chiffre*calcul_puissance(chiffre,puissance-1)
+
+
+chiffre,puissance  = 3,3
+print("resultat :", calcul_puissance(chiffre,puissance))
+</xmp>
+La fonction s'appelle elle-même. Cela permets de faire une sorte de boucle.<br>
+Quelquefois c'est plus intuitif comme methode que des boucles.<br>
+Par contre les defauts : consommation memoire en hausse et python limite le nombre de récursivité possible, pour éviter les récursivités infinies<br>
+Plus d'information <a href="https://rollbar.com/blog/python-recursionerror/#">ici.</a> 
 
 <h2>Environnmement, Pip et bibliothèques/modules</h2>
 <h3>Pip</h3>
