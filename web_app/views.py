@@ -3,10 +3,10 @@ from flask import render_template, request, current_app, send_from_directory
 
 app = current_app
 
-liste_categorie = ['Accueil','Réseaux','Web','Data','About']
-liste_cotes_reseaux =['Autohébergement','Monitoring','Kube','Proxy','Certificat']
-liste_cotes_web =['HTML','Flask','Jinja','Gunicorn','Podman']
-liste_cotes_data =['SQL','Python','Pandas','Graphique']
+liste_categorie = ('Accueil','Réseaux','Web','Data','About')
+liste_cotes_reseaux =('Autohébergement','Monitoring','Kube','Proxy','Certificat')
+liste_cotes_web =('HTML','Flask','Jinja','Gunicorn','Podman')
+liste_cotes_data =('SQL','Python','Pandas','Graphique')
 
 
 @app.route("/robots.txt")

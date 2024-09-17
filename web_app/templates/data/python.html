@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {%block content %}
-<h1>Python Work In Progress</h1>
+<h1>Python</h1>
 <h2>Introduction</h2>
 <a href="https://www.python.org/"></a>Python est un langage de programmation interprété. Ainsi, il est indépendant de la machine tant que vous pouvez installer python sur celle-ci. Par contre, vous devez installer python.
 Il peut servir pour faire de la data science, du web, des scripts pour les administrateurs, ... Bref, il est assez polyvalent.
-En tant que langage interprété, (et non compilé), il a des performances en retrait par rapport a du C par exemple.<br>
+En tant que langage interprété, (et non compilé), il a des performances en retrait par rapport à du C par exemple.<br>
 Il a comme avantage d'être simple, et relativement intuitif.<br>
 Pour faire un script python, crée un fichier texte avec votre éditeur favori (extension .pi en général). Pour lancer le script :<div class="code">python nom_du_script.pi</div>
 On va voir les objets de base de python, les fonctions simples de python, puis la gestion des bibliothèques et des environnements python.<br> 
@@ -27,13 +27,12 @@ Les différents type en python sont :<ul>
   <li>Bool : un 0 ou 1, vrais faux</li>
   <li>int : nombre entier</li>
   <li>float : nombre flottant à virgule</li>
-  <li>str : string ou chaine de caractère</li>
+  <li>str : string ou chaîne de caractère</li>
 </ul>
 <h3>Les Listes, les tuples</h3>
 <h4>Les Listes</h4>
 Une liste est une liste de variables ou d'autres objets.
-On la déclare entre [].
-On peut y placer des nombres, des chaînes de caracteres , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contienent ... <br>
+On la déclare entre [].On peut y placer des nombres, des chaînes de caractères , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contiennent ... <br>
 Je préfère la pratique donc script d'exemple :
 <xmp class="code">
 # Creation de la liste
@@ -58,13 +57,12 @@ Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href=
 
 Pour information : les chaînes de caractères sont une liste un peu spéciale.
 <h4>Les Tuples</h4>
-Les tuples se comportent comme des listes. Sauf que l'on ne peut pas les modifier. Elles sont dites immuables<br>
-Par contre elles sont plus légéres en memoire, et plus rapides. À vous de choisir entre la vitesse et l'adaptabilité.<br>
+Les tuples se comportent comme des listes. Sauf que l'on ne peut pas les modifier. Elles sont dites immuables.<br>
+Par contre elles sont plus légères en mémoire, et plus rapides. À vous de choisir entre la vitesse et l'adaptabilité.<br>
 
 <h3>Les dictionnaires</h3>
-Les dictionnaire se déclare entre {}.
-Il faut les voir commeun annuaire ou un index selon moi. Ce n'est pas moi qui ai nommé cet objet dictionnaires.
-exemple :
+Les dictionnaires se déclarent entre {}.
+Il faut les voir comme un annuaire ou un index selon moi. Exemple :
 <xmp class="code">
 # Creation du dico
 mes_choix = {"tux":"un manchot","d":"la reponse d","le sens de la vie":42,"sarah connor":"oui c'est moi"}
@@ -72,12 +70,12 @@ print (mes_choix)
 print(mes_choix["tux"])    
 </xmp>
 Vous pouvez essayer avec d'autres clés.("tux" est une clé ici comme "d" ou "sarah connor"). <br>
-Vous avez une clé, en entrant la clé le dictionnaire vous donne une valeur.<br>
-Vous trouverez les dictionnaires pour faires des conditions multiples (le switch étant arrivé avec python 3.10). Mais il peux être utile pour par exemple traduire des couleurs. exemple :
+Vous avez une clé, en entrant la clé, le dictionnaire vous donne une valeur.<br>
+Vous trouverez les dictionnaires pour faires des conditions multiples (le switch étant arrivé avec python 3.10). Mais il peut être utile pour par exemple traduire des couleurs. Exemple :
 <div class="code">couleurs={'blue':#0000FF,"red":#FF0000,"green":#0000FF,"taupe":"it an animal not a fucking color"}</div>
 La doc des dicos est <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">ici.</a>
 <h2>Conditions, Boucles, Fonctions</h2>
-Le scripts va de bas en haut mais quelquefois il est intéssant de changer les intructions ou de les répeter. On utilise pour cela les conditions les boucles et les fonctions.<br>
+Le scripts commence en haut et finit en bas. Mais quelquefois, il est intéressant de changer les instructions ou de les répéter. On utilise pour cela les conditions, les boucles et les fonctions.<br>
 Il faut bien comprendre que python fonctionne grâce à l'indexation du code.<br>
 <h3>Conditions</h3>
 <h4>if elif else</h4>
@@ -93,9 +91,9 @@ elif miaou:
 else:
       print("c'est un chien")
 </xmp>
-On peux changer l'etat des ailes du miaou. En fonction on va selectionner la commande que l'on veux.<br>
-On peux aussi mettre plusieur elif en cas de besoin.<br>
-Remarquer que le code est indexé, les espaces avant les prints permettent à python de savoir que la commande est dans le if.<br>
+On peut changer l'état des ailes, du miaou. En fonction, on va sélectionner la commande que l'on veut.<br>
+On peut aussi mettre plusieurs elif en cas de besoin.<br>
+Remarquer que le code est indexé, les espaces avant les print permettent à python de savoir que la commande est dans le if.<br>
 <h4>switch case</h4>
 Une autre façon de faire des choix, le match ou switch case.<br>
 <xmp class="code">
@@ -111,22 +109,22 @@ match bruit:
   case _:
       print("c'est un pingouin")    
 </xmp>
-En fonction de la valeur de bruit, on va repondre ce qu'il y a dans les cases. Si aucune case ne correspond, on utilise la case _<br>
+En fonction de la valeur de bruit, on va répondre ce qu'il y a dans les cases. Si aucune case ne correspond, on utilise la case _<br>
 <h3>Boucles</h3>
-On doit repeter plusieurs choses Les boucles sont là. 
+On doit répéter plusieurs choses les boucles sont là. 
 <h4>for</h4>
 C'est la boucle d'itération, par exemple sur une liste :
 <xmp class="code">
 # Creation de la boucle avec liste
 liste_ami = ["Pierre","Fatima","Ling","Ahmed","San","Julie"]
 for ami in liste_ami:
-      print("J'invite mon ami",ami,"à mon anniversaire")
+      print("J'invite mon ami",ami,"à mon anniversaire.")
 </xmp>
-On mets le premier élément de la liste dans ami, on fait les actions, puis le deuxième ... <br>
+On met le premier élément de la liste dans ami, on fait les actions, puis le deuxième ... <br>
 <h4>while</h4>
-Souvent traduit par les professeur par "tant que".<br>
+Souvent traduit par les professeurs par "tant que".<br>
 Boucle de ma mère:<br>
-Tant que t'as pas fini tes devoirs, tu allumes pas la console.<br>
+Tant que tu n'as pas fini tes devoirs, tu n'allumes pas la console.<br>
 bref lets script:<br>
 <xmp class="code">
 # Creation de la boucle
@@ -146,13 +144,13 @@ while animal !="manchot":
       print("pas de malus")
 print("nombre de reponse donnée :",nb_boucle)
 </xmp>
-Félicitation vous avez fait votre premier jeu video textuel. Vous pouvez être fier.<br>
-Alors le jeu fonctionne ainsi, vous avez 10 essais, il y a une reponse malus.<br>
+Félicitation, vous avez fait votre premier jeu vidéo textuel. Vous pouvez être fier.<br>
+Alors le jeu fonctionne ainsi, vous avez 10 essais, il y a une réponse malus.<br>
 Le mot break vous fait sortir de la boucle.<br>
-Le mot continue vous fait recommecner la boucle au début.<br> 
+Le mot continue vous fait recommencer la boucle au début.<br> 
 <h3>Fonctions</h3>
-Vous etes en train de coder, et vous remarquez que vous ecriver la meme chose dans le code.<br>
-par exemple : Vous faite le meme calcul plusieurs fois.
+Vous êtes en train de coder, et vous remarquez que vous écriver la même chose dans le code.<br>
+Par exemple : Vous faite le meme calcul plusieurs fois.
 <xmp class="code">
 # Creation de la fonction
 def calcul(a,b,c) :
@@ -171,16 +169,16 @@ f=1
 i=calcul(e,d,f)
 print("la variable i est :",i)
 </xmp>
-Le mot def permet de definir une fonction (calcul) avec des arguments(e,d,f). Il est preferable de mettre une <a href="https://pandas.pydata.org/docs/development/contributing_docstring.html">docstring</a><br>.
+Le mot def permet de définir une fonction (calcul) avec des arguments (e,d,f). Il est préférable de mettre une <a href="https://pandas.pydata.org/docs/development/contributing_docstring.html">docstring</a>.<br>
 Le commande return permets de retourner une valeur dans le programme.<br>
-Le scripts éxécute la fonction lors de l'appel.
+Le scripts exécute la fonction lors de l'appel.
 Une fonction peut ne pas avoir d'arguments, ni de valeurs à retourner.
 <br>
-Pour information, les objets complexes comme les listes,les dataframes vont etre modifier par la fonctions, alors que les variables simples comme un nombre ne le seront pas.<br>
-Python étant programmé en C, il envoie une copie pour les object simples, mais il envoie un pointeur avec des object complexes.<br>
+Pour information, les objets complexes comme les listes, les dataframes vont être modifier par la fonctions, alors que les variables simples comme un nombre ne le seront pas.<br>
+Python étant programmé en C, il envoie une copie pour les objets simples, mais il envoie un pointeur avec des objets complexes.<br>
 
 <h4>Recursivité</h4>
-Bon, la fonction puisance existe déjà mais on va la recréer avec ce qu'on appelle la récursivité. Lets script:
+Bon, la fonction puissance existe déjà mais on va la recréer avec ce qu'on appelle la récursivité. Lets script:
 <xmp class="code">
 # Creation de la fonction puissance
 def calcul_puissance(chiffre,puissance) :
@@ -194,18 +192,18 @@ def calcul_puissance(chiffre,puissance) :
 chiffre,puissance  = 3,3
 print("resultat :", calcul_puissance(chiffre,puissance))
 </xmp>
-La fonction s'appelle elle-même. Cela permets de faire une sorte de boucle.<br>
-Quelquefois c'est plus intuitif comme methode que des boucles.<br>
-Par contre les defauts : consommation memoire en hausse et python limite le nombre de récursivité possible, pour éviter les récursivités infinies<br>
+La fonction s'appelle elle-même. Cela permet de faire une sorte de boucle.<br>
+Quelquefois, c'est plus intuitif comme méthode que des boucles.<br>
+Par contre les défauts : consommation mémoire en hausse et python limite le nombre de récursivité possible, pour éviter les récursivités infinies<br>
 Plus d'information <a href="https://rollbar.com/blog/python-recursionerror/#">ici.</a> 
 
 <h2>Environnement, Pip et bibliothèques/modules</h2>
 Python existe depuis quelques années. Des millions voir des milliards de lignes de codes ont été écrites pour diverses raisons. Il y a de fortes chances pour que la fonction que vous voulez existe déjà quelque part.<br>
-Heuresement il existe un site qui permets de chercher des paquets python : <a href="https://pypi.org/">pypi.org</a>. Dites le à un enfants de 5 à 10 ans, ç va lui faire sa journée.<br>
-Python va tourner dans un environnement où il auras des paquets installer ou non. Il faut faire la différence entre l'environnement local et les environnements virtuels.<br>
+Heureusement, il existe un site qui permet de chercher des paquets python : <a href="https://pypi.org/">pypi.org</a>. Dites le à un enfant de 5 à 10 ans, ça va lui faire sa journée.<br>
+Python va tourner dans un environnement où il aura des paquets installés ou non. Il faut faire la différence entre l'environnement local et les environnements virtuels.<br>
 <h3>Environnemnt local</h3>
-Divers programme utilise python, y compris des programmes importants sous Linux. Certaines distribution utilises le gestionnaire par default pip mais de plus en plus de distribution utilise leurs porpre gestionnaire de paquets pour plus de stabilité.<br>
-essayer d installer un module avec pip :
+Divers programmes utilisent python, y compris des programmes importants sous Linux. Certaines distributions utilisent le gestionnaire par défaut pip, mais de plus en plus de distributions se servent de leurs propres gestionnaires de paquets pour plus de stabilité.<br>
+Éssayer d'installer un module avec pip :
 <xmp class="code">
 pip install yolo                                                                           ✔ 
 error: externally-managed-environment
@@ -227,45 +225,45 @@ error: externally-managed-environment
 note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.  
 </xmp>
-Voici le message d'erreur lorsque vous essayer d'installer un paquets sur l'environnement local. Il vous demande sois de passer par le gestionnaire de paquets (pacman apt dnf) ou de créer un environnement virtuel.<br>
-Vous pouvez  installer les bibliothèques/modules que vous utilisez souvent en local. Par exemple installer django si vous etes developpeur web.
-Mais il est plus que conseillé d'utiliser plutot les environnemnts virtuel pour eviter des conflits avec les programmmes systemes.
+Voici le message d'erreur lorsque vous essayez d'installer un paquet sur l'environnement local. Il vous demande sois de passer par le gestionnaire de paquets (pacman apt dnf) ou de créer un environnement virtuel.<br>
+Vous pouvez installer les bibliothèques/modules que vous utilisez souvent en local. Par exemple installer django si vous êtes developpeur web.
+Mais il est plus que conseillé d'utiliser les environnements virtuels pour éviter des conflits avec les programmes systèmes.
 <h3>Environnement virtuel</h3>
-Pour créer un environnement virtuel c'est relativement facile. Aller dans un dossier ou vous debuter un nouveau projet python et taper : <div class="code">python -m venv venv</div>
-Pour activer l'environnement virtuel taper : <div class="code">source venv/bin/activate</div>
-Maintenant vous pouvez utiliser pip pour installer vos modules. <br>
+Pour créer un environnement virtuel, c'est relativement facile. Aller dans un dossier où vous débuter un nouveau projet python et taper : <div class="code">python -m venv venv</div>
+Pour activer l'environnement virtuel, taper : <div class="code">source venv/bin/activate</div>
+Maintenant, vous pouvez utiliser pip pour installer vos modules. <br>
 <h3>Pip</h3>
-Les commande de principale de pip:
+Les commandes principales de pip:
 <ul>
   <li>pip install Nom_du_paquet : installe le paquet</li>
-  <li>pip uninstal Nom_du_paquet : desinstalle le paquet</li>
+  <li>pip uninstal Nom_du_paquet : désinstalle le paquet</li>
   <li>pip freeze : liste les paquets installés</li>
   <li>pip freeze > requirements.txt : crée un fichier requirements.txt avec la liste de tous les paquets installés</li>
-  <li>pip install -r requirements.txt  : installe les paquets listé dans requirements.txt</li>
+  <li>pip install -r requirements.txt  : installe les paquets listés dans requirements.txt</li>
 </ul>
-Donc avec ces simples commandes, vous pouvez débuter un projet, mettre le fichier requirements.txt dans un repo git. Un utilisateur pourras installer et tester votre programme grâce à la création d'environnement viruels et à pip.<br>
+Donc, avec ces simples commandes, vous pouvez débuter un projet, mettre le fichier requirements.txt dans un repo git. Un utilisateur pourra installer et tester votre programme grâce à la création d'environnement virtuels et à pip.<br>
 <br>
 <h3>Mise à jour pip</h3>
 Pour mettre à jour pip,il suffit de taper<div class="code">pip install pip --upgrade pip </div>
-Pour mettre à jour tout les paquets de pip :<div class="code">pip freeze --local | awk -F "=" '{print "pip install -U "$1}' | sh</div>
-Tester votre projet et mettez à jours requirements.txt<div class="code">pip freeze > requirements.txt</div>
+Pour mettre à jour tous les paquets de pip :<div class="code">pip freeze --local | awk -F "=" '{print "pip install -U "$1}' | sh</div>
+Tester votre projet et mettez à jour requirements.txt<div class="code">pip freeze > requirements.txt</div>
 <h3>Utiliser les modules</h3>(
-Vous avez installer plein de modules, comment on les importes? Tout simplement avec la commande imports. par exemple :<div class="code">import pandas</div><br>
-Ensuite vous pouvez utilser la bibliotheque pandas dans votre code (si vous l avez installer avec pip avant bien entendu).<br>
+Vous avez installé plein de modules, comment on les importe ? Tout simplement avec la commande imports. Par exemple :<div class="code">import pandas</div><br>
+Ensuite, vous pouvez utiliser la bibliothèque pandas dans votre code (si vous l'avez installé avec pip avant bien entendu).<br>
 Par exemple pour créer un dataframe <div class="code">dataframe = pandas.DataFrame()</div>
-Ecrire pandas est trop long ? importer la bibliotheque comme ça :<div class=¨code">import pandas as pd</div>
-Maintenant vous pouvez ecrire :<div class="code">pd.DataFrame()</div>
-Vous n'avez besoin que de la fonction DataFrame ? Pas de soucis ecrivez ceci : <div class="code">from pandas import DataFrame</div>
+Écrire pandas est trop long ? Importer la bibliothèque comme ça :<div class=¨code">import pandas as pd</div>
+Maintenant, vous pouvez écrire :<div class="code">pd.DataFrame()</div>
+Vous n'avez besoin que de la fonction DataFrame ? Pas de soucis, écrivez ceci : <div class="code">from pandas import DataFrame</div>
 Création du Dataframe : <div class="code">dataframe = DataFrame()</div>
 <br>
 <h3>Une fausse bonne idée : from pandas import *</h3>
-Vous importez tout pandas sans le namespace. Du coup plus besoin de taper pandas.fonction ou pd.fonction.<br>
-MAIS imaginer que vous importer une autre bibliotheque et que cette bibliotheque a un nom de fonction identique à celle de pandas.<br>
-Pour en avoir fait l'experience bon courage pour tout debugguer.<br>
+Vous importez tout pandas sans le namespace. Du coup, vous n'avez plus besoin de taper pandas.fonction ou pd.fonction.<br>
+MAIS imaginer que vous importer une autre bibliothèque et que cette bibliothèque à un nom de fonction identique à celle de pandas.<br>
+Pour en avoir fait l'expérience, bon courage pour tout déboguer.<br>
 <h3>modules perso</h3>
-Créer un dossier, créer dans celui ci un fichier __init__.py et un fichier mesfonctions.py
-Et importer le avec import mesfonctions.py comme un modules. 
+Créer un dossier, créer dans celui-ci un fichier __init__.py et un fichier mesfonctions.py.<br>
+Et importer le avec :<div class="code">import Nom_du_dossierpy</div> comme un modules. 
 <h2>Conclusion</h2>
-Avec ceci, vous avex juste les bases de python. de quoi vous débrouiller.<br>
-Allez voir les bibliothèques et regarder la doc. Tester les différentes fonctions. Bref éclatez-vous.
+Avec ceci, vous avez juste les bases de python. De quoi vous débrouiller.<br>
+Allez voir les bibliothèques et regarder la doc. Tester les différentes fonctions. Bref, éclatez-vous.<br>
 {% endblock %}
