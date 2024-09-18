@@ -92,7 +92,7 @@ def HTML():
 
 @app.route("/web/flask", methods=["GET", "POST"])
 def Flask():
-    return render_template("encours.html"
+    return render_template("web/Flask.html"
                             ,categorie=liste_categorie[2]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_web
