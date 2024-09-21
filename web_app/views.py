@@ -1,7 +1,13 @@
 # import bibliothèque flask et création application flask
 from flask import render_template, request, current_app, send_from_directory
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = current_app
+
+# utilisation d'un proxy a deplacer plus tard
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
 
 liste_categorie = ('Accueil','Réseaux','Web','Data','About')
 liste_cotes_reseaux =('Autohébergement','Monitoring','Kube','Proxy','Certificat')
