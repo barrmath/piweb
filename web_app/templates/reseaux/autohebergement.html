@@ -62,6 +62,18 @@ Maintenant que le site est en local avec Nginx il suffit de trouver l'adresse IP
 Plusieurs options s'offrent à vous :
 <ul>
 <li> Une commande depuis un terminal du serveur:
+<pre class="code">
+foo@bar: ip address
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether XX:XX:XX:XX:XX:XX brd XX:XX:XX:XX:XX:XX
+    inet XXX.XXX.XXX.XXX/XXX brd XXX.XXX.XXX.XXX scope global dynamic noprefixroute eth0
+        valid_lft 28628sec preferred_lft 28628sec
+    inet6 XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX/XX scope global dynamic noprefixroute 
+        valid_lft 86229sec preferred_lft 86229sec
+    inet6 XXXX:XXXX:XXXX:XXXX:XXXX:XXXX/XX scope link noprefixroute 
+        valid_lft forever preferred_lft forever
+</pre>
+    Pour les anciennes versions :
 <pre class="code">foo@bar: ifconfig
     eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
     inet xxx.xxx.xxx.xxx  netmask xxx.xxx.xxx.xxx  broadcast xxx.xxx.xxx.xxx
