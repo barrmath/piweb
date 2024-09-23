@@ -20,7 +20,28 @@ Mais avant un petit rappel sur les DNS:<br>
 Le but du certificat est de certifier que tous le monde est bien celui qu'il prétends. Pour ce faire il faut un certificateur.<br>
 Le certificateur va vérifier que l'adresse du site pointe bien vers le bon serveur.<br>
 Il emet ensuite un certificat qui garantie que le DNS envoie bien vers le bon serveur.<br>
-
-
+Les certificateurs les plus connus sont <a href="https://letsencrypt.org/fr/">https://letsencrypt.org/fr/</a> et <a href="https://www.cloudflare.com/fr-fr/">https://www.cloudflare.com/fr-fr/</a><br>
+Les certificats SSL contiennent les informations suivantes dans un seul fichier de données :<ul>
+    <li>Le nom de domaine pour lequel le certificat a été délivré</li>
+    <li>La personne, l'organisation ou l'appareil pour lequel il a été délivré</li>
+    <li>Quelle autorité de certification l'a délivré</li>
+    <li>La signature numérique de l'autorité de certification</li>
+    <li>Les sous-domaines associés</li>
+    <li>La date d'émission du certificat</li>
+    <li>La date d'expiration du certificat</li>
+    <li>La clé publique (la clé privée est gardée secrète)</li>
+</ul>
+Donc il faut maintenant rajouter des étapes pour la connection SSL.<br>
+<img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+<ol>
+    <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
+    <li>Le serveur DNS envoie une adresse IP.</li>
+    <li>Le client demande au serveur, situé à l'adresse IP, le certificat</li>
+    <li>Le serveur envoie son certificat</li>
+    <li>Le client examine le certificat (date d'expiration, host qui correspond, certificateur approuvé , ....)</li>
+    <li>Configuration entre le client et le serveur de la connection sécurisé</li>
+    <li>Le serveur envoie la page demandée.</li>
+    <li>Le client affiche la page.</li>
+</ol>
 
 {% endblock %}

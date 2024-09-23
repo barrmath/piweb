@@ -65,15 +65,15 @@
 }
 
 .content{
-  margin-left: 225px;
-  margin-top:62px;
+  margin-left: 14.0625rem;
+  margin-top:3.875rem;
 }
 
 .code{
   background-color: #000;
   color: rgb(75, 255, 120);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
 }
 
 footer{
@@ -83,6 +83,6 @@ footer{
 }
 
 .pied_de_page{
-  margin-left: 225px;
+  margin-left: 14.0625rem;
   color: #ffffff;
 }
