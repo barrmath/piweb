@@ -18,6 +18,13 @@ Pour le serveur, j'ai utilisé un Raspberry pi 5 avec Rasbian. Ma machin-box est
 <br>
 Alors pour commencer, il faut comprendre comment on obtient une page internet à partir d'une adresse internet. Je vous ai préparé le schéma suivant :<br>
 <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+<ol>
+    <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
+    <li>Le serveur DNS envoie une adresse IP.</li>
+    <li>Le client demande au serveur, situé à l'adresse IP, la page internet.</li>
+    <li>Le serveur envoie la page demandée.</li>
+    <li>Le client affiche la page.</li>
+</ol>
 Je considère que vous avez déjà un site internet, sinon vous pouvez utiliser ce site ou un hello world.<br>
 Vous pouvez trouver le code de ce site <a href="https://github.com/barrmath/piweb">ici.</a><br>
 Vous pouvez trouver un hello world pour un site html <a href="https://www.educative.io/answers/how-to-write-hello-world-in-html">ici.</a><br>

@@ -3,5 +3,24 @@
 {% block content %}
 
 <h1>Certificat et https</h1>
+Les certificats vous permettent de sécuriser la connexion entre le client et le serveur en activant un cryptage entre eux.<br>
+Ainsi les données échangées entre le serveur et le client ne peuvent pas être lu.<br>
+<h2>DNS serveur et client</h2>
+Mais avant un petit rappel sur les DNS:<br>
+<img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+<ol>
+    <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
+    <li>Le serveur DNS envoie une adresse IP.</li>
+    <li>Le client demande au serveur, situé à l'adresse IP, la page internet.</li>
+    <li>Le serveur envoie la page demandée.</li>
+    <li>Le client affiche la page.</li>
+</ol>
+
+<h2>Le certificat : une affaire de confiance</h2>
+Le but du certificat est de certifier que tous le monde est bien celui qu'il prétends. Pour ce faire il faut un certificateur.<br>
+Le certificateur va vérifier que l'adresse du site pointe bien vers le bon serveur.<br>
+Il emet ensuite un certificat qui garantie que le DNS envoie bien vers le bon serveur.<br>
+
+
 
 {% endblock %}
