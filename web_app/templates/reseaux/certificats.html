@@ -4,9 +4,9 @@
 
 <h1>Certificat et https</h1>
 Les certificats vous permettent de sécuriser la connexion entre le client et le serveur en activant un cryptage entre eux.<br>
-Ainsi les données échangées entre le serveur et le client ne peuvent pas être lu.<br>
+Ainsi, les données échangées entre le serveur et le client ne peuvent pas être lues.<br>
 <h2>DNS serveur et client</h2>
-Mais avant un petit rappel sur les DNS:<br>
+Mais avant un petit rappel sur les DNS :<br>
 <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
 <ol>
     <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
@@ -17,31 +17,78 @@ Mais avant un petit rappel sur les DNS:<br>
 </ol>
 
 <h2>Le certificat : une affaire de confiance</h2>
-Le but du certificat est de certifier que tous le monde est bien celui qu'il prétends. Pour ce faire il faut un certificateur.<br>
+Le but du certificat est de certifier que tout le monde est bien celui qu'il prétend. Pour ce faire, il faut un certificateur.<br>
 Le certificateur va vérifier que l'adresse du site pointe bien vers le bon serveur.<br>
-Il emet ensuite un certificat qui garantie que le DNS envoie bien vers le bon serveur.<br>
+Il émet ensuite un certificat qui garantit que le DNS envoie bien vers le bon serveur.<br>
 Les certificateurs les plus connus sont <a href="https://letsencrypt.org/fr/">https://letsencrypt.org/fr/</a> et <a href="https://www.cloudflare.com/fr-fr/">https://www.cloudflare.com/fr-fr/</a><br>
 Les certificats SSL contiennent les informations suivantes dans un seul fichier de données :<ul>
-    <li>Le nom de domaine pour lequel le certificat a été délivré</li>
-    <li>La personne, l'organisation ou l'appareil pour lequel il a été délivré</li>
-    <li>Quelle autorité de certification l'a délivré</li>
-    <li>La signature numérique de l'autorité de certification</li>
-    <li>Les sous-domaines associés</li>
-    <li>La date d'émission du certificat</li>
-    <li>La date d'expiration du certificat</li>
-    <li>La clé publique (la clé privée est gardée secrète)</li>
+    <li>Le nom de domaine pour lequel le certificat a été délivré.</li>
+    <li>La personne, l'organisation ou l'appareil pour lequel il a été délivré.</li>
+    <li>Quelle autorité de certification l'a délivré.</li>
+    <li>La signature numérique de l'autorité de certification.</li>
+    <li>Les sous-domaines associés.</li>
+    <li>La date d'émission du certificat.</li>
+    <li>La date d'expiration du certificat.</li>
+    <li>La clé publique (la clé privée est gardée secrète).</li>
 </ul>
-Donc il faut maintenant rajouter des étapes pour la connection SSL.<br>
+Donc il faut maintenant rajouter des étapes pour la connexion SSL.<br>
 <img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
 <ol>
     <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
     <li>Le serveur DNS envoie une adresse IP.</li>
-    <li>Le client demande au serveur, situé à l'adresse IP, le certificat</li>
-    <li>Le serveur envoie son certificat</li>
-    <li>Le client examine le certificat (date d'expiration, host qui correspond, certificateur approuvé , ....)</li>
-    <li>Configuration entre le client et le serveur de la connection sécurisé</li>
+    <li>Le client demande au serveur, situé à l'adresse IP, le certificat.</li>
+    <li>Le serveur envoie son certificat.</li>
+    <li>Le client examine le certificat (date d'expiration, host qui correspond, certificateur approuvé,....).</li>
+    <li>Configuration entre le client et le serveur de la connexion sécurisée.</li>
     <li>Le serveur envoie la page demandée.</li>
     <li>Le client affiche la page.</li>
 </ol>
+<h2>Certbot</h2>
+Le plus simple : <a href="https://certbot.eff.org/">certbot</a><br>
+Il peut vous générer un certificats letsencrypt et modifier votre serveur pour le https.<br>
+par exemple un serveur http avec nginx:<br>
+Dans votre fichier de configuration vous trouverez ça :
+<pre class="code">
+[...]    
+    server {
+        listen       80;
+        server_name  barrmath.ovh;
+        location{
+            [...]
+        }
+    }
+</pre>
+listen permet d'écouter sur le port http (port 80).<br>
+Le serveur à le même nom que votre site internet (host).<br>
+Le but de certbot seras de générer un certificat et de vous modifier votre serveur pour afficher le site en https<br>
+La manipulation du site fonctionne après avoir installé cerbot, il faut juste le lancer. L'option certonly permet de ne pas modifier nginx<br>
+<div class="code">
+sudo certbot --nginx 
+sudo certbot certonly --nginx
+</div>
+Une fois votre certificat généré avec la première commande, vous pouvez tester votre site en https.<br>
+Certbot a modifié votre configuration pour écouter le port 80 (http) et rediriger vers le port 443 (https). Et il a configuré un serveur https.<br>
+Dans ce cas, votre site est accessible en https, mais il n'est plus disponible en https.<br>
+<br>
+Ce site personnel n'a pas de secret à garder (pas de base de données, ni de compte, ...). Si le vôtre non plus, il pourrait être en http et en https.<br>
+Avec la deuxième commande, il suffit de créer un deuxième serveur dans la config de nginx.<br>
+<pre class="code">
+    server {
+        listen       443 ssl;
+        server_name  barrmath.ovh;
+
+        ssl_certificate /etc/letsencrypt/live/barrmath.ovh/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/barrmath.ovh/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+        location / {
+            [...]
+        }
+    }
+        </pre>
+Pour ma part, j'ai d'abord utilisé la première commande certbot puis modifier la configuration de nginx.<br>
+<h2>Renouvellement</h2>
+La commande <div class="code">certbot renew -q</div> permet de renouveler le certificat. En effet, il expire tous les 90 jours.<br>
+Vous pouvez automatiser avec crontab. (crontab -e puis ajouter @monthly sudo certbot renew -q).
 
 {% endblock %}
