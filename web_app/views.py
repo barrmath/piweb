@@ -69,7 +69,7 @@ def Proxy():
 
 @app.route("/reseaux/Certificat/", methods=["GET", "POST"])
 def Certificat():
-    return render_template("encours.html"
+    return render_template("reseaux/certificats.html"
                             ,categorie=liste_categorie[1]
                             ,liste_categorie=liste_categorie
                             ,liste_cotes_categorie=liste_cotes_reseaux
