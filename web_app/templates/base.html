@@ -7,18 +7,24 @@
   </head>
   <body>      
     <header>
-      <div class="topnav">
-        {% for cat in liste_categorie %}
-        <a class="{{ 'active' if  categorie  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
+      <nav>
+        <ul>
+        {% for liste in menu %}
+          <li class="deroulant"><a href={{ url_for(liste[0]) }}>{{ liste[0]}}</a>
+            <ul class="sous">
+              {% for item in liste %}
+                {% if item != liste[0] %}              
+                  <li><a href={{ url_for(item) }}>{{ item}}</a></li>
+                {% endif %}
+              {% endfor %}
+
+            </ul>
+          </li>
         {% endfor %}
-      </div> 
+      </ul>
+      </nav> 
     </header>  
     <main>
-        <div class="sidenav">
-          {% for cat in liste_cotes_categorie %}
-          <a class="{{ 'active' if  categorie_cotes  == cat }}" href={{ url_for(cat) }}>{{ cat}} </a>
-          {% endfor %}
-        </div>
         <div class="content">
           <p>
             {% block content %}{% endblock %}

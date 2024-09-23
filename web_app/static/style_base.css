@@ -1,73 +1,74 @@
-/* Add a black background color to the top navigation */
-.topnav {
-    background-color: #333;
-    overflow: hidden;
-    position:fixed;
-    width: 100%;
-    top:0;
-    left:0px;
-    border-bottom: solid #71fac8;
-  }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Add a color to the active/current link */
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-
-/* The sidebar menu */
-.sidenav {
-  height: 100%;  /* Full-hight: remove this if you want "auto" height */
-  width: 200px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  background-color: #333; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-  top:55px;
-  left:0px;
+/*Reset CSS*/
+*{
+  margin: 0px;
+  padding: 0px;
+  color:#000000;
 }
 
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #ffffff;
+nav{
+  width: 100%;
+  margin: 0 auto;
+  color:#ffffff;
+  border-bottom: 2px solid #8fd9fc;
+  background-color: #333;
+  top: 0px;
+}
+
+nav ul{
+  list-style-type:none;
+}
+
+nav ul li{
+  float: left;
+  width: 10%;
+  text-align: center;
+  position: relative;
+}
+
+nav ul::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+nav a{
   display: block;
-  border-top-right-radius: 20%;
-  border-radius: 20%;
+  text-decoration: none;
+  padding: 10px 0px;
+  color:#ffffff;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-/* Add a color to the active/current link */
-.sidenav a.active {
-  background-color: #04AA6D;
-  color: white;
+nav a:hover{
+  color: orange;
 }
 
-.content{
-  margin-left: 14.0625rem;
-  margin-top:3.875rem;
+.sous{
+  display: none;
+  box-shadow: 0px 1px 2px #CCC;
+  background-color: #333;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
 }
+nav > ul li:hover .sous{
+  display: block;
+}
+.sous li{
+  float: none;
+  width: 100%;
+  text-align: left;
+}
+.sous a{
+  padding: 10px;
+  border-bottom: none;
+}
+.sous a:hover{
+  border-bottom: none;
+}
+.deroulant > a::after{
+  font-size: 12px;
+}
+
 
 .code{
   background-color: #000;
@@ -83,6 +84,5 @@ footer{
 }
 
 .pied_de_page{
-  margin-left: 14.0625rem;
   color: #ffffff;
 }
