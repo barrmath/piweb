@@ -21,6 +21,7 @@ nav ul{
 nav ul li{
   float: left;
   width: 10%;
+  min-width: 150px;
   text-align: center;
   position: relative;
 }
