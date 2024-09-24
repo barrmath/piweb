@@ -69,7 +69,7 @@ def Flask():
 
 @app.route("/web/jinja", methods=["GET", "POST"])
 def Jinja():
-    return render_template("encours.html",menu=menu)
+    return render_template("web/jinja.html",menu=menu)
 
 @app.route("/web/gunicorn", methods=["GET", "POST"])
 def Gunicorn():
