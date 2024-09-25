@@ -12,7 +12,30 @@ Alors Jinja2 posséde des balises un peu comme html :<ul>
 <li>les balises &#123;&#123; truc &#125;&#125; : permettent d'accéder à un objet</li>
 <li>les balises &#123;% machin %&#125; : permettent de lancer des fonctions</li>
 </ul>
-Dans la page <a href={{ url_for('Flask') }}>Flask</a>
+Dans la page <a href={{ url_for('Flask') }}>Flask</a>, on a déjà vu comment repliqué le code dúne page HTML.<br>
+Pour rappel :<br>
+Exemple de ficher de base :
+<div class="code">
+    <xmp class="code">
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="utf-8">
+    </xmp>
+<pre class="code">&#123;% block content %&#125;&#123;% endblock %&#125;</pre>
+    <xmp class="code">
+    </head>
+</html>
+    </xmp>
+</div>
+Fichier qui utilise la base :
+<pre class="code">
+    &#123;% extends 'base.html' %&#125;
+
+    &#123;%block content %&#125;
+    contenu de la page
+    &#123;% endblock %&#125;
+</pre>
 <h2>Les objets dans jinja2</h2>
     <h3>Les variables</h3>
     <h3>Les listes et autre objets standart python</h3>

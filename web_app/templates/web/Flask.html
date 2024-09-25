@@ -111,14 +111,14 @@ Mais imaginons que j'ai plein de code qui se répète dans toutes les pages html
 Par exemple, le fameux doctype et autre : pour éviter de tout recopier sur chaque page, autant écrire une base et demander à flask/jinja d'étendre la page html.<br>
 Exemple de ficher de base :
 <div class="code">
-    <xmp>
+    <xmp class="code">
 <!DOCTYPE html>
 <html lang="fr">
     <head>
     <meta charset="utf-8">
     </xmp>
-<pre>&#123;% block content %&#125;&#123;% endblock %&#125;</pre>
-    <xmp>
+<pre class="code">&#123;% block content %&#125;&#123;% endblock %&#125;</pre>
+    <xmp class="code">
     </head>
 </html>
     </xmp>
