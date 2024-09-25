@@ -1,0 +1,40 @@
+/* make place for the menu and footer */
+@media screen and (min-width:640px){
+    section{
+        margin-top: 6rem;
+        margin-block-end: 6rem;
+    }
+}
+
+section{
+    list-style: inside;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.code{
+    background-color: #000;
+    width:fit-content;
+    color: rgb(75, 255, 120);
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+
+h1{
+    color: #4869fffb;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2{
+    color: #4869fffb;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom : 1.5rem;
+}
+
+h3{
+    color: #4869fffb;
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom : 1.25rem;
+}
