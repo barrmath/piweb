@@ -71,14 +71,6 @@ nav > ul li:hover .sous{
   font-size: 12px;
 }
 
-
-.code{
-  background-color: #000;
-  color: rgb(75, 255, 120);
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
-}
-
 footer{
   background-color: #333;
   padding-bottom: 100%;

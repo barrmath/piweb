@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Jinja</h1>
-
+<h1>Jinja2</h1>
+Flask est fourni par défaut avec <a href="https://flask.palletsprojects.com/en/3.0.x/templating/">Jinja2</a> comme moteur de template.<br>
+Vous pouvez utiliser un autre moteur si vous voulez : par exemple <a href="https://github.com/klebervirgilio/ng-spa-on-flask">angular.</a><br>
+<br>
+Le but de Flask et de jinja est de permettre de faciliter le travail du développeurs. Jinja2 vous permets de générer du code html à partir de certains objet.<br>
+exemple : faire une page de base qui se repete dasn tout le site (les menus, la disposition de la page ...)<br>
+<h2>Réutiliser du code html</h2>
+Alors Jinja2 posséde des balises un peu comme html :<ul>
+<li>les balises &#123;&#123; truc &#125;&#125; : permettent d'accéder à un objet</li>
+<li>les balises &#123;% machin %&#125; : permettent de lancer des fonctions</li>
+</ul>
+Dans la page <a href={{ url_for('Flask') }}>Flask</a>
+<h2>Les objets dans jinja2</h2>
+    <h3>Les variables</h3>
+    <h3>Les listes et autre objets standart python</h3>
+        <h4>Attention les interaction sous jinja influence votre code python</h4>
+    <h3>Les conditions</h3>
+    <h3>Les boucles</h3>
 {%  endblock %}

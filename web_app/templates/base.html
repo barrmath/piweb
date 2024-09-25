@@ -11,11 +11,11 @@
       <nav>
         <ul>
         {% for liste in menu %}
-          <li class="deroulant"><a href={{ url_for(liste[0]) }}>{{ liste[0]}}</a>
+          <li class="deroulant"><a href={{ url_for(liste[0]) }}>{{ liste[0] }}</a>
             <ul class="sous">
               {% for item in liste %}
                 {% if item != liste[0] %}              
-                  <li><a href={{ url_for(item) }}>{{ item}}</a></li>
+                  <li><a href={{ url_for(item) }}>{{ item }}</a></li>
                 {% endif %}
               {% endfor %}
 
@@ -28,6 +28,7 @@
     <main>
         <div class="content">
           <section>
+            <link href="{{ url_for('static', filename='style_section.css') }}" rel="stylesheet">
             {% block content %}{% endblock %}
           </section>
         </div>
