@@ -5,16 +5,16 @@
 Flask est fourni par défaut avec <a href="https://flask.palletsprojects.com/en/3.0.x/templating/">Jinja2</a> comme moteur de template.<br>
 Vous pouvez utiliser un autre moteur si vous voulez : par exemple <a href="https://github.com/klebervirgilio/ng-spa-on-flask">angular.</a><br>
 <br>
-Le but de Flask et de jinja est de permettre de faciliter le travail du développeurs. Jinja2 vous permets de générer du code html à partir de certains objet.<br>
-exemple : faire une page de base qui se repete dasn tout le site (les menus, la disposition de la page ...)<br>
+Le but de Flask et de jinja est de permettre de faciliter le travail du développeur. Jinja2 vous permet de générer du code html à partir de certains objets.<br>
+Exemple : faire une page de base qui se répète dans tout le site (les menus, la disposition de la page ...)<br>
 <h2>Réutiliser du code html</h2>
-Alors Jinja2 posséde des balises un peu comme html :<ul>
-<li>les balises &#123;&#123; truc &#125;&#125; : permettent d'accéder à un objet</li>
-<li>les balises &#123;% machin %&#125; : permettent de lancer des fonctions</li>
+Alors Jinja2 possède des balises un peu comme html :<ul>
+<li>Les balises &#123;&#123; truc &#125;&#125; : permettent d'accéder à un objet</li>
+<li>Les balises &#123;% machin %&#125; : permettent de lancer des fonctions</li>
 </ul>
-Dans la page <a href={{ url_for('Flask') }}>Flask</a>, on a déjà vu comment repliqué le code dúne page HTML.<br>
+Dans la page <a href={{ url_for('Flask') }}>Flask</a>, on a déjà vu comment répliquer le code d'une page HTML.<br>
 Pour rappel :<br>
-Exemple de ficher de base :
+Exemple de fichier de base :
 <div class="code">
     <xmp class="code">
 <!DOCTYPE html>
@@ -39,16 +39,46 @@ Fichier qui utilise la base :
 Vous aurez besoin d'utiliser des objets dans les templates. Voyons voir comment faire. 
 <h2>Les objets dans jinja2</h2>
 <h3>Les variables</h3>
-Vous connaissez les variables en python ? Oui, cela tombent bien Jinja2 utilise plus ou moins les mêmes.<br>
-déclaration :
+Vous connaissez les variables en python ? Oui, cela tombe bien Jinja2 utilise plus ou moins les mêmes.<br>
+Déclaration de variables :
 <div class="code">
     &#123;% set testing = 'it worked' %&#125;<br>
     &#123;% set another = testing %&#125;
 </div>
-Vous pouvez envoyer des variable à partir du routage avec la commande render_template().
+Vous pouvez envoyer des variables à partir du routage avec la commande render_template().
 <div class="code">render_template("web/jinja.html",menu=menu)</div>
-    <h3>Les listes et autre objets standard python</h3>
-        <h4>Attention les interaction sous jinja influence votre code python</h4>
-    <h3>Les conditions</h3>
-    <h3>Les boucles</h3>
-{%  endblock %}
+<h3>Les listes et autres objets standards python</h3>
+Des petites variables, c'est sympa, mais vous pouvez aussi envoyer des dictionnaires, des listes et des tuples avec la commande render_tempplate().<br>
+Même des <a href="https://datacorner.fr/jinja-amis-des-pandas/">dataframes</a> peuvent être utilisé par Jinja2.<br>
+Les methodes des objets fonctionnnent globalement de la même manière sur jinja2. Pensez juste aux accolades.<br>
+<h4>Attention les interactions sous jinja influence votre code python</h4>
+Vous pourriez avoir des surprises avec les méthodes pop par exemple qui supprime des objets des listes.<br>
+<h3>Les conditions</h3>
+Vous pouvez vouloir afficher ou non un objet en fonction d'une variable. (souvent utiliser pour les logins pour afficher le bouton se connecter ou se déconnecter par exemple).<br>
+Il suffit tout simplement d'utiliser la commande if :
+<pre class="code">
+&#123;% if truc == "machin" %&#125;
+    Il y a machin dans truc
+&#123;% elif truc == "bidule" %&#125;
+    Le truc c'est un bidule en fait
+&#123;% else %&#125;
+    Le truc est un chimilibilil blick 
+&#123;% endif %&#125;
+</pre>
+    <h3>Les boucles for</h3>
+Vous envoyez des listes ou des tuples dans Jinja2, c'est bien pour les utiliser. En python, on va utiliser la boucle for dans ce cas-là. En jinja2 aussi.
+<pre class="code">
+&#123;% for row in rows %&#125;
+     &#123;&#123; row &#125;&#125;
+&#123;% endfor %&#125;
+</pre>
+Vous pouvez aussi mettre une condition directement dans la boucle par exemple si les utilisateurs veulent être cachés :
+<pre class ="code">
+&#123;% for user in users if not user.hidden %&#125;
+    &#123;&#123; user.username|e &#125;&#125;
+&#123;% endfor %&#125;
+</pre>
+
+Pour plus d'informations la <a href="https://jinja.palletsprojects.com/en/2.10.x/templates/#list-of-control-structures">Doc officielle de jinja2.</a>
+
+{% endblock %}
