@@ -1,3 +1,3 @@
 _ faire un menu pour les telephones (burger ?)
 _ réparer les erreur sur w3c validator
-
+_ faire un dossier sur Git (la base en fait )

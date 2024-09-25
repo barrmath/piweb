@@ -36,9 +36,18 @@ Fichier qui utilise la base :
     contenu de la page
     &#123;% endblock %&#125;
 </pre>
+Vous aurez besoin d'utiliser des objets dans les templates. Voyons voir comment faire. 
 <h2>Les objets dans jinja2</h2>
-    <h3>Les variables</h3>
-    <h3>Les listes et autre objets standart python</h3>
+<h3>Les variables</h3>
+Vous connaissez les variables en python ? Oui, cela tombent bien Jinja2 utilise plus ou moins les mêmes.<br>
+déclaration :
+<div class="code">
+    &#123;% set testing = 'it worked' %&#125;<br>
+    &#123;% set another = testing %&#125;
+</div>
+Vous pouvez envoyer des variable à partir du routage avec la commande render_template().
+<div class="code">render_template("web/jinja.html",menu=menu)</div>
+    <h3>Les listes et autre objets standard python</h3>
         <h4>Attention les interaction sous jinja influence votre code python</h4>
     <h3>Les conditions</h3>
     <h3>Les boucles</h3>
