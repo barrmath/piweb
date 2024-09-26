@@ -7,7 +7,7 @@
 }
 
 /* Computer menu */
-@media screen and (min-width:640px){
+@media screen and (min-width:1024px){
 
   #hamburger-logo {
     display: none;
@@ -82,7 +82,7 @@
 }
 
 /* mobile menu */
-@media screen and (max-width:640px){
+@media screen and (max-width:1024px){
   .menu {
     /* Pour que le menu reste en place quand on scroll */
     position: fixed;
@@ -99,25 +99,26 @@
   #hamburger-logo {
     /* Pour que le curseur soit un pointeur */
     cursor: pointer;
-    background: black;
+    background: #333;
     width: 11.25rem;
-    display: block;
+    display: fixed;
+    top: 0rem;
     color: white;
     /* Pour que le menu hamburger s'affiche toujours */
     text-align: right;
     /* Pour que le menu hamburger soit "rangé" par défaut */
-    transform: translateX(-168px);
-    padding: 10px;
+    transform: translateX(-10.5rem);
+    padding: 1rem;
   }
 
   nav {
     display: none;
     flex-direction: column;
-    background: black;
+    background: #333;
     overflow: hidden;
-    width: 200px;
+    width: 12.5rem;
     /* Pour que les liens soient "rangés" par défaut */
-    transform: translateX(-200px);
+    transform: translateX(-12.5rem);
   }
 
   #hamburger-logo,
