@@ -3,25 +3,26 @@
 {% block content %}
 
 <h1>HTML</h1>
-Pourquoi apprendre le HTML (et le CSS) en 2024? Wordpress, Ionos font des sites internets en no code.<br>
-Je vais donner plusieurs raisons:
+<p>Pourquoi apprendre le HTML (et le CSS) en 2024? Wordpress, Ionos font des sites internet en no code.</p>
+<p>Je vais donner plusieurs raisons :</p>
 <ul>
-  <li>Si voulez un site leger pour rappel une page web fait la taille de <a href="https://www.clubic.com/mag/jeux-video/actualite-803876-page-web-moyenne-pese-doom.html">doom</a>.</li>
-  <li>Vous aimer appliquer le KISS (Keep It Simple and Stupid)</li>
-  <li>Vous trouvez pas votre bonheur dans les wordpress et autres</li>
+  <li>Si voulez un site léger pour rappel une page web fait la taille de <a href="https://www.clubic.com/mag/jeux-video/actualite-803876-page-web-moyenne-pese-doom.html">doom</a>.</li>
+  <li>Vous aimez appliquer le KISS (Keep It Simple and Stupid)</li>
+  <li>Vous ne trouvez pas votre bonheur dans les wordpress et autres</li>
   <li>Vous avez besoin de récupérer des données sur des sites web (webscrapping)</li>
 </ul>
-Commençons par le commencement le html puis ensuite le CSS.<br>
+<p>Commençons par le commencement le html puis ensuite le CSS.</p>
 <h2>HTML</h2>
-Premierement pour apprendre à faire des pages internets en pure HTML CSS vous avez besoin d'un navigateur internet et d'un editeur de texte.<br>
-N'ouvrez pas word ou autre suite bureautique, il nous faut du texte sans fioriture.<br>
-Pour les navigateurs internets, je recommande <a href="https://www.mozilla.org/fr/firefox/new/">firefox</a> et le <a href="https://www.mozilla.org/fr/firefox/developer/">firefox pour developpeur</a> pour aller plus loin<br>
-Pour les éditeurs de texte :<ul>
+<p>Premièrement pour apprendre à faire des pages internet en pur HTML CSS vous avez besoin d'un navigateur internet et d'un éditeur de texte.</p>
+<p>N'ouvrez pas word ou autre suite bureautique, il nous faut du texte sans fioriture.</p>
+<p>Pour les navigateurs internet, je recommande <a href="https://www.mozilla.org/fr/firefox/new/">firefox</a> et le <a href="https://www.mozilla.org/fr/firefox/developer/">firefox pour développeur</a> pour aller plus loin.</p>
+<p>Pour les éditeurs de texte :</p>
+<ul>
   <li>Éditeur simple : <a href="https://notepad-plus-plus.org/downloads/">notepad++</a></li>
-  <li>Éditeur pour developpeur : <a href="https://vscodium.com/">vscodium</a></li>
+  <li>Éditeur pour développeur : <a href="https://vscodium.com/">vscodium</a></li>
 </ul>
-<br>
-Ouvrez un éditeur de code, copier/coller le code en dessous et sauvegarder avec une extension .html.<br>
+<p></p>
+<p>Ouvrez un éditeur de code, copier/coller le code en dessous et sauvegarder avec une extension .html.</p>
 <xmp class="code">
 <!DOCTYPE html>
 <html lang="">
@@ -36,40 +37,41 @@ Ouvrez un éditeur de code, copier/coller le code en dessous et sauvegarder avec
   </body>
 </html>
 </xmp>
-Ensuite ouvrez le fichier avec votre navigateur.<br>
-<img src="{{ url_for('static', filename='img/web/hello_html.png')}}" alt="Hello World"></img><br>
-Félicitation vous voilà développeur.<br>
-Analysons un peu le code. On vois des balises ouvrantes < mot > et fermante < /mot >.<br>
-La premiere balise <xmp><!DOCTYPE html></xmp> indique simplement qu'il s'agit d une page HTML.<br>
-La deuxieme balise ouvre le code et vous pouvez indiquer une langue.<br> 
-Ensuite la balise head permet d'afficher des choses en dehors la page comme le titre en haut. et vous pouvez mettre des metadonnée grâce à la balise meta<br>
-charset="utf-8" permets de specifier le jeu de caractere utiliser. (a ne pas confondre avec la police)<br>
-<br>
-On arrive sur la balise body qui indique que vous travailler sur le corps de la page html.<ul>
+<p>Ensuite, ouvrez le fichier avec votre navigateur.</p>
+<div><img src="{{ url_for('static', filename='img/web/hello_html.png')}}" alt="Hello World"></div>
+<p>Félicitation, vous voilà développeur.</p>
+<p>Analysons un peu le code. On voit des balises ouvrantes &lt; mot > et fermantes &lt; /mot >.</p>
+<p>La première balise </p><xmp class="code"><!DOCTYPE html></xmp><p> indique simplement qu'il s'agit d'une page HTML.</p>
+<p>La deuxième balise ouvre le code et vous pouvez indiquer une langue.</p> 
+<p>Ensuite la balise head permet d'afficher des choses en dehors de la page comme le titre en haut. Et vous pouvez mettre des metadonnées grâce à la balise meta</p>
+<p>charset="utf-8" permet de spécifier le jeu de caractère utilisé. (à ne pas confondre avec la police)</p>
+<p></p>
+<p>On arrive sur la balise body qui indique que vous travaillez sur le corps de la page html.</p>
+<ul>
   <li>head pour le haut de la page</li>
   <li>main pour le principal article</li>
   <li>footer pour le bas de page</li>
 </ul>
-En fonction de ce que vous voulez faire, il y a plein de balise en html. Je vous laisse les découvrir <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element">ici</a>
-Malgrès les balises HTML, vous trouver que votre page manque de couleur, vous voudrez avec plus de choix en placement. Le CSS est fait pour ça.<br>
+<p>En fonction de ce que vous voulez faire, il y a plein de balises en html. Je vous laisse les découvrir <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element">ici.</a></p>
+<p>Malgrè les balises HTML, vous trouver que votre page manque de couleur, vous voudrez avec plus de choix en placement. Le CSS est fait pour ça.</p>
 <h2>Le CSS</h2>
-Il faut lier le fichier CSS dans la page internet.
-<xmp><link href="style_base.css" rel="stylesheet"></xmp>
-Maintenant regardons ce que fait ce fichier,<br>
-Prenons par exemple la partie footer du css de ce site (qui auras peut être changer entre 2):
+<p>Il faut lier le fichier CSS dans la page internet.</p>
+<xmp class="code"><link href="style_base.css" rel="stylesheet"></xmp>
+<p>Maintenant regardons ce que fait ce fichier,</p>
+<p>Prenons par exemple la partie footer du css de ce site (qui auras peut-être changer entre 2) :</p>
 <xmp class="code">
 footer{
 background-color: #333;
 padding-bottom: 100%;
 border-top:solid #8fd9fc;
 }</xmp>
-Vous avez donc le nom de la balise à modifier des accolades puis des attributs (oubliez pas le ";" à la fin).<br>
-Ici le fond est noir, on prends toute la place en bas (bottom) et on crée une ligne "solid" avec son code couleur.<br>
-Si vous avez plusieurs balises amis que vous en voulez pas avoir le meme comportement pas de soucis.
-Ajouter class="nom" (si vous avez plusieurs balises à modifier) ou id="nom"(pour une seule balise)<br>
-Par exemple <xmp><pre class="Code">blablabla</pre></xmp>
-La partie CSS suivante :<br>
-<xmp>
+<p>Vous avez donc le nom de la balise à modifier des accolades puis des attributs (n'oubliez pas le ";" à la fin).</p>
+<p>Ici, le fond est noir, on prend toute la place en bas (bottom) et on crée une ligne "solid" avec son code couleur.</p>
+<p>Si vous avez plusieurs balises mais que vous ne voulez pas avoir le même comportement pas de soucis.</p><p>
+<p>Ajouter class="nom" (si vous avez plusieurs balises à modifier) ou id="nom"(pour une seule balise)</p>
+<p>Par exemple :</p><xmp class="code"><pre class="Code">blablabla</pre></xmp>
+<p>et la partie CSS suivante :</p>
+<xmp class="code">
 .code{
 background-color: #000;
 color: rgb(75, 255, 120);
@@ -77,9 +79,8 @@ padding-left: 10px;
 padding-right: 10px;
 }
 </xmp>
-La différence : le point . avant le nom indique une classe ou une id.<br>
-Vous voilà dévelepoppeur front end. (enfin presque).<br>
-Plus de fonctionnallité de CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">ici.</a>
-
+<p>La différence : le point . avant le nom indique une classe ou une id.</p>
+<p>Vous voilà développeur front-end. (enfin presque).</p>
+<p>Plus de fonctionnalité de CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">ici.</a></p>
 
 {% endblock %}
