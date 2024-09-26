@@ -167,8 +167,9 @@ footer{
   background-color: #333;
   padding-bottom: 100%;
   border-top:solid #8fd9fc;
+  color: #ffffff;
 }
 
-.pied_de_page{
+footer p {
   color: #ffffff;
 }
