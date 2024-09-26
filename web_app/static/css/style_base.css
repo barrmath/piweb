@@ -8,7 +8,13 @@
 
 /* Computer menu */
 @media screen and (min-width:640px){
+
+  #hamburger-logo {
+    display: none;
+  }
+
   nav{
+    display:block;
     width: 100%;
     margin: 0 auto;
     color:#ffffff;
@@ -73,16 +79,95 @@
   .deroulant > a::after{
     font-size: 12px;
   }
-
-  footer{
-    background-color: #333;
-    padding-bottom: 100%;
-    border-top:solid #8fd9fc;
-  }
-
-  .pied_de_page{
-    color: #ffffff;
-  }
 }
 
 /* mobile menu */
+@media screen and (max-width:640px){
+  .menu {
+    /* Pour que le menu reste en place quand on scroll */
+    position: fixed;
+    /* Pour que le menu ne soit pas sur le texte et que ce dernier puisse être sélectionné */
+    width: 0px;
+  }
+
+  #hamburger {
+    /* Pour que la checkbox ne s'affiche pas */
+    display: none;
+
+  }
+
+  #hamburger-logo {
+    /* Pour que le curseur soit un pointeur */
+    cursor: pointer;
+    background: black;
+    width: 11.25rem;
+    display: block;
+    color: white;
+    /* Pour que le menu hamburger s'affiche toujours */
+    text-align: right;
+    /* Pour que le menu hamburger soit "rangé" par défaut */
+    transform: translateX(-168px);
+    padding: 10px;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: black;
+    overflow: hidden;
+    width: 200px;
+    /* Pour que les liens soient "rangés" par défaut */
+    transform: translateX(-200px);
+  }
+
+  #hamburger-logo,
+  nav {
+    /* Pour qu'il y ait une animation */
+    transition: 0.7s;
+  }
+
+  /* Lorsque #hamburger est coché, le #hamburger-logo et le nav qui sont dans le même parent changent de propriété */
+  #hamburger:checked ~ #hamburger-logo,
+  #hamburger:checked ~ nav {
+    /* Changement de la position pour afficher les menus */
+    transform: translate(0);
+    display:block;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+
+  nav a:hover {
+    background: #333;
+  }
+
+  section {
+    /* Pour que le texte ne soit pas sous le menu */
+    margin-left: 50px;
+    width: 500px;
+    top: 0rem;
+
+  }
+
+  .deroulant{
+    font-size: 2rem;
+  }
+
+  .sous{
+    font-size: 1rem;
+  }
+}
+/* élement immobile */
+
+footer{
+  background-color: #333;
+  padding-bottom: 100%;
+  border-top:solid #8fd9fc;
+}
+
+.pied_de_page{
+  color: #ffffff;
+}

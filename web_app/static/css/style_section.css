@@ -9,6 +9,7 @@
 section{
     list-style: inside;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: justify;
 }
 
 .code{
