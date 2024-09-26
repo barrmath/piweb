@@ -13,6 +13,11 @@
     display: none;
   }
 
+  section{
+    margin-top: 6rem;
+    margin-block-end: 6rem;
+  }
+
   nav{
     display:block;
     width: 100%;
@@ -100,14 +105,15 @@
     /* Pour que le curseur soit un pointeur */
     cursor: pointer;
     background: #333;
-    width: 11.25rem;
+    width: 9.25rem;
     display: fixed;
     top: 0rem;
+    position:fixed;
     color: white;
     /* Pour que le menu hamburger s'affiche toujours */
     text-align: right;
     /* Pour que le menu hamburger soit "rangé" par défaut */
-    transform: translateX(-10.5rem);
+    transform: translateX(-8.5rem);
     padding: 1rem;
   }
 
@@ -116,7 +122,9 @@
     flex-direction: column;
     background: #333;
     overflow: hidden;
-    width: 12.5rem;
+    width: 11.25rem;
+    top:3.25rem;
+    position:fixed;
     /* Pour que les liens soient "rangés" par défaut */
     transform: translateX(-12.5rem);
   }
@@ -141,15 +149,11 @@
     padding: 10px;
   }
 
-  nav a:hover {
-    background: #333;
-  }
-
   section {
     /* Pour que le texte ne soit pas sous le menu */
     margin-left: 50px;
     width: 500px;
-    top: 0rem;
+    margin-top: 3.5rem;
 
   }
 
