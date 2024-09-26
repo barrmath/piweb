@@ -3,11 +3,11 @@
 {% block content %}
 
 <h1>Certificat et https</h1>
-Les certificats vous permettent de sécuriser la connexion entre le client et le serveur en activant un cryptage entre eux.<br>
-Ainsi, les données échangées entre le serveur et le client ne peuvent pas être lues.<br>
+<p>Les certificats vous permettent de sécuriser la connexion entre le client et le serveur en activant un cryptage entre eux.</p>
+<p>Ainsi, les données échangées entre le serveur et le client ne peuvent pas être lues.</p>
 <h2>DNS serveur et client</h2>
-Mais avant un petit rappel sur les DNS :<br>
-<img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+<p>Mais avant un petit rappel sur les DNS :</p>
+<div><img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></div>
 <ol>
     <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
     <li>Le serveur DNS envoie une adresse IP.</li>
@@ -17,11 +17,12 @@ Mais avant un petit rappel sur les DNS :<br>
 </ol>
 
 <h2>Le certificat : une affaire de confiance</h2>
-Le but du certificat est de certifier que tout le monde est bien celui qu'il prétend. Pour ce faire, il faut un certificateur.<br>
-Le certificateur va vérifier que l'adresse du site pointe bien vers le bon serveur.<br>
-Il émet ensuite un certificat qui garantit que le DNS envoie bien vers le bon serveur.<br>
-Les certificateurs les plus connus sont <a href="https://letsencrypt.org/fr/">https://letsencrypt.org/fr/</a> et <a href="https://www.cloudflare.com/fr-fr/">https://www.cloudflare.com/fr-fr/</a><br>
-Les certificats SSL contiennent les informations suivantes dans un seul fichier de données :<ul>
+<p>Le but du certificat est de certifier que tout le monde est bien celui qu'il prétend. Pour ce faire, il faut un certificateur.</p>
+<p>Le certificateur va vérifier que l'adresse du site pointe bien vers le bon serveur.</p>
+<p>Il émet ensuite un certificat qui garantit que le DNS envoie bien vers le bon serveur.</p>
+<p>Les certificateurs les plus connus sont <a href="https://letsencrypt.org/fr/">https://letsencrypt.org/fr/</a> et <a href="https://www.cloudflare.com/fr-fr/">https://www.cloudflare.com/fr-fr/</a></p>
+<p>Les certificats SSL contiennent les informations suivantes dans un seul fichier de données :</p>
+<ul>
     <li>Le nom de domaine pour lequel le certificat a été délivré.</li>
     <li>La personne, l'organisation ou l'appareil pour lequel il a été délivré.</li>
     <li>Quelle autorité de certification l'a délivré.</li>
@@ -31,8 +32,8 @@ Les certificats SSL contiennent les informations suivantes dans un seul fichier 
     <li>La date d'expiration du certificat.</li>
     <li>La clé publique (la clé privée est gardée secrète).</li>
 </ul>
-Donc il faut maintenant rajouter des étapes pour la connexion SSL.<br>
-<img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></img><br>
+<p>Donc il faut maintenant rajouter des étapes pour la connexion SSL.</p>
+<div><img src={{ url_for('static', filename='img/autohebergement/principe_internet.jpg') }} alt="schema internet" width="500"></div>
 <ol>
     <li>Le client demande une IP lié à adresse internet aux serveurs DNS.</li>
     <li>Le serveur DNS envoie une adresse IP.</li>
@@ -44,10 +45,10 @@ Donc il faut maintenant rajouter des étapes pour la connexion SSL.<br>
     <li>Le client affiche la page.</li>
 </ol>
 <h2>Certbot</h2>
-Le plus simple : <a href="https://certbot.eff.org/">certbot</a><br>
-Il peut vous générer un certificats letsencrypt et modifier votre serveur pour le https.<br>
-par exemple un serveur http avec nginx:<br>
-Dans votre fichier de configuration vous trouverez ça :
+<p>Le plus simple : <a href="https://certbot.eff.org/">certbot</a></p>
+<p>Il peut vous générer un certificats letsencrypt et modifier votre serveur pour le https.</p>
+<p>par exemple un serveur http avec nginx:</p>
+<p>Dans votre fichier de configuration vous trouverez ça :</p>
 <pre class="code">
 [...]    
     server {
@@ -58,20 +59,20 @@ Dans votre fichier de configuration vous trouverez ça :
         }
     }
 </pre>
-listen permet d'écouter sur le port http (port 80).<br>
-Le serveur à le même nom que votre site internet (host).<br>
-Le but de certbot seras de générer un certificat et de vous modifier votre serveur pour afficher le site en https<br>
-La manipulation du site fonctionne après avoir installé cerbot, il faut juste le lancer. L'option certonly permet de ne pas modifier nginx<br>
+<p>listen permet d'écouter sur le port http (port 80).</p>
+<p>Le serveur à le même nom que votre site internet (host).</p>
+<p>Le but de certbot seras de générer un certificat et de vous modifier votre serveur pour afficher le site en https</p>
+<p>La manipulation du site fonctionne après avoir installé cerbot, il faut juste le lancer. L'option certonly permet de ne pas modifier nginx</p>
 <div class="code">
 sudo certbot --nginx 
 sudo certbot certonly --nginx
 </div>
-Une fois votre certificat généré avec la première commande, vous pouvez tester votre site en https.<br>
-Certbot a modifié votre configuration pour écouter le port 80 (http) et rediriger vers le port 443 (https). Et il a configuré un serveur https.<br>
-Dans ce cas, votre site est accessible en https, mais il n'est plus disponible en https.<br>
-<br>
-Ce site personnel n'a pas de secret à garder (pas de base de données, ni de compte, ...). Si le vôtre non plus, il pourrait être en http et en https.<br>
-Avec la deuxième commande, il suffit de créer un deuxième serveur dans la config de nginx.<br>
+<p>Une fois votre certificat généré avec la première commande, vous pouvez tester votre site en https.</p>
+<p>Certbot a modifié votre configuration pour écouter le port 80 (http) et rediriger vers le port 443 (https). Et il a configuré un serveur https.</p>
+<p>Dans ce cas, votre site est accessible en https, mais il n'est plus disponible en https.</p>
+<p></p>
+<p>Ce site personnel n'a pas de secret à garder (pas de base de données, ni de compte, ...). Si le vôtre non plus, il pourrait être en http et en https.</p>
+<p>Avec la deuxième commande, il suffit de créer un deuxième serveur dans la config de nginx.</p>
 <pre class="code">
     server {
         listen       443 ssl;
@@ -86,9 +87,9 @@ Avec la deuxième commande, il suffit de créer un deuxième serveur dans la con
         }
     }
         </pre>
-Pour ma part, j'ai d'abord utilisé la première commande certbot puis modifier la configuration de nginx.<br>
+<p>Pour ma part, j'ai d'abord utilisé la première commande certbot puis modifier la configuration de nginx.</p>
 <h2>Renouvellement</h2>
-La commande <div class="code">certbot renew -q</div> permet de renouveler le certificat. En effet, il expire tous les 90 jours.<br>
-Vous pouvez automatiser avec crontab. (crontab -e puis ajouter @monthly sudo certbot renew -q).
+<p>La commande <div class="code">certbot renew -q</div> permet de renouveler le certificat. En effet, il expire tous les 90 jours.</p>
+<p>Vous pouvez automatiser avec crontab. (crontab -e puis ajouter @monthly sudo certbot renew -q).</p>
 
 {% endblock %}
