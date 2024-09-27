@@ -5,6 +5,16 @@
   color:#000000;
   font-family: Verdana, sans-serif;
 }
+nav{
+  position: fixed;
+  background-color: #333;
+}
+
+nav a{
+  color:#ffffff;
+  padding: 10px;
+  text-decoration: none;
+}
 
 footer{
   background-color: #333;
