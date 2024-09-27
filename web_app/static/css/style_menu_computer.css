@@ -4,10 +4,6 @@
     display: none;
   }
 
-  section{
-    margin-top: 3rem;
-  }
-
   nav{
     display:block;
     width: 100%;
@@ -49,7 +45,6 @@
     background-color: #333;
     position: absolute;
     width: 100%;
-    z-index: 1000;
   }
   nav > ul li:hover .sous{
     display: block;

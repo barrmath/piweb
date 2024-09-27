@@ -26,3 +26,8 @@ footer{
 footer p {
   color: #ffffff;
 }
+
+#hamburger {
+  /* Pour que la checkbox ne s'affiche pas */
+  display: none;
+}
