@@ -1,6 +1,5 @@
 _ faire un menu pour les telephones (burger ?)
 _ réparer les erreur sur w3c validator
 _ faire un dossier sur Git (la base en fait )
-_ bannir les <br> mieux div que BR ou <p>
 _ coloration synthasique
 _ fil d arianne suivant precedeant
