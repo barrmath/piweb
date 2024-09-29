@@ -2,7 +2,7 @@
 git checkout test ;
 git pull ;
 python -m venv venv ;
-alias venv/bin/activate ;
+source venv/bin/activate ;
 pip install -r requirements.txt ;
 pytest ;
 test=echo$? ;
