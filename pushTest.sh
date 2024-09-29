@@ -1,3 +1,4 @@
+#!/bin/bash
 git push origin dev
 git checkout test
 git merge dev 
