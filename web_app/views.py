@@ -54,28 +54,25 @@ def Certificat():
 
 @app.route("/web/", methods=["GET", "POST"])
 def Web():
-    return render_template("web_intro.html",menu=menu
-                            )
+    return render_template("web_intro.html",menu=menu)
 
-
-@app.route("/web/HTMLCSS", methods=["GET", "POST"])
+@app.route("/web/HTMLCSS/", methods=["GET", "POST"])
 def HTML():
     return render_template("web/htmlcss.html",menu=menu)
 
-
-@app.route("/web/flask", methods=["GET", "POST"])
+@app.route("/web/flask/", methods=["GET", "POST"])
 def Flask():
     return render_template("web/Flask.html",menu=menu)
 
-@app.route("/web/jinja", methods=["GET", "POST"])
+@app.route("/web/jinja/", methods=["GET", "POST"])
 def Jinja():
     return render_template("web/jinja.html",menu=menu)
 
-@app.route("/web/gunicorn", methods=["GET", "POST"])
+@app.route("/web/gunicorn/", methods=["GET", "POST"])
 def Gunicorn():
     return render_template("encours.html",menu=menu)
 
-@app.route("/web/podman", methods=["GET", "POST"])
+@app.route("/web/podman/", methods=["GET", "POST"])
 def Podman():
     return render_template("encours.html",menu=menu)
 
@@ -85,19 +82,19 @@ def Podman():
 def Data():
     return render_template("data_intro.html",menu=menu)
 
-@app.route("/data/SQL", methods=["GET", "POST"])
+@app.route("/data/SQL/", methods=["GET", "POST"])
 def SQL():
     return render_template("data/sql.html",menu=menu)
 
-@app.route("/data/python", methods=["GET", "POST"])
+@app.route("/data/python/", methods=["GET", "POST"])
 def Python():
     return render_template("data/python.html",menu=menu)
 
-@app.route("/data/pandas", methods=["GET", "POST"])
+@app.route("/data/pandas/", methods=["GET", "POST"])
 def Pandas():
     return render_template("encours.html",menu=menu)
 
-@app.route("/data/graphique", methods=["GET", "POST"])
+@app.route("/data/graphique/", methods=["GET", "POST"])
 def Graphique():
     return render_template("encours.html",menu=menu)
 
