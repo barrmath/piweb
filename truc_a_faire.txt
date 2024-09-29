@@ -3,3 +3,6 @@ _ réparer les erreur sur w3c validator
 _ faire un dossier sur Git (la base en fait )
 _ coloration synthasique
 _ fil d arianne suivant precedeant
+
+_ test echo$? pour voir pytest
+_ voir minikube dashboard
