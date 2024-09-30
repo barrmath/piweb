@@ -1,16 +1,11 @@
 # import bibliothèque flask et création application flask
 from flask import render_template, request, current_app, send_from_directory
-from werkzeug.middleware.proxy_fix import ProxyFix
+import config
 
 app = current_app
 
-# utilisation d'un proxy a deplacer plus tard
-app.wsgi_app = ProxyFix(
-    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
-)
-
-menu = (['Accueil','Accueil'],["Réseaux",'Autohébergement','Monitoring','Kube','Proxy','Certificat'],['Web','HTML','Flask','Jinja','Gunicorn','Podman']
-    ,['Data','SQL','Python','Pandas','Graphique'],['About','About'])
+menu = (('Accueil','Accueil'),("Réseaux",'Autohébergement','Monitoring','Kube','Proxy','Certificat'),('Web','HTML','Flask','Jinja','Gunicorn','Podman')
+    ,('Data','SQL','Python','Pandas','Graphique'),('About','About'))
 
 @app.route("/robots.txt")
 def static_from_root():
