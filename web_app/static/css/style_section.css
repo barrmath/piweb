@@ -10,6 +10,7 @@ section{
 .code{
     background-color: #000;
     width:fit-content;
+    border-radius: 1.5rem;
     color: rgb(75, 255, 120);
     padding-left: 0.625rem;
     padding-right: 0.625rem;
