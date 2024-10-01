@@ -16,6 +16,10 @@ def static_from_root():
 def Accueil():
     return render_template("index.html",menu=menu)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html",menu=menu), 404
+
 ####################################################### Partie RESEAUX  ###############################################################
 
 @app.route("/reseaux/", methods=["GET", "POST"])
