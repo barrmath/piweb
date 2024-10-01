@@ -95,7 +95,7 @@ def Pandas():
 
 @app.route("/data/graphique/", methods=["GET", "POST"])
 def Graphique():
-    return render_template("encours.html",menu=menu)
+    return render_template("data/graphique.html",menu=menu)
 
 ####################################################### Partie ABOUT  ################################################################
 

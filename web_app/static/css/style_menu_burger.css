@@ -1,5 +1,5 @@
 /* mobile menu */
-@media screen and (max-width:1024px){
+@media screen and (max-width:64rem){
   #hamburger-logo {
     /* Pour que le curseur soit un pointeur */
     cursor: pointer;
@@ -26,6 +26,9 @@
     transform: translateX(-12.5rem);
   }
 
+  nav ul {
+    list-style: none;
+  }
   #hamburger-logo,
   nav {
     /* Pour qu'il y ait une animation */
@@ -49,6 +52,9 @@
   .deroulant a {
     color: orange;
     font-size: 2rem;
+  }
+  .deroulant ul {
+    list-style: none;
   }
 
   .sous a {

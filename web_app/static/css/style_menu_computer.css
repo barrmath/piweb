@@ -1,5 +1,5 @@
 /* Computer menu */
-@media screen and (min-width:1024px){
+@media screen and (min-width:64rem){
   #hamburger-logo {
     display: none;
   }
@@ -46,21 +46,26 @@
     position: absolute;
     width: 100%;
   }
+  
   nav > ul li:hover .sous{
     display: block;
   }
+
   .sous li{
     float: none;
     width: 100%;
     text-align: left;
   }
+
   .sous a{
     padding: 10px;
     border-bottom: none;
   }
+
   .sous a:hover{
     border-bottom: none;
   }
+
   .deroulant > a::after{
     font-size: 12px;
   }
