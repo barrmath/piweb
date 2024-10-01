@@ -1,11 +1,13 @@
 # import bibliothèque flask et création application flask
 from flask import render_template, request, current_app, send_from_directory
-import config
 
 app = current_app
 
-menu = (('Accueil','Accueil'),("Réseaux",'Autohébergement','Monitoring','Kube','Proxy','Certificat'),('Web','HTML','Flask','Jinja','Gunicorn','Podman')
-    ,('Data','SQL','Python','Pandas','Graphique'),('About','About'))
+menu = (('Accueil','Accueil')
+        ,("Réseaux",'Autohébergement','Monitoring','Kube','Proxy','Certificat')
+        ,('Web','HTML','Flask','Jinja','Gunicorn','Podman')
+        ,('Data','SQL','Python','Pandas','Graphique')
+        ,('About','About'))
 
 @app.route("/robots.txt")
 def static_from_root():
