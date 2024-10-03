@@ -68,8 +68,9 @@ http {
 </pre>
 <p>Maintenant que le site est en local avec Nginx il suffit de trouver l'adresse IP de votre Serveur.</p>
 <p>Plusieurs options s'offrent à vous :</p>
-<ul>
-<li> Une commande depuis un terminal du serveur:
+<p>
+    Une commande depuis un terminal du serveur:
+</p>
 <pre class="code">
 foo@bar: ip address
 2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
@@ -85,16 +86,16 @@ foo@bar: ip address
 <pre class="code">foo@bar: ifconfig
     eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
     inet xxx.xxx.xxx.xxx  netmask xxx.xxx.xxx.xxx  broadcast xxx.xxx.xxx.xxx
-    inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xx  scopeid xxxxxx<global>
-    inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xxxx  scopeid xxxxx<link>
-</pre></li>
-<li><p>dans le routeur :</p>
-    <div><img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></div></li>
-</ul>
+    inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xx  scopeid xxxxxx&lt;global>
+    inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xxxx  scopeid xxxxx&lt;link>
+</pre>
+<p>dans le routeur :</p>
+    <div><img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></div>
+
 <p>Pour tester votre site en local, taper l'adresse IP et le port dans un navigateur si vous n'utilisez pas le port 80.</p>
 <div><img src="{{ url_for('static', filename='img/autohebergement/hello_local.png') }}" alt="hello local serveur"></div>
 <p></p>
-F<p>élicitation pour cette première étape.</p>
+<p>Félicitation pour cette première étape.</p>
 <h2>2) Mettre le site sur Internet en passant par l'adresse IP.</h2>
 <p>Je considère que vous avez une adresse IP fullstack. Changer le port d'entrée si votre fournisseur vous interdit le port 80.</p>
 <p></p>
