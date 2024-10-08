@@ -7,6 +7,8 @@
     <link href="{{ url_for('static', filename='css/style_base.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style_menu_burger.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style_menu_computer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style_section.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/'+style) }}" rel="stylesheet">
   </head>
   <body>      
     <header>
@@ -31,9 +33,8 @@
       </nav> 
     </header>  
     <main>
-        <div class="content">
+        <div>
           <section>
-            <link href="{{ url_for('static', filename='css/style_section.css') }}" rel="stylesheet">
             {% block content %}{% endblock %}
           </section>
         </div>
