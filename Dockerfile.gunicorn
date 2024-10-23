@@ -1,13 +1,16 @@
 # image de base
-FROM python:latest
-
+FROM alpine:latest
+ENV VIRTUAL_ENV=/opt/venv
 # on copie l'app
 COPY . /app
 
 #on va dans le dossier de l app
 WORKDIR /app
-
+RUN apk add py3-pip npm
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN npm install -g sass && sass web_app/static/scss/main.scss web_app/static/css/main.css
 
 # on lance le serveur flask
 EXPOSE 5000

@@ -1,9 +1,11 @@
+@use "../variables.scss" as variables;
+
 /* mobile menu */
 @media screen and (max-width:64rem){
   #hamburger-logo {
     /* Pour que le curseur soit un pointeur */
     cursor: pointer;
-    background: #333;
+    background: variables.$nav-background-color;
     width: 9.25rem;
     display: fixed;
     top: 0rem;
@@ -50,7 +52,7 @@
    }
 
   .deroulant a {
-    color: orange;
+    color: variables.$nav-color-hover;
     font-size: 2rem;
   }
   .deroulant ul {

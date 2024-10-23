@@ -1,0 +1,15 @@
+/* style general */
+
+@use "section/style_base.scss"  ;
+@use "section/style_section.scss" ;
+
+@use "menu/style_menu_computer.scss" ;
+@use "menu/style_menu_burger.scss" ;
+
+/*style page */
+
+@use "pages/style_404.scss";
+@use "pages/style_about.scss";
+@use "pages/style_data.scss";
+@use "pages/style_reseaux.scss";
+@use "pages/style_web.scss";

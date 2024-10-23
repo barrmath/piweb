@@ -1,0 +1,34 @@
+@use "../variables.scss" as variables;
+
+/* Reset CSS*/
+*{
+  margin: 0;
+  padding: 0;
+  color:#000;
+}
+
+nav{
+  position: fixed;
+  background-color: variables.$nav-background-color;
+  font-family: Verdana, sans-serif;
+  a{
+    color:#ffffff;
+    padding: 10px;
+    text-decoration: none;
+  }
+}
+
+footer{
+  background-color: variables.$nav-background-color;
+  padding-bottom: 100%;
+  border-top:solid #8fd9fc;
+  color: #ffffff;
+  p {
+    color: #ffffff;
+  }
+}
+
+#hamburger {
+  /* Pour que la checkbox ne s'affiche pas */
+  display: none;
+}

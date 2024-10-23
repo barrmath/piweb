@@ -4,6 +4,7 @@ git pull ;
 python -m venv venv ;
 source venv/bin/activate ;
 pip install -r requirements.txt ;
+sass web_app/static/scss/main.scss web_app/static/css/main.css;
 pytest ;
 test=echo$? ;
 if ((test == 0));then

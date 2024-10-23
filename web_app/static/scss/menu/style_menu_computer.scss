@@ -1,0 +1,65 @@
+@use "../variables.scss" as variables;
+
+/* Computer menu */
+@media screen and (min-width:64rem){
+  #hamburger-logo {
+    display: none;
+  }
+
+  nav{
+    display:block;
+    width: 100%;
+    margin: 0;
+    color:#ffffff;
+    border-bottom: 2px solid #8fd9fc;
+    top: 0;
+    ul{
+      list-style-type:none;
+      li{
+        float: left;
+        width: 10%;
+        min-width: 150px;
+        text-align: center;
+        position: relative;
+      }
+    }
+    ul::after{
+      content: "";
+      display: table;
+      clear: both;
+    }
+    a{
+      display: block;
+    }
+    a:hover{
+      color: variables.$nav-color-hover;
+    }
+    > ul li:hover .sous{
+      display: block;
+    }
+  }
+
+  .sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: variables.$nav-background-color;
+    position: absolute;
+    width: 100%;
+    li{
+      float: none;
+      width: 100%;
+      text-align: left;
+    }
+    a{
+      padding: 10px;
+      border-bottom: none;
+    }
+    a:hover{
+      border-bottom: none;
+    }
+  }
+  
+  .deroulant > a::after{
+    font-size: 12px;
+  }
+}
