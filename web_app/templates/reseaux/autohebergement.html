@@ -43,10 +43,10 @@
 <div class="code">apt-get install nginx</div>
 <p>modifier le fichier etc/nginx/nginc.conf pour qu'il envoie votre site.</p>
 <pre class="code">
-http {
-# plein d'option par defaut<          
-    server {
-        <dd>server_name  votre_nom_de_domaine.truc;
+http &#123;
+# plein d'option par defaut&lt;          
+    server &#123;
+        server_name  votre_nom_de_domaine.truc;
         location / {
             proxy_pass acces_de_votre_site_en_local;
         }

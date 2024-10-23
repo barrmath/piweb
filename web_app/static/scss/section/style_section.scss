@@ -15,6 +15,7 @@ section{
     color: rgb(75, 255, 120);
     padding-left: 0.625rem;
     padding-right: 0.625rem;
+    font-size: variables.$p-size;
   }
 
 h1{
@@ -46,6 +47,7 @@ h4{
 
 p{
     color:variables.$p-color;
+    font-size: variables.$p-size;
 }
 
 a{
