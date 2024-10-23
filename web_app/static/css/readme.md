@@ -1,1 +1,1 @@
-Sass palce ici le fichier main.css
+Sass place ici le fichier main.css

@@ -86,7 +86,7 @@ def Jinja():
 
 @app.route("/web/gunicorn/", methods=["GET", "POST"])
 def Gunicorn():
-    return render_template("encours.html", menu=app.menu, page="web")
+    return render_template("web/gunicorn.html", menu=app.menu, page="web")
 
 
 @app.route("/web/podman/", methods=["GET", "POST"])

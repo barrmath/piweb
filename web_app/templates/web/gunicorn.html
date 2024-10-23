@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Gunicorn</h1>
+<h2>Pourquoi utiliser Gunicorn</h2>
+<p>
+    Lorsque vous lancez Flask avec python, il vous informe qu'il s'agit d'un serveur de test.
+</p>
+<pre class="code">
+    * Serving Flask app 'web_app'
+    * Debug mode: on
+   WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+    * Running on all addresses (0.0.0.0)
+    * Running on http://127.0.0.1:5000
+    * Running on http://192.168.1.42:5000
+   Press CTRL+C to quit
+    * Restarting with stat
+    * Debugger is active!
+    * Debugger PIN: 415-401-457
+</pre>
+<p>
+    Il faut un WSGI (Web Server Gateway Interface) qui va communiquer avec votre application python (Flask django ou autres).
+     Il est souvent utilisé avec un proxy http (<a href="https://www.nginx.org">nginx</a>, ou <a href="https://httpd.apache.org/docs/2.4/fr/programs/httpd.html">
+        apache httpd</a>).
+</p>
+<div><img src="{{ url_for('static', filename='img/web/gunicorn/nginx_gunicorn.png')}}" alt="gunicorn"></div>
+<p>
+    Ainsi, vous pouvez utiliser Gunicorn comme un serveur de production.
+</p>
+<h2>Installation</h2>
+<p>
+    Vous pouvez passer par votre gestionnaire de paquets sur Linux, ou bien par pip. Pour nos ami(e)s sous windows,
+     vous pouvez utiliser pip install <a href="https://github.com/Pylons/waitress">waitress.</a> 
+</p>
+<pre class="code">
+    pip install gunicorn
+</pre>
+<h2>Configuration et démarrage</h2>
+<p>
+    Pour lancer gunicorn, il suffit de taper la commande gunicorn avec votre app. 
+    Pour la configuration de l'app : nom_du_fichier:Nom_app ou nom_du_fichier:Appelle_fonction_creatrice() si vous êtes en app_factory.
+</p>
+<pre class="code">
+    gunicorn web_app:app
+</pre>
+<p>
+    Vous pouvez aussi utiliser l'option -w pour indiquer le nombre de workers. (souvent nombre de thread dispo +1). 
+    Vous pouvez définir vos workers avec -k WORKERCLASS aussi pour par exemple avoir des fonctions asynchrones.
+</p>
+<pre class="code">
+    gunicorn web_app:app -w 5
+</pre>
+<p>
+    Vous pouvez aussi définir un port avec -b 0.0.0.0:5000 .
+</p>
+<pre class="code">
+    gunicorn web_app:app -b 0.0.0.0:5000
+</pre>
+<p>
+    Pour moi le plus simple reste le fichier de configuration en .py pour gunicorn.
+    Par exemple le fichier conf.py :
+</p>
+<pre class="code">
+    bind = '0.0.0.0:5000'
+    workers = 5
+    wsgi_app = 'run:create_app()'
+</pre>
+<p>
+    On peux lancer gunicorn avec la commande :
+</p>
+<pre class="code">
+    gunicorn --config conf.py
+</pre>
+<h2>Conclusion</h2>
+<p>
+    Vous pouvez maintenant avoir un wsgi en production, une étape de plus avant la mise en ligne.
+    Il ne reste plus qu'à configurer nginx et faire les certificats pour le https.
+</p>
+{% endblock %}
