@@ -41,7 +41,7 @@
 
   .sous{
     display: none;
-    box-shadow: 0px 1px 2px #CCC;
+    box-shadow: 0rem 0.063rem 0.125rem #CCC;
     background-color: variables.$nav-background-color;
     position: absolute;
     width: 100%;
@@ -51,7 +51,7 @@
       text-align: left;
     }
     a{
-      padding: 10px;
+      padding: 0.625rem;
       border-bottom: none;
     }
     a:hover{
@@ -60,6 +60,6 @@
   }
   
   .deroulant > a::after{
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
