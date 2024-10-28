@@ -91,7 +91,7 @@ def Gunicorn():
 
 @app.route("/web/podman/", methods=["GET", "POST"])
 def Podman():
-    return render_template("encours.html", menu=app.menu, page="web")
+    return render_template("web/podman.html", menu=app.menu, page="web")
 
 
 ####################################################### Partie DATA  ##################################################################

@@ -1,8 +1,7 @@
-_ faire un menu pour les telephones (burger ?)
-_ réparer les erreur sur w3c validator
+# contenue
 _ faire un dossier sur Git (la base en fait )
+_ colonne ressource sur le cotès
+# ameliroation
 _ coloration synthasique
-_ fil d arianne suivant precedeant
-
-_ test echo$? pour voir pytest
+_ fil d arianne suivant precedent
 _ voir minikube dashboard
