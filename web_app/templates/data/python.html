@@ -13,8 +13,7 @@ En tant que langage interprété, (et non compilé), il a des performances en re
 <h2>Objets de base</h2>
 <h3>Les Variables</h3>
 <p>Les variables servent à stocker des valeurs dans la mémoire vive. On les déclare simplement avec un nom de variable, un signe égal, puis la valeur. Exemple :</p>
-<pre><code class="python">
-phrase = "Hello world python"
+<pre><code class="python">phrase = "Hello world python"
 version = 3
 print(phrase,version)
 print("Le type de phrase est" ,type(phrase))
@@ -35,8 +34,7 @@ print("le nouveau type de version est ", type(version))
 On la déclare entre [].</p>
 <p>On peut y placer des nombres, des chaînes de caractères , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contiennent ... </p>
 <p>Je préfère la pratique donc script d'exemple :</p>
-<pre><code class="python">
-# Creation de la liste
+<pre><code class="python"># Creation de la liste
 ma_liste = [1,2,3,4,"Leeloo",6]
 print("la liste complete : ",ma_liste)
 print("le premier element est  ", ma_liste[0])
@@ -63,8 +61,7 @@ Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href=
 <h3>Les dictionnaires</h3>
 <p>Les dictionnaires se déclarent entre {}.</p>
 I<p>Il faut les voir comme un annuaire ou un index selon moi. Exemple :</p>
-<pre><code class="python">
-# Creation du dico
+<pre><code class="python"># Creation du dico
 mes_choix = {"tux":"un manchot","d":"la reponse d","le sens de la vie":42,"sarah connor":"oui c'est moi"}
 print (mes_choix)
 print(mes_choix["tux"])    
@@ -80,8 +77,7 @@ print(mes_choix["tux"])
 <h3>Conditions</h3>
 <h4>if elif else</h4>
 <p>Let's script :</p>
-<pre><code class="python">
-# Creation du choix
+<pre><code class="python"># Creation du choix
 ailes=True
 miaou=False
 if ailes:
@@ -96,8 +92,7 @@ else:
 <p>Remarquer que le code est indexé, les espaces avant les print permettent à python de savoir que la commande est dans le if.</p>
 <h4>switch case</h4>
 <p>>Une autre façon de faire des choix, le match ou switch case.</p>
-<pre><code class="python">
-# Creation du choix
+<pre><code class="python"># Creation du choix
 bruit="gnouf"
 match bruit:
   case "ouaf":
@@ -114,8 +109,7 @@ match bruit:
 <p>On doit répéter plusieurs choses les boucles sont là.</p> 
 <h4>for</h4>
 <p>C'est la boucle d'itération, par exemple sur une liste :</p>
-<pre><code class="python">
-# Creation de la boucle avec liste
+<pre><code class="python"># Creation de la boucle avec liste
 liste_ami = ["Pierre","Fatima","Ling","Ahmed","San","Julie"]
 for ami in liste_ami:
       print("J'invite mon ami",ami,"à mon anniversaire.")
@@ -126,8 +120,7 @@ for ami in liste_ami:
 <p>Boucle de ma mère:</p>
 <p>Tant que tu n'as pas fini tes devoirs, tu n'allumes pas la console.</p>
 <p>bref lets script:</p>
-<pre><code class="python">
-# Creation de la boucle
+<pre><code class="python"># Creation de la boucle
 nb_boucle = 0
 animal ="skbdkgbdk" # j'aurait pus mettre un caratere vide mais pas envie
 while animal !="manchot":
@@ -151,8 +144,7 @@ print("nombre de reponse donnée :",nb_boucle)
 <h3>Fonctions</h3>
 <p>Vous êtes en train de coder, et vous remarquez que vous écriver la même chose dans le code.</p>
 <p>Par exemple : Vous faite le meme calcul plusieurs fois.</p>
-<pre><code class="python">
-# Creation de la fonction
+<pre><code class="python"># Creation de la fonction
 def calcul(a,b,c) :
         i=(a+b)*c
         print ("Le resultat est :",i)
@@ -179,8 +171,7 @@ Une fonction peut ne pas avoir d'arguments, ni de valeurs à retourner.</p>
 
 <h4>Recursivité</h4>
 <p>Bon, la fonction puissance existe déjà mais on va la recréer avec ce qu'on appelle la récursivité. Lets script:</p>
-<pre><code class="python">
-# Creation de la fonction puissance
+<pre><code class="python"># Creation de la fonction puissance
 def calcul_puissance(chiffre,puissance) :
   # calcul une puissance en mode recursif (que les puissance entiere positive)
   if puissance == 1:
@@ -204,8 +195,7 @@ print("resultat :", calcul_puissance(chiffre,puissance))
 <h3>Environnement local</h3>
 <p>Divers programmes utilisent python, y compris des programmes importants sous Linux. Certaines distributions utilisent le gestionnaire par défaut pip, mais de plus en plus de distributions se servent de leurs propres gestionnaires de paquets pour plus de stabilité.</p>
 <p>Éssayer d'installer un module avec pip :</p>
-<pre><code class="bash">
-pip install yolo                                                                           ✔ 
+<pre><code class="bash">pip install yolo                                                                           ✔ 
 error: externally-managed-environment
 
 × This environment is externally managed
@@ -254,7 +244,7 @@ Donc, avec ces simples commandes, vous pouvez débuter un projet, mettre le fich
 <p>Écrire pandas est trop long ? Importer la bibliothèque comme ça :<pre><code class="python">import pandas as pd</code></pre></p>
 <p>Maintenant, vous pouvez écrire :<pre><code class="python">pd.DataFrame()</code></pre></p>
 <p>Vous n'avez besoin que de la fonction DataFrame ? Pas de soucis, écrivez ceci : <pre><code class="python">from pandas import DataFrame</code></pre></p>
-<p>Création du Dataframe : <pre><code class="python"> class="code">dataframe = DataFrame()</code></pre></p>
+<p>Création du Dataframe : <pre><code class="python">class="code">dataframe = DataFrame()</code></pre></p>
 <p></p>
 <h3>Une fausse bonne idée : from pandas import *</h3>
 <p>Vous importez tout pandas sans le namespace. Du coup, vous n'avez plus besoin de taper pandas.fonction ou pd.fonction.</p>

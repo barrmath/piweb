@@ -11,13 +11,11 @@
     Mais aussi dépasser le million de lignes. 
 </p>
 <h2>Installation par pip</h2>
-<p class="code">pip install pandas</p>
+<pre><code class="bash">pip install pandas</code></pre>
 <p>
     Vous permet d'installer pandas avec pip. Il ne reste plus qu'à faire un import.    
 </p>
-<p class="code">
-    import pandas as pd
-</p>
+<pre><code class="python">import pandas as pd</code></pre>
 <p>
     Vous permet d'utiliser le namecode 'pd' au lieu de pandas, raccourci souvent utilisé par les data scientist.
 </p>
@@ -38,9 +36,9 @@
 <p>
     Vous avez les données dans un fichier. Facile la commande
 </p>
-<p class="code">pd.read_something</p>
+<pre><code class="python">pd.read_something</code></pre>
 <p>Exemple :</p> 
-<p class="code">data = pd.read_csv("mon_fichier.csv")</p>
+<pre><code class="python">data = pd.read_csv("mon_fichier.csv")</code></pre>
 <p>
     Vous permet de lire votre fichier csv et de le mettre dans un dataframe. Plus d'info dans la 
     <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">documentation</a> de pandas
@@ -75,37 +73,33 @@
 <p>Que peut-on faire avec un dataframe ? Dans la suite de cette page, je considère que vous avez un dataframe qui s'appelle data</p> 
 <h3>head/tail</h3>
 <p>Les méthodes head et tail vous permettent de voir le début et la fin d'un dataframe.</p>
-<p class="code">data.head()</p>
+<pre><code class="python">data.head()</code></pre>
 <p>Affiche les 5 premières lignes du dataframe.</p>
-<p class="code">data.tail(10)</p>
+<pre><code class="python">data.tail(10)</code></pre>
 <p>Affiche les 10 dernières lignes.</p>
 <h3>Ajout de colonne</h3>
 <p>Avant de faire cela, il faut apprendre à sélectionner les colonnes. Il existe plusieurs méthodes :</p>
-<ul>
-    <li><span class="code">"colonne"]</span> : sélectionne la colonne par son nom entre []</li>
-    <li><span class="code">data.colonne</span> : sélectionne la colonne par son nom après le .</li>
-    <li><span class="code">5:10 , 2:5]</span> : affiche les ligne 6 à 10 des colonnes 3 à 5. </li>
-    <li><span class="code">['colonnne1','colonne2']]</span> : sélection multiple</li>
-</ul>
+
+    <pre><code class="python">data["colonne"]# sélectionne la colonne par son nom entre []</code></pre>
+    <pre><code class="python">data.colonne # sélectionne la colonne par son nom après le .</code></pre>
+    <pre><code class="python">data[5:10 , 2:5] # affiche les ligne 6 à 10 des colonnes 3 à 5. </code></pre>
+    <pre><code class="python">['colonnne1','colonne2']] # sélection multiple</code></pre>
+
 <p>
     Besoin de rajouter une colonne pour faire un calcul ?
 </p>
-<p class="code">
-    data[new]=data.colonne1+data['colonne2']
-</p>
+<pre><code class="python">data[new]=data.colonne1+data['colonne2']</code></pre>
 <h3>Filtre</h3>
 <p>
     Vous ne voulez que les enfants de moins de trois ans : data[data['age']&lt;3] . 
     Décortiquons un peu le fonctionnement:</p>
-<ul>
-    <ol><span class="code">data['age']</span> : va vous sélectionner la colonne age</ol>
-    <ol><span class="code">data['age']&lt;3</span> : envoie une série de true false</ol>
-    <ol><span class="code">data[data['age']&lt;3]</span> : vous renvoie un dataframe qui ne contient que les enfants de moins de 3 ans</ol>
-</ul>
+<pre><code class="python">data['age'] # va vous sélectionner la colonne age</code></pre>
+<pre><code class="python">data['age']&lt;3 # envoie une série de true false</code></pre>
+<pre><code class="python">data[data['age']&lt;3] # vous renvoie un dataframe qui ne contient que les enfants de moins de 3 ans</code> </pre>
 <p>
     Vous pouvez continuer à compléter ce dataframe par exemple en ne voulant que les noms, prénoms, classes des enfants de moins de 3 ans.
 </p>
-<p class="code">data[data['age']&lt;3][['nom','prenom','classe']]</p>
+<pre><code class="python">data[data['age']&lt;3][['nom','prenom','classe']]</code></pre>
 <p>
     Pour une introduction à pandas, c'est pas mal. Plus de fonction dans la documentation (loc, iloc pour le tri).
 </p>
