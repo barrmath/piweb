@@ -6,6 +6,10 @@
 @use "menu/style_menu_computer.scss" ;
 @use "menu/style_menu_burger.scss" ;
 
+/* style du code */
+
+@use "code/vs2015.scss" ;
+
 /*style page */
 
 @use "pages/style_404.scss";

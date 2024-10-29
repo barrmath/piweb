@@ -1,8 +1,7 @@
 # contenue
 _ faire un dossier sur Git (la base en fait )
 _ colonne ressource sur le cotès
-# ameliroation
-_ coloration synthasique sur reseaux et web
+# amelioration
 _ insertion css highlight dans le scss
 _ fil d arianne suivant precedent
 _ voir minikube dashboard
