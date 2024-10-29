@@ -5,17 +5,17 @@
 <h1>Monitoring</h1>
 <p>Pour surveiller le raspberry pi je vais utiliser le combo <a href="https://prometheus.io/">prometheus</a> + <a href="https://grafana.com/">grafana.</a></p>
 <h2>1) Prometheus : installation et configuration.</h2>
-<p>Prometheus est présent dans les dépôts de rasbian, du coup : </p><pre class="code">apt-get install prometheus</pre>
-<p>Il faut bien penser à demarrer le service :</p> <pre class="code">systemctl enable prometheus</pre>
-<p>et vérifier son status</p> <pre class="code">systemcl status prometheus</pre>
+<p>Prometheus est présent dans les dépôts de rasbian, du coup : </p><pre><code class="bash">apt-get install prometheus</code></pre>
+<p>Il faut bien penser à demarrer le service :</p> <pre><code class="bash">systemctl enable prometheus</code></pre>
+<p>et vérifier son status</p> <pre><code class="bash">systemcl status prometheus</code></pre>
 <p>La sortie devrait ressembler à ça :</p>
-<pre class="code"> systemctl status prometheus
+<pre><code class="bash">systemctl status prometheus
     ● prometheus.service - Monitoring system and time series database
             Loaded: loaded (/lib/systemd/system/prometheus.service; enabled; preset: enabled)
             Active: active (running) since Sun 2024-08-25 19:28:48 BST; 1 week 1 day ago
             Docs: https://prometheus.io/docs/introduction/overview/
                     man:prometheus(1)
-</pre>
+</code></pre>
 <p>Pour vérifier le fonctionnement de prometheus vous pouvez regarder avec un navigateur internet : adresse du serveur:9090/</p><p></p>
 <div><img src="{{ url_for('static', filename='img/monitoring/prometheus.png')}}" alt="prometheus webpage"></div>
 <p>Amusez-vous avec, faites des graphes, des alarmes en fonction de ce que vous voulez surveiller.</p>    
@@ -30,12 +30,13 @@
 <p>Pour les autres, grafana est dispo dans les dépôts de Debian, Fedora et Manjaro (votre distribution doit certainement l'avoir.)</p>
 <p>Pour les non-anglophones voilà la procèdure:</p>
 <ul>
-    <li>Ajouter une clé de dépôt:<div class="code">sudo mkdir -p /etc/apt/keyrings/<br>
-    wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null</div></li>
-    <li>Ajouter le dépôt de grafana <div class="code">echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list</div></li>
-    <li>Installer grafana à partir du dépôt : <div class="code">sudo apt-get update<br>sudo apt-get install -y grafana</div></li>
-    <li>Activer le service<div class="code">sudo systemctl enable grafana-server</div></li>
-    <li>Démarrer le service<div class="code">sudo systemctl start grafana-server</div></li>
+    <li>Ajouter une clé de dépôt:<pre><code class="bash">sudo mkdir -p /etc/apt/keyrings/
+    wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null</code></pre></li>
+    <li>Ajouter le dépôt de grafana <pre><code class="bash">echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list</code></pre></li>
+    <li>Installer grafana à partir du dépôt : <pre><code class="bash">sudo apt-get update
+sudo apt-get install -y grafana</code></pre></li>
+    <li>Activer le service<pre><code class="bash">sudo systemctl enable grafana-server</code></pre></li>
+    <li>Démarrer le service<pre><code class="bash">sudo systemctl start grafana-server</code></pre></li>
 </ul>
 <p>Vous n'avez plus qu'à taper l'adresse de votre serveur et ajouter le port 3000.</p>
 <p>Alors l´identifiant par défaut sont admin mot de passe admin. (Je vous conseille de changer.)</p><p></p>
