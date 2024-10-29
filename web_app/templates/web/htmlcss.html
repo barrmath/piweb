@@ -23,8 +23,7 @@
 </ul>
 <p></p>
 <p>Ouvrez un éditeur de code, copier/coller le code en dessous et sauvegarder avec une extension .html.</p>
-<xmp class="code">
-<!DOCTYPE html>
+<pre><code class="HTML"><xmp><!DOCTYPE html>
 <html lang="">
   <head>
     <meta charset="utf-8">
@@ -36,12 +35,12 @@
     <footer></footer>
   </body>
 </html>
-</xmp>
+</xmp></code></pre>
 <p>Ensuite, ouvrez le fichier avec votre navigateur.</p>
 <div><img src="{{ url_for('static', filename='img/web/hello_html.png')}}" alt="Hello World"></div>
 <p>Félicitation, vous voilà développeur.</p>
 <p>Analysons un peu le code. On voit des balises ouvrantes &lt; mot > et fermantes &lt; /mot >.</p>
-<p>La première balise </p><xmp class="code"><!DOCTYPE html></xmp><p> indique simplement qu'il s'agit d'une page HTML.</p>
+<p>La première balise </p><pre><code class="HTML"><xmp class="code"><!DOCTYPE html></xmp></code></pre><p> indique simplement qu'il s'agit d'une page HTML.</p>
 <p>La deuxième balise ouvre le code et vous pouvez indiquer une langue.</p> 
 <p>Ensuite la balise head permet d'afficher des choses en dehors de la page comme le titre en haut. Et vous pouvez mettre des metadonnées grâce à la balise meta</p>
 <p>charset="utf-8" permet de spécifier le jeu de caractère utilisé. (à ne pas confondre avec la police)</p>
@@ -56,29 +55,27 @@
 <p>Malgrè les balises HTML, vous trouver que votre page manque de couleur, vous voudrez avec plus de choix en placement. Le CSS est fait pour ça.</p>
 <h2>Le CSS</h2>
 <p>Il faut lier le fichier CSS dans la page internet.</p>
-<xmp class="code"><link href="style_base.css" rel="stylesheet"></xmp>
+<pre><code class="HTML"><xmp><link href="style_base.css" rel="stylesheet"></xmp></code></pre>
 <p>Maintenant regardons ce que fait ce fichier,</p>
 <p>Prenons par exemple la partie footer du css de ce site (qui auras peut-être changer entre 2) :</p>
-<xmp class="code">
-footer{
+<pre><code class="CSS"><xmp>footer{
 background-color: #333;
 padding-bottom: 100%;
 border-top:solid #8fd9fc;
-}</xmp>
+}</xmp></code></pre>
 <p>Vous avez donc le nom de la balise à modifier des accolades puis des attributs (n'oubliez pas le ";" à la fin).</p>
 <p>Ici, le fond est noir, on prend toute la place en bas (bottom) et on crée une ligne "solid" avec son code couleur.</p>
 <p>Si vous avez plusieurs balises mais que vous ne voulez pas avoir le même comportement pas de soucis.</p><p>
 <p>Ajouter class="nom" (si vous avez plusieurs balises à modifier) ou id="nom"(pour une seule balise)</p>
-<p>Par exemple :</p><xmp class="code"><pre class="Code">blablabla</pre></xmp>
+<p>Par exemple :</p><pre><code class="HTML"><xmp><pre class="Code">blablabla</pre></xmp></code></pre>
 <p>et la partie CSS suivante :</p>
-<xmp class="code">
-.code{
+<pre><code class="CSS"><xmp>.code{
 background-color: #000;
 color: rgb(75, 255, 120);
 padding-left: 10px;
 padding-right: 10px;
 }
-</xmp>
+</xmp></code></pre>
 <p>La différence : le point . avant le nom indique une classe ou une id.</p>
 <p>Vous voilà développeur front-end. (enfin presque).</p>
 <p>Plus de fonctionnalité de CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">ici.</a></p>
