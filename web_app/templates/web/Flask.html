@@ -19,7 +19,7 @@ Il a une approche opposée à Django qui est clé en main.</p>
 <h3>FastAPI</h3>
 <p>Très ressemblant à Flask, il apporte des ajouts qui peuvent intéresser les développeurs. Un article les comparants se trouve <a href="https://www.pythoniste.fr/python/fastapi/les-differences-entre-les-frameworks-flask-et-fastapi/">ici</a>.</p>
 <h2>Installation de l'environnement</h2>
-<div class="code">pip install flask</div>
+<pre><code class="bash">pip install flask</code></pre>
 <p> Il faudra peut être faire d'autres installations par la suite. Mais le simple flask suffit pour commencer.</p>
 <h2>Utilisation</h2>
 <p>Il y a deux utilisations type. Une première où vous créer une application. La deuxième ou vous créer une fonction qui fabrique l'application. (create factory).</p>
@@ -29,29 +29,26 @@ Il a une approche opposée à Django qui est clé en main.</p>
 <p>On peut tout mettre dans un seul fichier avec Flask.</p>
 <p>Mais disons simplement que c'est rapidement le bordel avec une application un peu trop grosse. Je conseille donc de faire au minimum une arborescence.</p>
 <p>Mon application est architecturée comme cela :</p>
-<pre>
-.
-├── README.md                        Un fichier readme qui décris l'application et la mise en œuvre.
-├── requirements. txt                Un fichier qui liste les paquets python nécessaires
-├── run.py                           Le fichier de lancement de l'application
-└── web_app                          Le dossier qui contient l'application
-    ├── __init__.py                  Le fichier init pour créer un module python
-    ├── static                       Le dossier static pour les fichiers statiques (CSS, images, ...)
-    ├── templates                    Le dossier templates pour les templates html
-    └── views.py                     Le fichier qui vous permet de configurer les routes
-</pre>
+<pre><code class="python">.
+├── README.md                        # Un fichier readme qui décris l'application et la mise en œuvre.
+├── requirements. txt                # Un fichier qui liste les paquets python nécessaires
+├── run.py                           # Le fichier de lancement de l'application
+└── web_app                          # Le dossier qui contient l'application
+    ├── __init__.py                  # Le fichier init pour créer un module python
+    ├── static                       # Le dossier static pour les fichiers statiques (CSS, images, ...)
+    ├── templates                    # Le dossier templates pour les templates html
+    └── views.py                     # Le fichier qui vous permet de configurer les routes
+</code></pre>
 <p>Commençons par le fichier de lancement.</p>
 <h3>run.py</h3>
 <p>Le fichier de lancement d'une application flask.</p>
-<xmp class="code">
-from web_app import create_app
-
+<pre><code class="python">from web_app import create_app
 
 if __name__ == "__main__":
     # après verification, Gunicorn ne passe pas par la et se mets par defaut en debug=false
     app = create_app()
     app.run(debug=True, host="0.0.0.0", port=5000)
-</xmp>
+</code></pre>
 <p>On importe du module la fonction créatrice.</p>
 <p>if __name__ == "__main__":  permet d'exécuter les lignes indexées en dessous que si le fichier est exécuté par python.</p>
 <p>Ainsi, vous pouvez activer le debug mode dans ce fichier run, mais si vous utilisez un serveur de production, le mode debug ne seras pas actif. Vous pouvez tester, on n'est jamais trop sûr.</p>
@@ -65,8 +62,7 @@ if __name__ == "__main__":
 </ul>
 <h3>__init__.py</h3>
 <p>On va modifier ce fichier pour créer la fonction créatrice.</p>
-<xmp class="code">
-from flask import Flask
+<pre><code class="python">from flask import Flask
 
 
 def create_app():
@@ -80,13 +76,12 @@ def create_app():
         import web_app.views
 
     return app
-</xmp>
+</code></pre>
 <p>Vous pouvez ajouter un fichier config.py pour configurer une base de données, des clés d'accès à des services ...</p>
 <p>Attention, protéger bien vos clés et mots de passe. Pensez variables d'environnements, et utiliser le gitignore si vous avez un fichier avec des secrets.</p>
 <h3>views.py</h3>
 <p>Il définit les routes utilisées par l'application.</p>
-<xmp class="code">
-# import bibliothèque flask et création application flask
+<pre><code class="python"># import bibliothèque flask et création application flask
 from flask import render_template, request, current_app, send_from_directory
 
 app = current_app
@@ -100,7 +95,7 @@ def static_from_root():
 @app.route("/index/", methods=["GET", "POST"])
 def Accueil():
     return render_template("index.html",liste_categorie=liste_categorie,categorie=liste_categorie[0])
-</xmp>
+</code></pre>
 <p>On crée l'application et on définit les routes ici.</p>
 <p>Vous avez un premier exemple avec le fichier <a href="https://robots-txt.com/">robots.txt</a>.</p>
 <p>Vous en avez un deuxième avec la page index.</p>
@@ -112,33 +107,27 @@ def Accueil():
 <p>Mais imaginons que j'ai plein de code qui se répète dans toutes les pages html.</p>
 <p>Par exemple, le fameux doctype et autre : pour éviter de tout recopier sur chaque page, autant écrire une base et demander à flask/jinja d'étendre la page html.</p>
 <p>Exemple de fichier de base :</p>
-<div class="code">
-    <xmp class="code">
-<!DOCTYPE html>
+<pre><code class="HTML"><xmp><!DOCTYPE html>
 <html lang="fr">
     <head>
-    <meta charset="utf-8">
-    </xmp>
-<pre class="code">&#123;% block content %&#125;&#123;% endblock %&#125;</pre>
-    <xmp class="code">
+    <meta charset="utf-8"></xmp>
+<pre>&#123;% block content %&#125;&#123;% endblock %&#125;</pre>    <xmp>
     </head>
-</html>
-    </xmp>
-</div>
+</html></xmp>
+</code></pre>
 <p>Fichier qui utilise la base :</p>
-<pre class="code">
-    &#123;% extends 'base.html' %&#125;
+<pre><code class="HTML">&#123;% extends 'base.html' %&#125;
 
-    &#123;%block content %&#125;
-    contenu de la page
-    &#123;% endblock %&#125;
-</pre>
+&#123;%block content %&#125;
+contenu de la page
+&#123;% endblock %&#125;
+</code></pre>
 <p>Et voilà plus besoin de recopier le docktype partout. Vous pouvez bien sûr ajouter d'autre block que content comme footer ou autre en fonction de votre projet.</p>
 <p>Et on peut encore aller plus loin.</p>
 <p>Par exemple dans ma page base/html :</p>
 <div><img src="{{ url_for('static', filename='img/flask/topnav.png')}}" alt="trop dur de faire en code"></div>
 <p>La topbar est créée à partir d'une liste, et d'une catégorie envoyée par flask. Rappelez-vous de la fonction :</p>
-<xmp class="code">return render_template("index.html",liste_categorie=liste_categorie,categorie=liste_categorie[0])</xmp>
+<pre><code class="python">return render_template("index.html",liste_categorie=liste_categorie,categorie=liste_categorie[0])</code></pre>
 <h2>Pour aller plus loin SQL alchemy, login</h2>
 <p>Besoin d'une base de données :https://www.sqlalchemy.org/</p>
 <p>Je conseille d'utiliser des variables d'environnement et un fichier config.py.</p>
@@ -146,18 +135,17 @@ def Accueil():
 <p>Le fichiers views.py commence à prendre de l'embonpoint. Diviser le avec les blueprints</p>
 <h2>Serveur de développement,gunicorn et serveur web</h2>
 <p>Votre site est prêt, il est temps de tester. Lancer juste votre fichier run.py avec python.</p>
-<xmp class="code">
-    python run.py                                                                                 ✔ 
-    * Serving Flask app 'web_app'
-    * Debug mode: on
-   WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
-    * Running on all addresses (0.0.0.0)
-    * Running on http://127.0.0.1:5000
-   Press CTRL+C to quit
-    * Restarting with stat
-    * Debugger is active!
-    * Debugger PIN: 330-144-452
-</xmp>
+<pre><code class="bash">python run.py                                                                                 ✔ 
+* Serving Flask app 'web_app'
+* Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+* Running on all addresses (0.0.0.0)
+* Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 330-144-452
+</code></pre>
 <p>Le serveur inclus dans Flask n'est pas prévu pour de fortes charges.</p>
 <p>Il faut utiliser un <a href="https://perso.liris.cnrs.fr/pierre-antoine.champin/2017/progweb-python/cours/cm1.html">WSGI</a>, par exemple Gunicorn (pip install gunicorn).
 Il faudra ensuite associer Gunicorn à un serveur web (apache ou nginx par exemple).</p>
