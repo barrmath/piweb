@@ -40,10 +40,9 @@
 <p>En cas de soucis,vous pouvez trouver un tuto <a href="http://nginx.org/en/docs/beginners_guide.html">ici.</a></p>
 <p></p>
 <p>La commande pour l'installer est simple :</p>
-<div class="code">apt-get install nginx</div>
+<pre><code class="bash">apt-get install nginx</code></pre>
 <p>modifier le fichier etc/nginx/nginc.conf pour qu'il envoie votre site.</p>
-<pre class="code">
-http &#123;
+<pre><code class="yaml">http &#123;
 # plein d'option par defaut&lt;          
     server &#123;
         server_name  votre_nom_de_domaine.truc;
@@ -53,26 +52,23 @@ http &#123;
 
         #error_page  404              /404.html;
         listen 80; #port d'ecoute de nginx
-</pre>
+</code></pre>
 <p>Maintenant, il faut démarrer Nginx et le mettre en enable sur systemd.</p>
-<div class="code">
-    systemcl enable nginx<br>
-    systemctl start nginx<br>
-    systemctl status nginx<br>
-</div>
+<pre><code class="bash">systemctl enable nginx
+systemctl start nginx
+systemctl status nginx
+</code></pre>
 <p>Le status devrait indiquer ceci :</p>
-<pre class="code">
-    ● nginx.service - A high performance web server and a reverse proxy server
-    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
-    Active: active (running) since Sun 2024-08-25 21:46:39 BST; 1 week 0 days ago
-</pre>
+<pre><code class="bash">● nginx.service - A high performance web server and a reverse proxy server
+Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
+Active: active (running) since Sun 2024-08-25 21:46:39 BST; 1 week 0 days ago
+</code></pre>
 <p>Maintenant que le site est en local avec Nginx il suffit de trouver l'adresse IP de votre Serveur.</p>
 <p>Plusieurs options s'offrent à vous :</p>
 <p>
     Une commande depuis un terminal du serveur:
 </p>
-<pre class="code">
-foo@bar: ip address
+<pre><code class="bash">foo@bar: ip address
 2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether XX:XX:XX:XX:XX:XX brd XX:XX:XX:XX:XX:XX
     inet XXX.XXX.XXX.XXX/XXX brd XXX.XXX.XXX.XXX scope global dynamic noprefixroute eth0
@@ -81,14 +77,14 @@ foo@bar: ip address
         valid_lft 86229sec preferred_lft 86229sec
     inet6 XXXX:XXXX:XXXX:XXXX:XXXX:XXXX/XX scope link noprefixroute 
         valid_lft forever preferred_lft forever
-</pre>
+</code></pre>
     <p>Pour les anciennes versions :</p>
-<pre class="code">foo@bar: ifconfig
+<pre><code class="bash">foo@bar: ifconfig
     eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
     inet xxx.xxx.xxx.xxx  netmask xxx.xxx.xxx.xxx  broadcast xxx.xxx.xxx.xxx
     inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xx  scopeid xxxxxx&lt;global>
     inet6 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx  prefixlen xxxx  scopeid xxxxx&lt;link>
-</pre>
+</code></pre>
 <p>dans le routeur :</p>
     <div><img src="{{ url_for('static', filename='img/autohebergement/freeboxosIPPI.png') }}" alt="Freebox IP du serveur"></div>
 

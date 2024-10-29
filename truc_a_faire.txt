@@ -2,6 +2,7 @@
 _ faire un dossier sur Git (la base en fait )
 _ colonne ressource sur le cotès
 # ameliroation
-_ coloration synthasique
+_ coloration synthasique sur reseaux et web
+_ insertion css highlight dans le scss
 _ fil d arianne suivant precedent
 _ voir minikube dashboard
