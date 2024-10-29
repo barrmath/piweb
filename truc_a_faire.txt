@@ -9,3 +9,4 @@ _ voir minikube dashboard
 _ mettre transparence sur certificat  et auto hebergement
 _ mettre une marge sur le menu changer l'accueil
 _ mettre coordonné dans about
+_ colorisation dans flask une image est rester la viré
