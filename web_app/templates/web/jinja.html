@@ -16,38 +16,30 @@
 <p>Dans la page <a href={{ url_for('Flask') }}>Flask</a>, on a déjà vu comment répliquer le code d'une page HTML.</p>
 <p>Pour rappel :</p>
 <p>Exemple de fichier de base :</p>
-<div class="code">
-    <xmp class="code">
-<!DOCTYPE html>
+<pre><code class="HTML"><xmp><!DOCTYPE html>
 <html lang="fr">
     <head>
     <meta charset="utf-8">
-    </xmp>
-<pre class="code">&#123;% block content %&#125;&#123;% endblock %&#125;</pre>
-    <xmp class="code">
+    </xmp><pre>&#123;% block content %&#125;&#123;% endblock %&#125;</pre><xmp>
     </head>
 </html>
-    </xmp>
-</div>
+    </xmp></code></pre>
 <p>Fichier qui utilise la base :</p>
-<pre class="code">
-    &#123;% extends 'base.html' %&#125;
-
-    &#123;%block content %&#125;
-    contenu de la page
-    &#123;% endblock %&#125;
-</pre>
+<pre><code class="HTML"><pre>&#123;% extends 'base.html' %&#125;</pre>
+<pre>&#123;%block content %&#125;</pre>
+<pre>contenu de la page</pre>
+ <pre>&#123;% endblock %&#125;</pre>
+</code></pre>
 <p>Vous aurez besoin d'utiliser des objets dans les templates. Voyons voir comment faire.</p>
 <h2>Les objets dans jinja2</h2>
 <h3>Les variables</h3>
 <p>Vous connaissez les variables en python ? Oui, cela tombe bien Jinja2 utilise plus ou moins les mêmes.</p>
 <p>Déclaration de variables :</p>
-<div class="code">
-    &#123;% set testing = 'it worked' %&#125;<br>
-    &#123;% set another = testing %&#125;
-</div>
+<pre><code class="HTML"><pre>&#123;% set testing = 'it worked' %&#125;</pre>
+<pre>&#123;% set another = testing %&#125;</pre>
+</code></pre>
 <p>Vous pouvez envoyer des variables à partir du routage avec la commande render_template().</p>
-<div class="code">render_template("web/jinja.html",menu=menu)</div>
+<pre><code class="python">render_template("web/jinja.html",menu=menu)</code></pre>
 <h3>Les listes et autres objets standards python</h3>
 <p>Des petites variables, c'est sympa, mais vous pouvez aussi envoyer des dictionnaires, des listes et des tuples avec la commande render_tempplate().</p>
 <p>Même des <a href="https://datacorner.fr/jinja-amis-des-pandas/">dataframes</a> peuvent être utilisé par Jinja2.</p>
@@ -57,28 +49,24 @@
 <h3>Les conditions</h3>
 <p>Vous pouvez vouloir afficher ou non un objet en fonction d'une variable. (souvent utiliser pour les logins pour afficher le bouton se connecter ou se déconnecter par exemple).</p>
 <p>Il suffit tout simplement d'utiliser la commande if :</p>
-<pre class="code">
-&#123;% if truc == "machin" %&#125;
+<pre><code class="HTML">&#123;% if truc == "machin" %&#125;
     Il y a machin dans truc
 &#123;% elif truc == "bidule" %&#125;
-    Le truc c'est un bidule en fait
+    Le truc c est un bidule en fait
 &#123;% else %&#125;
     Le truc est un chimilibilil blick 
 &#123;% endif %&#125;
-</pre>
+</code></pre>
 <h3>Les boucles for</h3>
 <p>Vous envoyez des listes ou des tuples dans Jinja2, c'est bien pour les utiliser. En python, on va utiliser la boucle for dans ce cas-là. En jinja2 aussi.</p>
-<pre class="code">
-&#123;% for row in rows %&#125;
-     &#123;&#123; row &#125;&#125;
-&#123;% endfor %&#125;
-</pre>
+<pre><code class="HTML">&#123;% for row in rows %&#125;
+    &#123;&#123; row &#125;&#125;
+&#123;% endfor %&#125;</code></pre>
 <p>Vous pouvez aussi mettre une condition directement dans la boucle par exemple si les utilisateurs veulent être cachés :</p>
-<pre class ="code">
-&#123;% for user in users if not user.hidden %&#125;
+<pre><code class="HTML">&#123;% for user in users if not user.hidden %&#125;
     &#123;&#123; user.username|e &#125;&#125;
 &#123;% endfor %&#125;
-</pre>
+</code></pre>
 
 <p>Pour plus d'informations la <a href="https://jinja.palletsprojects.com/en/2.10.x/templates/#list-of-control-structures">Doc officielle de jinja2.</a></p>
 
