@@ -79,12 +79,11 @@
     Les commandes Docker et Podman sont quasi identiques, il suffit de remplacer podman par docker et vice-versa.
     Pour contruire une image, on utilise la commande :
 </p>
-<div class="code">podman -f fichier_docker -t nom_image .</div>
+<pre><code class="bash">podman -f fichier_docker -t nom_image .</code></pre>
 <p>
     Vous allez créer localement une image avec la configuration incluse dans le fichier_docker. Par exemple :
 </p>
-<pre class="code">
-# image de base
+<pre><code class="yaml"># image de base
 FROM alpine:latest
 ENV VIRTUAL_ENV=/opt/venv
 # on copie l'app
@@ -101,7 +100,7 @@ RUN npm install -g sass && sass web_app/static/scss/main.scss web_app/static/css
 # on lance le serveur flask
 EXPOSE 5000
 CMD gunicorn -c gunicorn.conf.py
-</pre>
+</code></pre>
 <p>
     On commence avec une image de base (FROM) puis on ajoute des commandes (RUN) et des instructions (CMD).
     On peut aussi ajouter des variables d'environnement (ENV) et des ports d'exposition (EXPOSE).
@@ -115,15 +114,15 @@ CMD gunicorn -c gunicorn.conf.py
 <p>
     Sous podman crée un pod avec la commande (on l'utilisera par la suite) :
 </p>
-<div>podman pod create mypod</div>
+<pre><code class="bash">podman pod create mypod</code></pre>
 <p>
     Une fois l'image conStruite, vous pouvez lancer un container avec la commande :
 </p>
-<div class="code">podman run -d -p 5000:5000 nom_image</div>
+<pre><code class="bash">podman run -d -p 5000:5000 nom_image</code></pre>
 <p>
     Si vous avez créé un pod lancer le conteneur avec la commande :
 </p>
-<div class="code">podman run -d --pod mypod -p 5000:5000 nom_image</div>
+<pre><code class="bash">podman run -d --pod mypod -p 5000:5000 nom_image</code></pre>
 <ul>
     <li>-d : lance le container "en arrière plan."</li>
     <li>--pod mypod : lancer le container dans le pod mypod</li>
@@ -158,16 +157,16 @@ Vous pouvez maintenant lancer vos containers et configurer un réseau entre eux 
 <p>
     Lancez la commande :
 </p>
-<div class="code">podman kube generate Nom_du_pod -f mon_pod.yml</div>
+<pre><code class="bash">podman kube generate Nom_du_pod -f mon_pod.yml</code></pre>
 <p>
     Cela va générer un fichier mon_pod.yml contenant la configuration du pod.
 </p>
 Pour lancer le pod : 
-<div class="code">podman play kube mon_pod.yml</div>
+<pre><code class="bash">podman play kube mon_pod.yml</code></pre>
 <p>
     Vous pouvez modifier les images des containers et les reconstruire. Pour mettre à jour le pod :
 </p>
-<div class="code">podman play kube mon_pod.yml --replace</div>
+<pre><code class="bash">podman play kube mon_pod.yml --replace</code></pre>
 Voilà très rapidement une explication de Podman.
 
 {% endblock %}
