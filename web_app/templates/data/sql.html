@@ -32,8 +32,7 @@
 <h3>Installation</h3>
 <p>Pour les Debian et autre Linux on peut passer par apt : apt-get install mariadb-serveur</p>
 <p>On peut aussi passer par docker/podman compose avec par exemple ce fichier docker-compose.yml (à ne pas utiliser en production merci) :</p>
-<xmp class="code">
-version: "3.9"
+<pre><code class="YAML">version: "3.9"
 volumes:
   data:
 services:
@@ -48,9 +47,9 @@ services:
       - data:/var/lib/mysql
     ports:
       - "3306:3306"
-</xmp>
-<p>Et on lance avec la commande :</p><div class="code">podman-compose up -d</div>
-<p>La commande : </p><div class="code">podman-compose down</div> <p>pour fermer MariaDb. </p>
+</code></pre>
+<p>Et on lance avec la commande :</p><pre><code class="bash">podman-compose up -d</code></pre>
+<p>La commande : </p><pre><code class="bash">podman-compose down</code></pre> <p>pour fermer MariaDb. </p>
 <p>J'utilise <a href="https://dbeaver.io/">Dbeaver</a> pour communiquer facilement avec des bases de données. La version community suffit pour MariaDB.</p>
 <p>Il faudra certainement installer un connecteur (ici jdbc). Configurons maintenant la connexion à votre base de données locale :</p>
 <p>Cliquer sur base de données puis sur nouvelle connexion</p>
@@ -95,7 +94,7 @@ services:
 <p>Personnellement, je les utilise sois pour faire du dévelopement (site web, script automatique), sois pour faire un tableau du bord (grafana, powerBI, ...).</p>
 <p>Commençons par une première requête pour voir.</p>
 <p>Cliquer sur la base de données puis selectionner nouveau script. (ça permet de selectionner la base de données, sinon utilise USE DATABASE dans le script).</p>
-<div class="code">SELECT prenom FROM Clients;</div>
+<pre><code class="sql">SELECT prenom FROM Clients;</code></pre>
 <p>Cliquer sur les fléches pour exécuter la requête une sortie devrait apparaître en bas.</p>
 <div><img src="{{ url_for('static', filename='img/SQL/requete1.png')}}" alt="requete1"></div>
 <p>Analysons la requête :</p>
@@ -109,13 +108,12 @@ services:
 <p>Si les clés fonctionnent, DBeaver vous donne un aperçu dans le diagramme ER:</p>
 <div><img src="{{ url_for('static', filename='img/SQL/diagramme.png')}}" alt="diagramme ER"></div>
 <p>Donc taper dans le script et exécuter:</p>
-<pre class="code">
-SELECT * FROM achat 
+<pre><code class="sql">SELECT * FROM achat 
 JOIN Clients ON BDD_a_moi.Clients.IdClient = BDD_a_moi.achat.idClient;
-</pre>
+</code></pre>
 <div><img src="{{ url_for('static', filename='img/SQL/requete2.png')}}" alt="requete2"></div>
 <p>Vous ne voulez que les achats de poissons ?</p>
-<p>Rajouter </p><div class="code">WHERE produit = "poisson"</div>
+<p>Rajouter </p><pre><code class="sql">WHERE produit = "poisson"</code></pre>
 <div><img src="{{ url_for('static', filename='img/SQL/requete3.png')}}" alt="requete3"></div>
 <p>Il existe d'autres fonctions en SQL pour aller plus loin, je vous conseille le site <a href="https://sql.sh/">https://sql.sh/</a></p><p>
 <h2>Conclusion</h2>
