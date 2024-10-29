@@ -7,13 +7,13 @@
 Il peut servir pour faire de la data science, du web, des scripts pour les administrateurs, ... Bref, il est assez polyvalent.
 En tant que langage interprété, (et non compilé), il a des performances en retrait par rapport à du C par exemple.</p>
 <p>Il a comme avantage d'être simple, et relativement intuitif.</p>
-<p>Pour faire un script python, crée un fichier texte avec votre éditeur favori (extension .pi en général). Pour lancer le script :</p><div class="code">python nom_du_script.pi</div>
+<p>Pour faire un script python, crée un fichier texte avec votre éditeur favori (extension .pi en général). Pour lancer le script :</p><pre><code class="bash">python nom_du_script.pi</code></pre>
 <p>On va voir les objets de base de python, les fonctions simples de python, puis la gestion des bibliothèques et des environnements python.</p> 
 
 <h2>Objets de base</h2>
 <h3>Les Variables</h3>
 <p>Les variables servent à stocker des valeurs dans la mémoire vive. On les déclare simplement avec un nom de variable, un signe égal, puis la valeur. Exemple :</p>
-<xmp class="code">
+<pre><code class="python">
 phrase = "Hello world python"
 version = 3
 print(phrase,version)
@@ -21,7 +21,7 @@ print("Le type de phrase est" ,type(phrase))
 print ("le type de version est" ,type(version))
 version = float(version)
 print("le nouveau type de version est ", type(version))
-</xmp>
+</code></pre>
 <p>En testant ce script vous pouvez observer que vous pouvez changer de type de variable en cours de programme.</p>
 <p>Les différents type en python sont :</p><ul>
   <li>Bool : un 0 ou 1, vrais faux</li>
@@ -35,7 +35,7 @@ print("le nouveau type de version est ", type(version))
 On la déclare entre [].</p>
 <p>On peut y placer des nombres, des chaînes de caractères , ... Et même des listes, qui contiennent des listes, qui contiennent des listes, qui contiennent ... </p>
 <p>Je préfère la pratique donc script d'exemple :</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation de la liste
 ma_liste = [1,2,3,4,"Leeloo",6]
 print("la liste complete : ",ma_liste)
@@ -51,8 +51,7 @@ ma_liste.remove(7)
 print("la liste contient maintenant", len(ma_liste),"éléments")
 print("la liste complete : ",ma_liste)
 ma_liste.pop(4)
-print("la liste complete : ",ma_liste)    
-</xmp>
+</code></pre>
 <p>Les listes contiennent des méthodes pour rajouter des éléments, ou en enlever.
 Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html">doc</a>.</p>
 
@@ -64,16 +63,16 @@ Il existe plein de fonctions sur les listes que vous pouvait trouver la <a href=
 <h3>Les dictionnaires</h3>
 <p>Les dictionnaires se déclarent entre {}.</p>
 I<p>Il faut les voir comme un annuaire ou un index selon moi. Exemple :</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation du dico
 mes_choix = {"tux":"un manchot","d":"la reponse d","le sens de la vie":42,"sarah connor":"oui c'est moi"}
 print (mes_choix)
 print(mes_choix["tux"])    
-</xmp>
+</code></pre>
 <p>Vous pouvez essayer avec d'autres clés.("tux" est une clé ici comme "d" ou "sarah connor"). </p>
 <p>Vous avez une clé, en entrant la clé, le dictionnaire vous donne une valeur.</p>
 <p>Vous trouverez les dictionnaires pour faires des conditions multiples (le switch étant arrivé avec python 3.10). Mais il peut être utile pour par exemple traduire des couleurs. Exemple :</p>
-<div class="code">couleurs={'blue':#0000FF,"red":#FF0000,"green":#0000FF,"taupe":"it an animal not a fucking color"}</div>
+<pre><code class="python">couleurs={'blue' : '#0000FF' , 'red' : '#FF0000' , 'green' : '#0000FF', "taupe" : "it an animal not a fucking color"}</code></pre>
 <p>La doc des dicos est <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">ici.</a></p>
 <h2>Conditions, Boucles, Fonctions</h2>
 <p>Le scripts commence en haut et finit en bas. Mais quelquefois, il est intéressant de changer les instructions ou de les répéter. On utilise pour cela les conditions, les boucles et les fonctions.</p>
@@ -81,7 +80,7 @@ print(mes_choix["tux"])
 <h3>Conditions</h3>
 <h4>if elif else</h4>
 <p>Let's script :</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation du choix
 ailes=True
 miaou=False
@@ -91,13 +90,13 @@ elif miaou:
       print("c'est un chat")
 else:
       print("c'est un chien")
-</xmp>
+</code></pre>
 <p>On peut changer l'état des ailes, du miaou. En fonction, on va sélectionner la commande que l'on veut.</p>
 <p>On peut aussi mettre plusieurs elif en cas de besoin.</p>
 <p>Remarquer que le code est indexé, les espaces avant les print permettent à python de savoir que la commande est dans le if.</p>
 <h4>switch case</h4>
 <p>>Une autre façon de faire des choix, le match ou switch case.</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation du choix
 bruit="gnouf"
 match bruit:
@@ -109,25 +108,25 @@ match bruit:
         print("c'est un oiseau")
   case _:
       print("c'est un pingouin")    
-</xmp>
+</code></pre>
 <p>En fonction de la valeur de bruit, on va répondre ce qu'il y a dans les cases. Si aucune case ne correspond, on utilise la case _</p>
 <h3>Boucles</h3>
 <p>On doit répéter plusieurs choses les boucles sont là.</p> 
 <h4>for</h4>
 <p>C'est la boucle d'itération, par exemple sur une liste :</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation de la boucle avec liste
 liste_ami = ["Pierre","Fatima","Ling","Ahmed","San","Julie"]
 for ami in liste_ami:
       print("J'invite mon ami",ami,"à mon anniversaire.")
-</xmp>
+</code></pre>
 <p>On met le premier élément de la liste dans ami, on fait les actions, puis le deuxième ... </p>
 <h4>while</h4>
 <p>Souvent traduit par les professeurs par "tant que".</p>
 <p>Boucle de ma mère:</p>
 <p>Tant que tu n'as pas fini tes devoirs, tu n'allumes pas la console.</p>
 <p>bref lets script:</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation de la boucle
 nb_boucle = 0
 animal ="skbdkgbdk" # j'aurait pus mettre un caratere vide mais pas envie
@@ -144,7 +143,7 @@ while animal !="manchot":
               continue # on redemarre la boucle
       print("pas de malus")
 print("nombre de reponse donnée :",nb_boucle)
-</xmp>
+</code></pre>
 <p>Félicitation, vous avez fait votre premier jeu vidéo textuel. Vous pouvez être fier.</p>
 <p>Alors le jeu fonctionne ainsi, vous avez 10 essais, il y a une réponse malus.</p>
 <p>Le mot break vous fait sortir de la boucle.</p>
@@ -152,7 +151,7 @@ print("nombre de reponse donnée :",nb_boucle)
 <h3>Fonctions</h3>
 <p>Vous êtes en train de coder, et vous remarquez que vous écriver la même chose dans le code.</p>
 <p>Par exemple : Vous faite le meme calcul plusieurs fois.</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation de la fonction
 def calcul(a,b,c) :
         i=(a+b)*c
@@ -169,7 +168,7 @@ d=1
 f=1
 i=calcul(e,d,f)
 print("la variable i est :",i)
-</xmp>
+</code></pre>
 <p>Le mot def permet de définir une fonction (calcul) avec des arguments (e,d,f). Il est préférable de mettre une <a href="https://pandas.pydata.org/docs/development/contributing_docstring.html">docstring</a>.</p>
 <p>Le commande return permets de retourner une valeur dans le programme.</p>
 <p>Le scripts exécute la fonction lors de l'appel.
@@ -180,7 +179,7 @@ Une fonction peut ne pas avoir d'arguments, ni de valeurs à retourner.</p>
 
 <h4>Recursivité</h4>
 <p>Bon, la fonction puissance existe déjà mais on va la recréer avec ce qu'on appelle la récursivité. Lets script:</p>
-<xmp class="code">
+<pre><code class="python">
 # Creation de la fonction puissance
 def calcul_puissance(chiffre,puissance) :
   # calcul une puissance en mode recursif (que les puissance entiere positive)
@@ -192,7 +191,7 @@ def calcul_puissance(chiffre,puissance) :
 
 chiffre,puissance  = 3,3
 print("resultat :", calcul_puissance(chiffre,puissance))
-</xmp>
+</code></pre>
 <p>La fonction s'appelle elle-même. Cela permet de faire une sorte de boucle.</p>
 <p>Quelquefois, c'est plus intuitif comme méthode que des boucles.</p>
 <p>Par contre les défauts : consommation mémoire en hausse et python limite le nombre de récursivité possible, pour éviter les récursivités infinies</p>
@@ -205,7 +204,7 @@ print("resultat :", calcul_puissance(chiffre,puissance))
 <h3>Environnement local</h3>
 <p>Divers programmes utilisent python, y compris des programmes importants sous Linux. Certaines distributions utilisent le gestionnaire par défaut pip, mais de plus en plus de distributions se servent de leurs propres gestionnaires de paquets pour plus de stabilité.</p>
 <p>Éssayer d'installer un module avec pip :</p>
-<xmp class="code">
+<pre><code class="bash">
 pip install yolo                                                                           ✔ 
 error: externally-managed-environment
 
@@ -225,13 +224,13 @@ error: externally-managed-environment
 
 note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.  
-</xmp>
+</code></pre>
 <p>Voici le message d'erreur lorsque vous essayez d'installer un paquet sur l'environnement local. Il vous demande sois de passer par le gestionnaire de paquets (pacman apt dnf) ou de créer un environnement virtuel.</p>
 <p>Vous pouvez installer les bibliothèques/modules que vous utilisez souvent en local. Par exemple installer django si vous êtes developpeur web.
 Mais il est plus que conseillé d'utiliser les environnements virtuels pour éviter des conflits avec les programmes systèmes.</p>
 <h3>Environnement virtuel</h3>
-<p>Pour créer un environnement virtuel, c'est relativement facile. Aller dans un dossier où vous débuter un nouveau projet python et taper : <div class="code">python -m venv venv</div></p>
-<p>Pour activer l'environnement virtuel, taper : <div class="code">source venv/bin/activate</div></p>
+<p>Pour créer un environnement virtuel, c'est relativement facile. Aller dans un dossier où vous débuter un nouveau projet python et taper : <pre><code class="bash">python -m venv venv</code></pre></p>
+<p>Pour activer l'environnement virtuel, taper : <pre><code class="bash">source venv/bin/activate</code></pre></p>
 <p>Maintenant, vous pouvez utiliser pip pour installer vos modules. </p>
 <h3>Pip</h3>
 <p>Les commandes principales de pip:
@@ -245,17 +244,17 @@ Mais il est plus que conseillé d'utiliser les environnements virtuels pour évi
 Donc, avec ces simples commandes, vous pouvez débuter un projet, mettre le fichier requirements.txt dans un repo git. Un utilisateur pourra installer et tester votre programme grâce à la création d'environnement virtuels et à pip.</p>
 <p></p>
 <h3>Mise à jour pip</h3>
-<p>Pour mettre à jour pip,il suffit de taper<div class="code">pip install pip --upgrade pip </div></p>
-<p>Pour mettre à jour tous les paquets de pip :<div class="code">pip freeze --local | awk -F "=" '{print "pip install -U "$1}' | sh</div></p>
-<p>Tester votre projet et mettez à jour requirements.txt<div class="code">pip freeze > requirements.txt</div></p>
+<p>Pour mettre à jour pip,il suffit de taper<pre><code class="bash">pip install pip --upgrade pip </code></pre></p>
+<p>Pour mettre à jour tous les paquets de pip :<pre><code class="bash">pip freeze --local | awk -F "=" '{print "pip install -U "$1}' | sh</code></pre></p>
+<p>Tester votre projet et mettez à jour requirements.txt<pre><code class="bash">pip freeze > requirements.txt</code></pre></p>
 <h3>Utiliser les modules</h3>
-<p>Vous avez installé plein de modules, comment on les importe ? Tout simplement avec la commande imports. Par exemple :<div class="code">import pandas</div></p>
+<p>Vous avez installé plein de modules, comment on les importe ? Tout simplement avec la commande imports. Par exemple :<pre><code class="python">import pandas</code></pre></p>
 <p>Ensuite, vous pouvez utiliser la bibliothèque pandas dans votre code (si vous l'avez installé avec pip avant bien entendu).</p>
-<p>Par exemple pour créer un dataframe <div class="code">dataframe = pandas.DataFrame()</div></p>
-<p>Écrire pandas est trop long ? Importer la bibliothèque comme ça :<div class=¨code">import pandas as pd</div></p>
-<p>Maintenant, vous pouvez écrire :<div class="code">pd.DataFrame()</div></p>
-<p>Vous n'avez besoin que de la fonction DataFrame ? Pas de soucis, écrivez ceci : <div class="code">from pandas import DataFrame</div></p>
-<p>Création du Dataframe : <div class="code">dataframe = DataFrame()</div></p>
+<p>Par exemple pour créer un dataframe <pre><code class="python">dataframe = pandas.DataFrame()</code></pre></p>
+<p>Écrire pandas est trop long ? Importer la bibliothèque comme ça :<pre><code class="python">import pandas as pd</code></pre></p>
+<p>Maintenant, vous pouvez écrire :<pre><code class="python">pd.DataFrame()</code></pre></p>
+<p>Vous n'avez besoin que de la fonction DataFrame ? Pas de soucis, écrivez ceci : <pre><code class="python">from pandas import DataFrame</code></pre></p>
+<p>Création du Dataframe : <pre><code class="python"> class="code">dataframe = DataFrame()</code></pre></p>
 <p></p>
 <h3>Une fausse bonne idée : from pandas import *</h3>
 <p>Vous importez tout pandas sans le namespace. Du coup, vous n'avez plus besoin de taper pandas.fonction ou pd.fonction.</p>
@@ -263,7 +262,7 @@ Donc, avec ces simples commandes, vous pouvez débuter un projet, mettre le fich
 <p>Pour en avoir fait l'expérience, bon courage pour tout déboguer.</p>
 <h3>Modules perso</h3>
 <p>Créer un dossier, créer dans celui-ci un fichier __init__.py et un fichier mesfonctions.py.</p>
-<p>Et importer le avec :<div class="code">import Nom_du_dossierpy</div> comme un modules. </p>
+<p>Et importer le avec :<pre><code class="python">import Nom_du_dossierpy</code></pre> comme un modules. </p>
 <h2>Conclusion</h2>
 <p>Avec ceci, vous avez juste les bases de python. De quoi vous débrouiller.</p>
 <p>Allez voir les bibliothèques et regarder la doc. Tester les différentes fonctions. Bref, éclatez-vous.</p>
