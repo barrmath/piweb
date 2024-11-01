@@ -1,5 +1,5 @@
 # contenue
-_ faire un dossier sur Git (la base en fait )
+_ faire un dossier sur Git (la base en fait ) en cours
 _ colonne ressource sur le cotès
 # amelioration
 _ insertion css highlight dans le scss

@@ -25,9 +25,7 @@ def page_not_found(e):
 
 @app.route("/reseaux/", methods=["GET", "POST"])
 def Réseaux():
-    return render_template(
-        "reseaux_intro.html", menu=app.menu, page="reseaux"
-    )
+    return render_template("reseaux_intro.html", menu=app.menu, page="reseaux")
 
 
 @app.route("/reseaux/Auto-hebergement/", methods=["GET", "POST"])
@@ -39,9 +37,7 @@ def Autohébergement():
 
 @app.route("/reseaux/Monitoring/", methods=["GET", "POST"])
 def Monitoring():
-    return render_template(
-        "reseaux/monitoring.html", menu=app.menu, page="reseaux"
-    )
+    return render_template("reseaux/monitoring.html", menu=app.menu, page="reseaux")
 
 
 @app.route("/reseaux/PodmanKube/", methods=["GET", "POST"])
@@ -56,9 +52,7 @@ def Proxy():
 
 @app.route("/reseaux/Certificat/", methods=["GET", "POST"])
 def Certificat():
-    return render_template(
-        "reseaux/certificats.html", menu=app.menu, page="reseaux"
-    )
+    return render_template("reseaux/certificats.html", menu=app.menu, page="reseaux")
 
 
 ####################################################### Partie WEB  ###################################################################
@@ -67,6 +61,11 @@ def Certificat():
 @app.route("/web/", methods=["GET", "POST"])
 def Web():
     return render_template("web_intro.html", menu=app.menu, page="web")
+
+
+@app.route("/web/git/", methods=["GET", "POST"])
+def Git():
+    return render_template("web/git.html", menu=app.menu, page="web")
 
 
 @app.route("/web/HTMLCSS/", methods=["GET", "POST"])
