@@ -3,14 +3,20 @@
 {% block content %}
 
 <h1>Podman</h1>
+
+
 <h2>C'est quoi Podman?</h2>
+
+
 <p>
-    <a href="https://podman.io/">Podman</a> permet de containeriser des applications. 
-    Un autre outil qui permet ça, c'est <a href="https://www.docker.com">Docker</a>.
+    <a href="https://podman.io/" target="_blank">Podman</a> permet de containeriser des applications. 
+    Un autre outil qui permet ça, c'est <a href="https://www.docker.com" target="_blank">Docker</a>.
     Et personnellement, j'utilise les deux.
     Mais c'est un peu court pour présenter les containers donc on va faire une sorte d'historique.    
 </p>
+
 <h3>Des PC, plein de PC</h3>
+
 <div>
     <img src={{ url_for('static', filename='img/podman/config_reseaux1.png') }} alt="pc">
 </div>
@@ -19,7 +25,9 @@
     La belle époque des systèmes monotache. Puis la technologie aidant (plus de RAM, processeur avec plusieurs cœurs).
     On arriva à faire des serveurs.
 </p>
+
 <h3>Des Machines virtuelles, plein de Machines Virtuelles</h3>
+
 <div>
     <img src={{ url_for('static', filename='img/podman/config_reseaux2.png') }} alt="pc">
 </div>
@@ -31,9 +39,12 @@
 <p>
     Les machines peuvent avoir la même configuration entre elles ou non.
     Les machines peuvent communiquer 
-    grâce à des <a href="https://www.it-connect.fr/comprendre-les-differents-types-de-reseaux-virtualbox/">réseaux virtuels</a> au sein du serveur.
+    grâce à des <a href="https://www.it-connect.fr/comprendre-les-differents-types-de-reseaux-virtualbox/" target="_blank">
+        réseaux virtuels</a> au sein du serveur.
 </p>
+
 <h3>Des conteneurs, plein de conteneurs</h3>
+
 <p>
     Prochaine étape : les containers.
 </p>
@@ -42,8 +53,8 @@
     À l'heure actuelle, 
     un bon compromis est d'utiliser un serveur avec un orchestrateur de containers. Par exemple sur le cloud. (aws,gcp,azure,informaniak,...)
     Vous pouvez configurer votre propre serveur de a à z, 
-    ou utilisez un service directement configuré (<a href="https://cloud.google.com/run?hl=fr">cloud run chez GCP</a>, 
-    <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/">aws EKS,</a>).
+    ou utilisez un service directement configuré (<a href="https://cloud.google.com/run?hl=fr" target="_blank">cloud run chez GCP</a>, 
+    <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/" target="_blank">aws EKS,</a>).
 </p>
 <p>
     Les containers ont certaines limitations. 
@@ -74,7 +85,11 @@
 <p>
     Ici, nous allons voir que l'utilisation locale de podman.
 </p>
+
+
 <h2>Construire une image</h2>
+
+
 <p>
     Les commandes Docker et Podman sont quasi identiques, il suffit de remplacer podman par docker et vice-versa.
     Pour contruire une image, on utilise la commande :
@@ -110,7 +125,11 @@ CMD gunicorn -c gunicorn.conf.py
     Attention, aux variables d'environnement, si vous partagez votre fichier docker sur github par exemple. Elles seront accessibles à tout le monde.
     L'option --env vous permets de définir des variables d'environnement lors du lancement du container.
 </p>
+
+
 <h2>Lancer un container</h2>
+
+
 <p>
     Sous podman crée un pod avec la commande (on l'utilisera par la suite) :
 </p>
@@ -139,7 +158,11 @@ CMD gunicorn -c gunicorn.conf.py
     <li>podman network rm podman2 : supprime le réseau podman2</li>
 </ul>
 Vous pouvez maintenant lancer vos containers et configurer un réseau entre eux pour que chaque container puisse communiquer avec les autres.
+
+
 <h2>Les pods</h2>
+
+
 <p>
     OK, c'est super, mais on ne va peut-être pas lancer chaque container à la main puis les connecter au réseau. 
     C'est long. On peut utiliser un script bash. Ça marche bien.
@@ -150,7 +173,9 @@ Vous pouvez maintenant lancer vos containers et configurer un réseau entre eux 
 <p>
     Sinon, on peux utiliser des pods et la fonction play kube de podman.(désolé non supporté par docker)
 </p>
+
 <h3>Un pods, c'est quoi</h3>
+
 <p>
     C'est un groupe de containers. On ne va pas aller plus loin. Une fois vos containers lancés, et vos réseaux configurés (et vous avez testé et tout marche).
 </p>

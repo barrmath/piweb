@@ -3,8 +3,15 @@
 {% block content %}
 
 <h1>Monitoring</h1>
-<p>Pour surveiller le raspberry pi je vais utiliser le combo <a href="https://prometheus.io/">prometheus</a> + <a href="https://grafana.com/">grafana.</a></p>
+
+<p>Pour surveiller le raspberry pi je vais utiliser le combo 
+    <a href="https://prometheus.io/" target="_blank">prometheus</a> + 
+    <a href="https://grafana.com/" target="_blank">grafana.</a></p>
+
+
 <h2>1) Prometheus : installation et configuration.</h2>
+
+
 <p>Prometheus est présent dans les dépôts de rasbian, du coup : </p><pre><code class="bash">apt-get install prometheus</code></pre>
 <p>Il faut bien penser à demarrer le service :</p> <pre><code class="bash">systemctl enable prometheus</code></pre>
 <p>et vérifier son status</p> <pre><code class="bash">systemcl status prometheus</code></pre>
@@ -19,7 +26,11 @@
 <p>Pour vérifier le fonctionnement de prometheus vous pouvez regarder avec un navigateur internet : adresse du serveur:9090/</p><p></p>
 <div><img src="{{ url_for('static', filename='img/monitoring/prometheus.png')}}" alt="prometheus webpage"></div>
 <p>Amusez-vous avec, faites des graphes, des alarmes en fonction de ce que vous voulez surveiller.</p>    
+
+
 <h2>2) Grafana : installation et configuration.</h2>
+
+
 <p>Pourquoi utiliser grafana, prometheus fait déjà des graphes ?</p>
 <p>Imaginer que vous devez surveiller plusieurs serveurs, l'un sur aws, l'autre sur gpc, un avec prometheus, un autre sur zabbix. (franchement pourquoi faire simple quand on peut faire compliqué?).</p>
 <p>Chacun a son petit utilitaire de monitoring, mais vous voulez tous les surveiller sur un seul tableau de bord.</p>

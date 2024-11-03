@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Graphique</h1>
+
 <p>
     Les graphiques sous python peuvent être effectuées par plusieurs bibliothèques :
-     <a href="https://matplotlib.org">matplotlib</a>, <a href="https://seaborn.pydata.org">seaborn</a>, <a href="https://bokeh.org/">bokhet</a>.
+     <a href="https://matplotlib.org" target="_blank">matplotlib</a>
+     , <a href="https://seaborn.pydata.org" target="_blank">seaborn</a>
+     , <a href="https://bokeh.org/" target="_blank">bokhet</a>.
      Je vous présente rapidement les 2 premières.
 </p>
+
+
 <h2>Matplotlib</h2>
+
+
 <p>
     Matplotlib permet de faire des graphiques en python.Il y a deux méthode pour utiliser matplotlib :</p>
     <ul>
@@ -17,7 +25,9 @@
 <p>
     Les 2 méthodes sont bonnes, mais choisissez-en une. Les incompréhensions sont souvent dues à un mélange des méthodes. 
 </p>
+
 <h3>La méthode script</h3>
+
 <p>Exemple :</p>
 <pre><code class="python">import matplotlib.pyplot as plt
 
@@ -29,7 +39,9 @@ plt.show()
     On va faire un script qui va construire le graphe. On reconnaît cette méthode avec l'utilisation quasi-exclusive des fonctions incluses dans matplotlib.
     C'est une méthode efficace et assez facile à prendre en main. 
 </p>
+
 <h3>La méthode objet</h3>
+
 <p>Exemple :</p>
 <pre><code class="python">import matplotlib.pyplot as plt
 fig,ax =plt.subplots()
@@ -43,7 +55,11 @@ plt.show()
     L'objet fig est la figure (la fenêtre pour vulgariser) qui va contenir le graphe. ax est l'objet graphe (axe).
     Personnellement, je préfère la méthode objet. Mais vous pouvez faire les mêmes choses en script. 
 </p>
+
+
 <h2>Seaborn</h2>
+
+
 <p>
     Seaborn est une amélioration de matplotlib. Vous trouverez souvent un argument ax pour intégrer un axe matplotlib.
 </p>
@@ -83,14 +99,19 @@ plt.show()
     Vous pouvez donc envoyer une vue filtrée (ou non) de votre dataframe directement dans la fonction seaborn avec l'argument data, 
     les arguments x et y correspondent par exemple à 2 colonnes de votre dataframe.
 </p>
+
+
 <h2>Conclusion</h2>
+
+
 <p>Ces deux bibliothèques vous permettent de faire des graphiques en python. 
     Si vous voulez des graphiques, plus interactifs, il y a bokeh. 
     Pour faire des tableaux de bord, orientez-vous vers des logiciels plus spécialisés comme : </p>
     <ul>
-        <li><a href="https://www.microsoft.com/fr-fr/power-platform/products/power-bi">PowerBI</a></li>
-        <li><a href="https://tableau.com/">Tableau</a></li>
-        <li><a href="https://grafana.com/">Grafana</a> (qui fait du monitoring à la base, mais il est possible d'en faire un logiciel de datavisualisation)</li>
+        <li><a href="https://www.microsoft.com/fr-fr/power-platform/products/power-bi" target="_blank">PowerBI</a></li>
+        <li><a href="https://tableau.com/" target="_blank">Tableau</a></li>
+        <li><a href="https://grafana.com/" target="_blank">Grafana</a> 
+            (qui fait du monitoring à la base, mais il est possible d'en faire un logiciel de datavisualisation)</li>
     </ul> 
 
 {% endblock %}

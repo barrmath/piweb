@@ -2,30 +2,47 @@
 
 {% block content %}
 <h1>Flask</h1>
-<p><a href="https://flask.palletsprojects.com/en/3.0.x/">Flask</a> est un module python pour le web. Il fait office de back-end (un peu comme <a herf="https://www.php.net/manual/fr/intro-whatis.php">PHP</a>).</p>
+<p><a href="https://flask.palletsprojects.com/en/3.0.x/" target="_blank">Flask</a> est un module python pour le web. Il fait office de back-end (un peu comme <a herf="https://www.php.net/manual/fr/intro-whatis.php">PHP</a>).</p>
 <p>Il existe d'autres modules pour faire du web, par exemple :</p>
 <ul>
-    <li><a href="https://www.djangoproject.com/">Django</a></li>
-    <li><a href="https://fastapi.tiangolo.com/">fastAPI</a></li>
+    <li><a href="https://www.djangoproject.com/" target="_blank">Django</a></li>
+    <li><a href="https://fastapi.tiangolo.com/" target="_blank">fastAPI</a></li>
 </ul>
 <p>Un petit descriptif pour chaque framework:</p>
+
 <h3>Django</h3>
+
 <p>Django est un framework très complets (Base de données intégrée, divers outils d'administrations). Mais si vous n'avez pas besoin de tous ces services, il risque d'être un peu lourd.</p>
+
 <h3>Flask</h3>
-<p>Flask est un framework très modulaire. Pas de gestion de Base de données (possible avec <a href="https://www.sqlalchemy.org/">SQLalchemy</a>) SI vous voulez des options, il faut en général installer un autre module.
+
+<p>Flask est un framework très modulaire. Pas de gestion de Base de données (possible avec <a href="https://www.sqlalchemy.org/" target="_blank">SQLalchemy</a>) SI vous voulez des options, il faut en général installer un autre module.
 Il a une approche opposée à Django qui est clé en main.</p>
 <p>Les principaux avantages de Flask sont sa simplicité, et sa légèreté.</p>
 <p>Le principal défaut, il faut rechercher un module à chaque option ce qui alourdit le framework.</p>
+
 <h3>FastAPI</h3>
-<p>Très ressemblant à Flask, il apporte des ajouts qui peuvent intéresser les développeurs. Un article les comparants se trouve <a href="https://www.pythoniste.fr/python/fastapi/les-differences-entre-les-frameworks-flask-et-fastapi/">ici</a>.</p>
+
+<p>Très ressemblant à Flask, il apporte des ajouts qui peuvent intéresser les développeurs. Un article les comparants se trouve <a href="https://www.pythoniste.fr/python/fastapi/les-differences-entre-les-frameworks-flask-et-fastapi/" target="_blank">ici</a>.</p>
+
+
 <h2>Installation de l'environnement</h2>
+
+
 <pre><code class="bash">pip install flask</code></pre>
 <p> Il faudra peut être faire d'autres installations par la suite. Mais le simple flask suffit pour commencer.</p>
+
+
 <h2>Utilisation</h2>
+
+
 <p>Il y a deux utilisations type. Une première où vous créer une application. La deuxième ou vous créer une fonction qui fabrique l'application. (create factory).</p>
 <p>Les deux méthodes possèdent des qualités et des défauts. Globalement créer une app est plus simple qu'une fonction créatrice.</p>
-<p>La version create factory vous permet de créer plusieurs instances de votre application pour faire des tests et d'autres choses. Plus d'information <a href="https://flask.palletsprojects.com/en/3.0.x/patterns/appfactories/">ici</a>.</p> 
+<p>La version create factory vous permet de créer plusieurs instances de votre application pour faire des tests et d'autres choses. 
+    Plus d'information <a href="https://flask.palletsprojects.com/en/3.0.x/patterns/appfactories/" target="_blank">ici</a>.</p> 
+
 <h3>Arborescence</h3>
+
 <p>On peut tout mettre dans un seul fichier avec Flask.</p>
 <p>Mais disons simplement que c'est rapidement le bordel avec une application un peu trop grosse. Je conseille donc de faire au minimum une arborescence.</p>
 <p>Mon application est architecturée comme cela :</p>
@@ -40,7 +57,9 @@ Il a une approche opposée à Django qui est clé en main.</p>
     └── views.py                     # Le fichier qui vous permet de configurer les routes
 </code></pre>
 <p>Commençons par le fichier de lancement.</p>
+
 <h3>run.py</h3>
+
 <p>Le fichier de lancement d'une application flask.</p>
 <pre><code class="python">from web_app import create_app
 
@@ -60,7 +79,9 @@ if __name__ == "__main__":
     <li>Lancer un serveur de DEVELOPPEMENT. (le serveur de flask n'est pas à utiliser en production, il faut utiliser un serveur de production)</li>
     <li>Donner des informations aux serveurs de production.</li>
 </ul>
+
 <h3>__init__.py</h3>
+
 <p>On va modifier ce fichier pour créer la fonction créatrice.</p>
 <pre><code class="python">from flask import Flask
 
@@ -97,11 +118,13 @@ def Accueil():
     return render_template("index.html",liste_categorie=liste_categorie,categorie=liste_categorie[0])
 </code></pre>
 <p>On crée l'application et on définit les routes ici.</p>
-<p>Vous avez un premier exemple avec le fichier <a href="https://robots-txt.com/">robots.txt</a>.</p>
+<p>Vous avez un premier exemple avec le fichier <a href="https://robots-txt.com/" target="_blank">robots.txt</a>.</p>
 <p>Vous en avez un deuxième avec la page index.</p>
 <p>Vous définissez une ou plusieurs route avec @app.route (c'est un décorateur en python).</p>
 <p>En dessous, vous définissez une fonction qui va retourner la page html.</p>
+
 <h3>template, static et jinja2</h3>
+
 <p>Flask est fourni avec le front-end jinja2. Vous pouvez utiliser un autre front-end comme React ou Angular.</p>
 <p>On peut créer des pages html dans le dossier template et faire les routes avec views.</p>
 <p>Mais imaginons que j'ai plein de code qui se répète dans toutes les pages html.</p>
@@ -128,8 +151,12 @@ contenu de la page
 <div><img src="{{ url_for('static', filename='img/flask/topnav.png')}}" alt="trop dur de faire en code"></div>
 <p>La topbar est créée à partir d'une liste, et d'une catégorie envoyée par flask. Rappelez-vous de la fonction :</p>
 <pre><code class="python">return render_template("index.html",liste_categorie=liste_categorie,categorie=liste_categorie[0])</code></pre>
+
+
 <h2>Pour aller plus loin SQL alchemy, login</h2>
-<p>Besoin d'une base de données :https://www.sqlalchemy.org/</p>
+
+
+<p>Besoin d'une base de données : <a href="https://www.sqlalchemy.org/" target="_blank">https://www.sqlalchemy.org/</a></p>
 <p>Je conseille d'utiliser des variables d'environnement et un fichier config.py.</p>
 <p>La base de données va, par exemple, servir à gérer des comptes qui vont se connecter à votre site. La gestion des connexions peut être faite avec flask-login.</p>
 <p>Le fichiers views.py commence à prendre de l'embonpoint. Diviser le avec les blueprints</p>
@@ -147,6 +174,7 @@ Press CTRL+C to quit
 * Debugger PIN: 330-144-452
 </code></pre>
 <p>Le serveur inclus dans Flask n'est pas prévu pour de fortes charges.</p>
-<p>Il faut utiliser un <a href="https://perso.liris.cnrs.fr/pierre-antoine.champin/2017/progweb-python/cours/cm1.html">WSGI</a>, par exemple Gunicorn (pip install gunicorn).
+<p>Il faut utiliser un <a href="https://perso.liris.cnrs.fr/pierre-antoine.champin/2017/progweb-python/cours/cm1.html" target="_blank">WSGI</a>, par exemple Gunicorn (pip install gunicorn).
 Il faudra ensuite associer Gunicorn à un serveur web (apache ou nginx par exemple).</p>
+
 {% endblock %}

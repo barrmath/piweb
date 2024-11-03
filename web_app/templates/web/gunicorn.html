@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Gunicorn</h1>
+
+
 <h2>Pourquoi utiliser Gunicorn</h2>
+
+
 <p>
     Lorsque vous lancez Flask avec python, il vous informe qu'il s'agit d'un serveur de test.
 </p>
@@ -19,20 +24,29 @@ Press CTRL+C to quit
 </code></pre>
 <p>
     Il faut un WSGI (Web Server Gateway Interface) qui va communiquer avec votre application python (Flask django ou autres).
-     Il est souvent utilisé avec un proxy http (<a href="https://www.nginx.org">nginx</a>, ou <a href="https://httpd.apache.org/docs/2.4/fr/programs/httpd.html">
+     Il est souvent utilisé avec un proxy http (<a href="https://www.nginx.org" target="_blank">nginx</a>, ou 
+     <a href="https://httpd.apache.org/docs/2.4/fr/programs/httpd.html" target="_blank">
         apache httpd</a>).
 </p>
 <div><img src="{{ url_for('static', filename='img/web/gunicorn/nginx_gunicorn.png')}}" alt="gunicorn"></div>
 <p>
     Ainsi, vous pouvez utiliser Gunicorn comme un serveur de production.
 </p>
+
+
 <h2>Installation</h2>
+
+
 <p>
     Vous pouvez passer par votre gestionnaire de paquets sur Linux, ou bien par pip. Pour nos ami(e)s sous windows,
-     vous pouvez utiliser pip install <a href="https://github.com/Pylons/waitress">waitress.</a> 
+     vous pouvez utiliser pip install <a href="https://github.com/Pylons/waitress" target="_blank">waitress.</a> 
 </p>
 <pre><code class="bash">pip install gunicorn</code></pre>
+
+
 <h2>Configuration et démarrage</h2>
+
+
 <p>
     Pour lancer gunicorn, il suffit de taper la commande gunicorn avec votre app. 
     Pour la configuration de l'app : nom_du_fichier:Nom_app ou nom_du_fichier:Appelle_fonction_creatrice() si vous êtes en app_factory.
@@ -59,9 +73,14 @@ wsgi_app = 'run:create_app()'
     On peux lancer gunicorn avec la commande :
 </p>
 <pre><code class="bash">gunicorn --config conf.py</code></pre>
+
+
 <h2>Conclusion</h2>
+
+
 <p>
     Vous pouvez maintenant avoir un wsgi en production, une étape de plus avant la mise en ligne.
     Il ne reste plus qu'à configurer nginx et faire les certificats pour le https.
 </p>
+
 {% endblock %}
