@@ -16,11 +16,25 @@
 </ul>
 <br>
 <p>La partie réseau va vous présenter les bases du réseau et vous expliquer comment faire par exemple de l'auto-hébergement ou de l'hébergement cloud.</p>
-<p></p>
 <p>La partie web vous informe sur les différentes technologies pour le partage web. (des simples pages html comme celle-ci aux applications).</p>
-<p></p>
 <p>La partie Data va vous fournir des accès à des sources ouvertes de données, mais aussi vous présenter des outils pour les analyser.</p>
-<p></p>
+<br>
+<p>Si vous voulez une sorte de fil rouge, je vous propose ce chemin qui permet de faire son site autohébergé : </p>
+<ol>
+    <li><a href={{ url_for('Git') }}>Git</a> : comment sauvegarder son code</li>
+    <li><a href={{ url_for('HTML') }} >HTML/CSS</a></li>
+    <li><a href={{ url_for('SQL') }} >SQL : pour les bases de données</a></li>
+    <li><a href={{ url_for('Python') }} >Python : les bases</a></li>
+    <li><a href={{ url_for('Flask') }} >Flask : Python qui gère le site web</a></li>
+    <li><a href={{ url_for('Jinja') }} >Jinja : Générateur de page HTML</a></li>
+    <li><a href={{ url_for('Gunicorn') }} >Gunicorn : WSGI pour flask ou django</a></li>
+    <li><a href={{ url_for('Podman') }} >Podman : conteneurisation des applications</a></li>
+    <li><a href={{ url_for('Certificat') }} >Certificats pour le https</a></li>
+    <li><a href={{ url_for('Autohébergement') }} >Autohébergement</a></li>
+</ol>
+<p>Ce fil rouge ne passe pas par tout le site. (La partie Data et monitoring sont absents par exemple.)</p>
+<p>Soyez curieux et allez où vous avez besoin.</p>
+<br>
 <p>Ce site va être en évolution perpétuelle. Certaines pages peuvent être en cours de construction.</p>
 
 {% endblock %}
