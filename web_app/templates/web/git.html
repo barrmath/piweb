@@ -6,53 +6,198 @@
 
 <h2>Qu'est-ce que Git</h2>
 
-<p>Git est un logiciel de gestion de versionning. C'est à dire qu'il permet de revenir en arriére en cas de soucis. Bref une sorte de super sauvegarde.</p>
-<p>Git est souvent associeé à GitHub ou Gitlab, qui permette de sauvegarder des projets sur le cloud.</p>
-<p>C'est un outil qui est transveral au niveau du projet.</p>
+<p>Git est un logiciel de gestion de versionning. C'est-à-dire qu'il permet de revenir en arrière en cas de soucis. Bref une sorte de super sauvegarde.</p>
+<p>Git est souvent associée à GitHub ou Gitlab, qui permettent de sauvegarder des projets sur le cloud.</p>
+<p>C'est un outil qui est transversal au niveau du projet.</p>
 <ul>
-    <li>Les développeurs vont utiliser git pour sauvegarder leurs travails et faire plusieurs version</li>
-    <li>Les administrateurs vont utiliser git pour pouvoir déployer les projets</li>
-    <li>Les chefs de projets peuvent surveiller l'avancement des projets</li>
+    <li>Les développeurs vont utiliser git pour sauvegarder leurs travails et faire plusieurs versions.</li>
+    <li>Les administrateurs vont utiliser git pour pouvoir déployer les projets.</li>
+    <li>Les chefs de projets peuvent surveiller l'avancement des projets.</li>
 </ul>
 <p>Pour faire simple Git est un indispensable dans le monde du développement actuel.</p>
 <p>Au niveau de l'installation de git, sous linux utilisez votre gestionnaire de paquets (souvent Git est déjà installé). 
     Pour les windosiens : <a href="https://git-scm.com/downloads/win" target="_blank">https://git-scm.com/downloads/win</a>
 
+
 <h2>Les repos Git local et "cloud"</h2>
 
-<p>Le Terme Cloud, je l'utilise pour que les débutant comprennent le principe. Mais git utilise le terme remote.</p>
+
+<p>Le Terme Cloud, je l'utilise pour que les débutants comprennent le principe. Mais git utilise le terme remote.</p>
 <p>Vous avez en général 2 repos (ou repository ou en français dossier) le repos local ou vous travailler et le repos remote ou cloud qui est distant.</p>
-<p>Plusieurs service de remote existe :
+<p>Plusieurs services de remote existent : </p>
+<ul>
+    <li><a href="https://github.com" target="_blank">GitHub</a></li>
+    <li><a href="https://gitlab.com" target="_blank">Gitlab</a></li>
+    <li><a href="https://bitbucket.org" target="_blank">Bitbucket</a></li>
+</ul>
+<p>Donc le dossier comprenant votre projet est disponible sur votre machine, mais aussi sur votre remote. 
+    On verra plus loin comment mettre à jours le remote.</p>
+
 
 <h2>Les commits</h2>
+
+
+<p>Vous modifiez votre code, et vous souhaitez avancer d'une version. C'est un commit.</p>
+<p>Le commit est souvent accompagné d'un message qui explique les changements effectués.</p>
+<p>Une fois le commit fait, un numéro de commit est attribué. Celà permet de revenir sur cette version en cas de soucis.</p>
 
 
 <h2>Les branches</h2>
 
 
-<h2>Les commande git en ligne de commande</h2>
+<p>Prenons directement un exemple pour expliquer les branches.</p>
+<p>Imaginons : Robert est administrateur, il s'occupe de la mise en production. Denis est un développeur qui s'occupe du développement du site.</p>
+<p>Pendant le développement, Denis travaille sur le site et fait des versions buguées et incomplètes du site.</p>
+<p>Vous comprenez assez facilement que Robert ne peut pas mettre en ligne une telle version. 
+    Mais comment faire savoir à Robert ce qu'il peut mettre en production ou non ?</p>
+<ol>
+    <li>On peut par exemple créer trois branches : production (ou main ou master) , test et dev.</li>
+    <li>Denis développe et sauvegarde son travail sur la branche dev. Peut importe l'état de cette version, elle n'est pas mise en production.</li>
+    <li>Une fois Denis confiant dans son travail, il migre son travail sur la branche test.</li>
+    <li>En fonction des équipes, Robert Denis ou une autre personne peut tester l'application est validé ou non le passage en production.</li>
+    <li>Les tests sont OK, on passe l'application en production. On met la version de test sur la branche production.</li>
+    <li>Une mise à jour sur la branche de production est notifiée à Robert, il met à jour le serveur.</li> 
+</ol>
+<p>Voyons maintenant comment mettre en place tout ça.</p>
+
+
+<h2>Identification et authentification sur github</h2>
+
+
+<p>Sur Gihub, les mots de passe ne permettent pas de se connecter en ligne de commande. On utilise donc sois un token sois un protocole ssh</p>
+<p>Les protocoles changeant souvent, je vous mets un lien vers la documentation officiel : </p>
+<ul>
+    <li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank">
+        Authentification par token</a></li>
+    <li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank">
+        Authentification par ssh</a></li>
+</ul>
+
+
+<h2>Les commandes git en ligne de commande</h2>
 
 
 <h3>git init</h3>
 
+<p>Entrez dans votre dossier de projet sur votre disque local puis effectuer la commande.</p>
+<pre><code class="bash">git init</code></pre>
+<p>Cela va créer un repos git local dans votre dossier.</p>
+<p>Attention : je vois souvent des personnes faire un git init dans leur dossier personnel, voir même à la racine d'un disque.</p>
+<p>Il s'agit d'une erreur. Effacez le dossier .git créez par git pour annuler tout le suivi. 
+    Puis recommencez en faisant bien attention de lancer git init dans le bon dossier</p>
+
+<h3>git config</h3>
+
+<p>Vous pouvez modifier les paramètres de votre repos. Par exemple : </p>
+<pre><code class="bash">git config --global user.name "Nom de l'auteur"</code></pre>
+<pre><code class="bash">git config --global user.email johndoe@example.com</code></pre>
+<p>Cela va configurer votre nom et votre adresse mail. Souvent obligatoire pour faire des commits.</p>
+
 <h3>git status</h3>
+
+Cette commande vous donne le statut de votre repos. Tout simplement. 
 
 <h3>git add</h3>
 
+<p>Permet d'ajouter un fichier ou un dossier à suivre dans votre repos. par exemple : </p>
+<pre><code class="bash">git add  readme.md</code></pre>
+<p>Pour ajouter le fichier readme.md</p>
+
 <h3>git commit</h3>
+
+<p>Permet de faire un commit.</p>
+<pre><code class="bash">git commit -am "message"</code></pre>
+<p>Pour faire un commit avec un message</p>
+<p>Attention vous ne faites qu'un commit en local et pas sur le remote. Pour le faire sur le remote, il faut faire un push</p>
+
+<h3>git branch</h3>
+
+<p>La commande git branch permet de faire une branche.</p>
+<pre><code class="bash">git branch nom_de_la_branche</code></pre>
+<p>Pour faire une branche nommée nom_de_la_branche</p>
+
+<h3>git checkout</h3>
+
+<p>Vous permet de changer de branche. </p>
+<pre><code class="bash">git checkout nom_de_la_branche</code></pre>
+<p>Pour changer de branche nommée nom_de_la_branche</p>
 
 <h3>git remote add origin</h3>
 
+<p>Vous permet d'ajouter un remote. </p>
+<pre><code class="bash">git remote add origin https://github.com/username/repo.git</code></pre>
+<p>Pour ajouter le remote.</p>
+
 <h3>git push</h3>
+
+<p>Permet de faire un push. C'est-à-dire mettre les commit local vers le remote</p>
+<pre><code class="bash">git push origin nom_de_la_branche</code></pre>
+<p>Pour faire un push sur la branche nommée nom_de_la_branche</p>
 
 <h3>git pull</h3>
 
+<p>Permet de faire un pull. C'est-à-dire mettre le remote vers le local</p>
+<pre><code class="bash">git pull</code></pre>
+<p>Pour faire un pull, c'est à dire mettre à jours votre repos local avec le remote.</p>
+
 <h3>git clone</h3>
+
+<p>Permet de faire un clone. </p>
+<pre><code class="bash">git clone https://github.com/username/repo.git</code></pre>
+<p>Pour faire un clone de votre repos.</p>
+
 
 <h2>La console Github</h2>
 
+<p>Vous pouvez aussi utiliser la console Github. Pour gérer vos fichiers, vos branches et vos repos.</p>
+<p> Pour les débutants, je conseille de commencer leurs projets avec la console github (Gitlab, Bitbucket et autre possèdent aussi une console)</p>
 
-<h2>Débuter avec Git et Github: La méthode du débutant</h2>
+<h3>Débuter avec Git et Github : La méthode du débutant</h3>
 
+<p>Je recommande de commencer votre projet avec la console Github pour les raisons suivantes : </p>
+<ul>
+    <li>Vous allez devoir créer un repos github de toute façon alors autant commencer directement.</li>
+    <li>En créant d'abord sur github, vous allez faire suivre les dossiers et les fichiers au cours de votre développement.</li>
+    <li>Vous allez éviter de faire un git init n'importe où.</li>
+    <li>Vous n'aurez pas besoin de configurer le remote, il sera déjà prêt.</li>
+</ul>
+<p>Connectez-vous à github et mettez un nouveau nom de repos à votre github. 
+    Cliquez sur private ou public si vous voulez un repos privé 
+    (vous seul pouvez le voir et certains collègues autorisés) ou public (tout le monde peut le voir).</p>
+<div><img src="{{ url_for('static', filename='img/git/New_repos.png')}}" alt="github"></div>
+<p>Selectionnez votre licence pour votre repos</p>
+<div><img src="{{ url_for('static', filename='img/git/Repos2.png')}}" alt="github"></div>
+<p>Cliquez sur choose a licence template. Ou si vous êtes doué en droit, créez votre propre licence.</p>
+<div><img src="{{ url_for('static', filename='img/git/Repos3.png')}}" alt="github"></div>
+<p>Selectionnez la Licence et cliquez sur Review and submit</p>
+<div><img src="{{ url_for('static', filename='img/git/Repos4.png')}}" alt="github"></div>
+<p>Puis sur le bouton commit change. Completez les messages et faite votre premier commit en cliquant sur commit changes</p>
+<div><img src="{{ url_for('static', filename='img/git/Repos5.png')}}" alt="github"></div>
+<p>Créez vos branches grâce à cette fenêtre :</p>
+<div><img src="{{ url_for('static', filename='img/git/Repos6.png')}}" alt="github"></div>
+<p>Cliquez sur le nom du repos (ici tests)</p>
+<div><img src="{{ url_for('static', filename='img/git/Repos7.png')}}" alt="github"></div>
+<p>Copier l'adresse en haut de votre navigateur puis faite un git clone</p>
+<pre><code class="bash">git clone https://github.com/username/repos</code></pre>
+<p>Un dossier avec le nom du repos est créé sur votre disque local.</p>
+<p>Par défaut, vous êtes sur la branche main après un clone. Je vous conseille de changer de branche et voilà vous pouvez commencez à coder.</p>
+<p>Commencez par créer un ficher readme.md codée en markdown pour expliquer votre repos. Github l'affiche par défaut.</p>
+
+
+<h2>.gitignore</h2>
+
+
+<p>Encore un mot sur le fichier .gitignore . 
+    Certains fichiers sont générés par votre code, ou vous ne voulez pas que certaines informations soient disponibles sur github</p>
+<p>Par exemple : vos identifiants ou vos clés</p>
+<p>Le fichier .gitignore vous permet d'ignorer les fichiers et dossiers qui ne vous intéressent pas.</p>
+<p>Il suffit de créer le fichier .gitignore à la racine de votre projet et de nommer les fichiers ou les dossiers à ignorer.</p>
+<p>Par exemple : </p>
+<pre><code class="yaml">venv
+__pycache__
+.pytest_cache</code></pre>
+<p>Git va ignorer les dossiers et fichier venv, __pycache__ et .pytest_cache</p>
+<br>
+<p>Maintenant, vous pouvez vous débrouiller avec Git et votre code.</p>
 
 {% endblock %}

@@ -2,10 +2,8 @@
 _ faire un dossier sur Git (la base en fait ) en cours
 _ colonne ressource sur le cotès
 # amelioration
-_ insertion css highlight dans le scss
 _ fil d arianne suivant precedent
 _ voir minikube dashboard
 _ mettre transparence sur certificat  et auto hebergement
-_ mettre une marge sur le menu changer l'accueil
 _ mettre coordonné dans about
 _ colorisation dans flask une image est rester la viré
