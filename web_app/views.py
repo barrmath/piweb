@@ -12,7 +12,7 @@ def static_from_root():
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index/", methods=["GET", "POST"])
 def Accueil():
-    return render_template("index.html", menu=app.menu, page="about",next=app.menu[2][1],last="")
+    return render_template("index.html", menu=app.menu, page="about",next=app.menu[2][1],last=app.menu[0][0])
 
 
 @app.errorhandler(404)

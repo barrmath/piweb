@@ -3,5 +3,4 @@ _ colonne ressource sur le cotès
 _ kubernetes et Nginx
 # amelioration
 _ voir minikube dashboard
-_ mettre transparence sur certificat  et auto hebergement
 _ colorisation dans flask une image est rester la viré
