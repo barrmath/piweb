@@ -32,3 +32,25 @@ footer{
   /* Pour que la checkbox ne s'affiche pas */
   display: none;
 }
+
+
+.next{
+  left:auto;
+  text-align: end;
+  
+  a{
+    text-decoration: none;
+    background-color: variables.$nav-background-color;
+    color:#ffffff;
+    padding: 0.5rem;
+  }
+}
+
+.last{
+  a{
+    text-decoration: none;
+    background-color: variables.$nav-background-color;
+    color: #ffffff;
+    padding: 0.5rem;
+  }
+}

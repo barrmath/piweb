@@ -28,7 +28,16 @@
           </li>
         {% endfor %}
       </ul>
-      </nav> 
+    </nav>
+    <div class="LastNext">
+      {% if last != "" %}
+        <span class="last">
+        <a href="{{ url_for(last) }}">&lt;&lt; {{ last }}</a></span>
+      {% endif %}
+      {% if next != "" %}
+        <span class="next"><a href="{{ url_for(next) }}">{{ next }}&gt;&gt;</a></span>
+      {% endif %}
+    </div>  
     </header>  
     <main>
         <div>
