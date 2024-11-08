@@ -41,17 +41,14 @@
 
   .sous{
     display: none;
-    box-shadow: 0rem 0.063rem 0.125rem #CCC;
     background-color: variables.$nav-background-color;
     position: absolute;
-    width: 100%;
     li{
       float: none;
-      width: 100%;
+      width: 15rem;
       text-align: left;
     }
     a{
-      padding: 0.625rem;
       border-bottom: none;
     }
     a:hover{
