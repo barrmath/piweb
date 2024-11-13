@@ -46,7 +46,7 @@ def Kube():
 
 @app.route("/reseaux/Proxy/", methods=["GET", "POST"])
 def Proxy():
-    return render_template("encours.html", menu=app.menu, page="reseaux",next="",last="")
+    return render_template("reseaux/proxy.html", menu=app.menu, page="reseaux",next=app.menu[1][5],last=app.menu[2][6])
 
 
 @app.route("/reseaux/Certificat/", methods=["GET", "POST"])
@@ -89,7 +89,7 @@ def Gunicorn():
 
 @app.route("/web/podman/", methods=["GET", "POST"])
 def Podman():
-    return render_template("web/podman.html", menu=app.menu, page="web",next=app.menu[1][5],last=app.menu[2][5])
+    return render_template("web/podman.html", menu=app.menu, page="web",next=app.menu[1][4],last=app.menu[2][5])
 
 
 ####################################################### Partie DATA  ##################################################################

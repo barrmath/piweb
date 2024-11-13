@@ -8,9 +8,68 @@
 <h2>Qu'est ce qu'un proxy? </h2>
 
 
-<h3>ngynx</h3>
+<p>Pour vulgariser, il s'agit d'un intermedaire entre 2 services, ou 2 ordinateurs.</p>
+<p>Par exemple :</p>
+<ul>
+    <li>Votre ordinateur passe par un proxy : le proxy peut par exemple empécher l'accès à certains sites</li>
+    <li>En vous connectant à un proxy vous pouvez contourner les filtrages (un proxy est un intermédiaire, pensez aux pub de VPN sur youtube)</li>
+    <li>Surveillez les communcations entre plusieurs apareils, et créer des logs en cas d'obligation</li>
+</ul>
+
+<p>Mon VPN est un proxy alors ?</p>
+<p>Vous vous connectez bien à un intermédaire pour pouvoir accéder à des sites web. Donc selon la définition, oui.</p>
+<p>Le VPN (Virtual Private Network) est surtout le moyen de vous connecter á un proxy.</p>
+<p>Par exemple vous pouvez un tunnel VPN avec votre <a href="https://www.actusfree.fr/vpn-freebox/", target="_blank">Freebox.</a></p>
+<p>Vous pouvez accéder à vos ordinateurs de manière sécuriser. Installez un proxy qui vous donne renvoie le site internet voulu. 
+    Voila vous venez de créer un VPN comme dans la pub (sauf que vous pouvez pas changer de pays sauf si vous installer plein de freebox partout)</p>
+<p>Dans le cas suivant je vais vous montrer comment utiliser un proxy en utilisant <a href="https://nginx.org/en/" target="_blank">nginx</a></p>
+<p>Donc maintenant si vous bien compris :</p>
+<ul>
+    <li>Un VPN utilise un proxy.</li>
+    <li>Un proxy est un intermédiaire pouvant surveiller vos communications</li>
+    <li>Donc je dois avoir confiance dans mon fournisseur VPN, car il peut vous surveiller</li>
+</ul>
+<p>Mes excuses pour cette petite disgression.</p>
+
+<h2>nginx</h2>
 
 
-<h2>configuration reverse proxy</h2>
+<p>NGINX Open Source2 ou NGINX (également orthographié Nginx ou nginx) est un logiciel libre de serveur Web (ou HTTP) 
+    ainsi qu'un proxy inverse écrit par Igor Sysoev, dont le développement a débuté en 2002 pour les besoins d'un site russe 
+    à très fort trafic (Rambler). Source <a href="https://fr.wikipedia.org/wiki/NGINX", target="_blank">wikipedia</a>
+</p>
 
+<p>Nginx va servir d'intermediaire entre Gunicorn et Internet.</p>
+<ul>
+    <li>Nginx va gerer les log de connection</li>
+    <li>Nginx peut s'occuper de gerer le https</li>
+    <li>Nginx peut aussi renvoyé les requetes http vers le https. (on parle de reverse proxy)</li>
+</ul>
+
+<h3>Installation et Configuration</h3>
+
+<p>Sous linux installation par gestionnaire de paquets (apt-get install nginx), image docker</p>
+<p>Sous windows et mac l installateur se trouve dans la session 
+    <a href="https://nginx.org/en/download.html", target="_blank">téléchargement du site nginx.org</a>
+</p>
+<p>La configuration se fait dans le fichier /etc/nginx/nginx.conf</p>
+<p>Vous pouvez créer plusieurs fichiers pour ne pas tout mettre dans le fichier configuration.
+    Un petit tuto est disponible <a href="https://www.malekal.com/nginx-comment-activer-un-site-avec-sites-enabled-ou-nginx-modsite/", target="_blank">ici.</a>
+</p>
+
+
+<h3>Alternative</h3>
+
+<p>Suite au <a href="https://www.lemagit.fr/actualites/252459426/
+    Nginx-tombe-dans-le-giron-de-F5-Networks-pour-670-millions-de-dollars" target="_blank">
+rachat de Nginx par F5 Network</a>, certaines personnes ont proposé un fork de nginx.
+</p>
+<ul>
+    <li><a href="https://freenginx.org/", target="_blank">freenginx </a>un fork 100% libre de nginx sans entreprise lucrative.</li>
+    <li><a href="https://en.angie.software/", target="_blank">angie"</a> un fork du créateur original sous tutel de Angie sofware Société russe</li>
+</ul>
+<p>
+    Vous pouvez utiliser d'autre service comme <a href="https://httpd.apache.org/", target="_blank">Apache httpd 
+        ou <a href="https://learn.microsoft.com/fr-fr/iis/get-started/introduction-to-iis/iis-web-server-overview" target="_blank">microsoft ISS</a> 
+</p>
 {% endblock %}

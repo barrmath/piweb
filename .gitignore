@@ -1,6 +1,5 @@
 venv
 __pycache__
-Source_schema
 .pytest_cache
 web_app/static/css/main.css
 web_app/static/css/main.css.map
