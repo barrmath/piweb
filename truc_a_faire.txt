@@ -1,5 +1,4 @@
 # contenue
-_ colonne ressource sur le cotès
 _ kubernetes et Nginx
 # amelioration
 _ voir minikube dashboard

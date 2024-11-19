@@ -67,4 +67,17 @@
   .LastNext{
     margin-top: 4rem;
   }
+
+  .article{
+    section{
+      text-align:justify;
+    }
+    aside{
+      margin-left: 3.125rem;
+      margin-right: 2rem;
+      margin-bottom: 3rem;
+      text-align: justify;
+      color:#000;
+    }
+  }
 }

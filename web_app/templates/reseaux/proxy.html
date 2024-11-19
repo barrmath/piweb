@@ -56,7 +56,56 @@
 <p>Vous pouvez créer plusieurs fichiers pour ne pas tout mettre dans le fichier configuration.
     Un petit tuto est disponible <a href="https://www.malekal.com/nginx-comment-activer-un-site-avec-sites-enabled-ou-nginx-modsite/", target="_blank">ici.</a>
 </p>
+<p>
+    Sinon pour faire simple :<br>
+    Pour configurer un service nginx, il faut ajouter un service au fichier nginx.conf, par exemple :
+</p>
+<pre><code class="yaml">http &#123; # nom du service
+    include       mime.types;
+    default_type  application/octet-stream;
 
+    # configurer les logs les options du services ...
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server &#123; #configurer le serveur
+        listen       872; #port à écouter
+        server_name  adresse.votresite; # nom du serveur (utile par exemple pour les certificats)
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+        
+        # pour indiquer à Flask qu'il se trouve derriere un proxy
+        location / {
+            proxy_pass http://localhost:3513;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Prefix /;
+        }
+
+        #error_page  404              /404.html; #si vous voulez configurer les pages d'erreurs
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {   
+            root   /usr/share/nginx/html;
+        }
+    &#125;
+</code></pre>
 
 <h3>Alternative</h3>
 
@@ -69,7 +118,17 @@ rachat de Nginx par F5 Network</a>, certaines personnes ont proposé un fork de 
     <li><a href="https://en.angie.software/", target="_blank">angie"</a> un fork du créateur original sous tutel de Angie sofware Société russe</li>
 </ul>
 <p>
-    Vous pouvez utiliser d'autre service comme <a href="https://httpd.apache.org/", target="_blank">Apache httpd 
+    Vous pouvez utiliser d'autre service comme <a href="https://httpd.apache.org/", target="_blank">Apache httpd</a>
         ou <a href="https://learn.microsoft.com/fr-fr/iis/get-started/introduction-to-iis/iis-web-server-overview" target="_blank">microsoft ISS</a> 
 </p>
+{% endblock %}
+
+{% block ressource %}
+
+<a href="https://nginx.org/en/" target="_blank">nginx</a><br>
+<a href="https://freenginx.org/", target="_blank">freenginx </a><br>
+<a href="https://en.angie.software/", target="_blank">angie"</a><br>
+<a href="https://httpd.apache.org/", target="_blank">Apache httpd</a><br>
+<a href="https://learn.microsoft.com/fr-fr/iis/get-started/introduction-to-iis/iis-web-server-overview" target="_blank">microsoft ISS</a><br>
+
 {% endblock %}
