@@ -39,8 +39,8 @@ def Monitoring():
     return render_template("reseaux/monitoring.html", menu=app.menu, page="reseaux",next="",last="")
 
 
-@app.route("/reseaux/PodmanKube/", methods=["GET", "POST"])
-def Kube():
+@app.route("/reseaux/Jenkins/", methods=["GET", "POST"])
+def Jenkins():
     return render_template("encours.html", menu=app.menu, page="reseaux",next="",last="")
 
 
