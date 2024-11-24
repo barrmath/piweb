@@ -55,12 +55,12 @@ def test_monitoring_post_status_codeOK(client):
 
 
 def test_podmanKube_get_status_codeOK(client):
-    response = client.get("/reseaux/PodmanKube/")
+    response = client.get("/reseaux/Jenkins/")
     assert response.status_code == 200
 
 
 def test_podmanKube_post_status_codeOK(client):
-    response = client.post("/reseaux/PodmanKube/")
+    response = client.post("/reseaux/Jenkins/")
     assert response.status_code == 200
 
 
