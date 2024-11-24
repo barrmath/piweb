@@ -41,7 +41,7 @@ def Monitoring():
 
 @app.route("/reseaux/Jenkins/", methods=["GET", "POST"])
 def Jenkins():
-    return render_template("encours.html", menu=app.menu, page="reseaux",next="",last="")
+    return render_template("/reseaux/Jenkins.html", menu=app.menu, page="reseaux",next="",last="")
 
 
 @app.route("/reseaux/Proxy/", methods=["GET", "POST"])
